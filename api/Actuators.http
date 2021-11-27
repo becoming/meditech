@@ -1,10 +1,23 @@
-GET localhost:7070/actuator
+GET localhost:7373/actuator
 
 ###
 
-GET localhost:7070/actuator/info
+GET localhost:7373/actuator/info
 
 ###
 
-GET localhost:7070/actuator/health
+GET localhost:7373/actuator/health
+
+###
+
+GET localhost:7373/actuator/env
+
+###
+
+GET localhost:7373/actuator/configprops
+
+###
+
+GET localhost:7373/actuator/configprops/spring.datasource
+
 
