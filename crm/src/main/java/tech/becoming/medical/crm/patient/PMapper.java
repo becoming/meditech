@@ -2,7 +2,6 @@ package tech.becoming.medical.crm.patient;
 
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
-import tech.becoming.medical.crm.patient.dto.NewPatientDetails;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 import tech.becoming.medical.crm.patient.entity.Patient;
 

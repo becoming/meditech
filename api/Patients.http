@@ -1,0 +1,3 @@
+GET localhost:7373/patients
+Content-Type: application/json
+
