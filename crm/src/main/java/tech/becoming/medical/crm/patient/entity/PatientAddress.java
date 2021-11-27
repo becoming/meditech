@@ -8,7 +8,7 @@ import java.util.UUID;
 public class PatientAddress extends BasicEntity {
 
     @OneToOne(targetEntity = PatientDetails.class)
-    private UUID patientContactId;
+    private UUID detailsId;
 
     private String number;
     private String street;

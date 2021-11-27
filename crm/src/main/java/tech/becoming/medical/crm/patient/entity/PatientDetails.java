@@ -20,5 +20,5 @@ public class PatientDetails extends BasicEntity {
     private Instant deathDate;
 
     @OneToMany
-    private Set<PatientAddress> address;
+    private Set<PatientAddress> addresses;
 }

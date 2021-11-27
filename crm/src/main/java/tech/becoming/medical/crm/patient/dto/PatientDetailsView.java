@@ -15,6 +15,6 @@ public class PatientDetailsView extends BasicDto {
     private String birthDate;
     private String deathDate;
 
-    private Set<PatientAddressView> address;
+    private Set<PatientAddressView> addresses;
 
 }
