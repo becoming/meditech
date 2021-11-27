@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import tech.becoming.medical.crm.patient.PatientService;
+import tech.becoming.medical.crm.patient.PService;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("patients")
 public class PatientHttp {
 
-    private final PatientService service;
+    private final PService service;
 
     @GetMapping
     public Try<List<PatientView>> getRobots(@RequestParam(defaultValue = "0") int page,

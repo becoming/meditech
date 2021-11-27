@@ -1,14 +1,19 @@
 package tech.becoming.medical.crm.patient.dto;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
+import tech.becoming.medical.crm.patient.entity.Identity;
 
-@Data
-@EqualsAndHashCode(callSuper = true)
+import java.util.Set;
+
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class PatientView extends BasicDto {
 
     private String id;
 
-    private PatientDetailsView details;
+    private Identity identity;
+    private Set<PatientAddressView> addresses;
 
 }

@@ -1,11 +1,15 @@
 package tech.becoming.medical.crm.patient.dto;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Getter
+@Setter
+@NoArgsConstructor
 public class PatientAddressView extends BasicDto {
+
+    private String id;
 
     private String number;
     private String street;

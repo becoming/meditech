@@ -12,11 +12,11 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class PatientService {
+public class PService {
 
-    private final PatientHelper helper;
-    private final PatientRepository repository;
-    private final PatientMapper mapper;
+    private final PHelper helper;
+    private final PRepository repository;
+    private final PMapper mapper;
 
     public Try<List<PatientView>> findInRange(PageRequest pageRequest) {
         return Try.of(() -> pageRequest)

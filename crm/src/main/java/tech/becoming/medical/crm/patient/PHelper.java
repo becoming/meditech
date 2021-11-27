@@ -11,9 +11,9 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-class PatientHelper {
+class PHelper {
 
-    private final PatientProperties properties;
+    private final PProperties properties;
 
     public PageRequest validatePage(PageRequest pageRequest) {
         List<ExceptionDetail> details = new ArrayList<>();

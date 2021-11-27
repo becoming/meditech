@@ -5,5 +5,5 @@ import tech.becoming.medical.crm.patient.entity.Patient;
 
 import java.util.UUID;
 
-public interface PatientRepository extends JpaRepository<Patient, UUID> {
+public interface PRepository extends JpaRepository<Patient, UUID> {
 }
