@@ -1,24 +1,33 @@
 package tech.becoming.medical.crm.patient;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 import tech.becoming.common.exceptions.BadRequestException;
 import tech.becoming.common.exceptions.ExceptionDetail;
+import tech.becoming.medical.crm.patient.dto.NewPatient;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
-class PHelper {
+class PatientHelper {
 
-    private final PProperties properties;
+    private final PatientProperties properties;
 
-    public PageRequest validatePage(PageRequest pageRequest) {
+    public NewPatient validate(NewPatient p) {
+
+        log.warn("TODO, implement me");
+        return p;
+    }
+
+    public PageRequest validate(PageRequest p) {
         List<ExceptionDetail> details = new ArrayList<>();
 
-        if (pageRequest.getPageNumber() < 0) {
+        if (p.getPageNumber() < 0) {
             var i = ExceptionDetail.ofNameAndMessage(
                     "page",
                     "Page value must be a positive number.");
@@ -26,7 +35,7 @@ class PHelper {
             details.add(i);
         }
 
-        if (pageRequest.getPageSize() < 0) {
+        if (p.getPageSize() < 0) {
             var i = ExceptionDetail.ofNameAndMessage(
                     "size",
                     "Size value must be a positive number.");
@@ -34,7 +43,7 @@ class PHelper {
             details.add(i);
         }
 
-        if (pageRequest.getPageSize() > properties.getMaxPageSize()) {
+        if (p.getPageSize() > properties.getMaxPageSize()) {
             var i = ExceptionDetail.ofNameAndMessage(
                     "size",
                     "Size value must be lower than " + properties.getMaxPageSize() + ", or equal.");
@@ -44,7 +53,7 @@ class PHelper {
 
         BadRequestException.throwIfHasDetails(details);
 
-        return pageRequest;
+        return p;
     }
 
     private boolean isEmpty(String s) {

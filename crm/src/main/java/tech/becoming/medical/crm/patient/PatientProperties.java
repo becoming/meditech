@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @Component
 @ConfigurationProperties("app.patient")
-public class PProperties {
+public class PatientProperties {
 
     private int maxPageSize = 50;
 

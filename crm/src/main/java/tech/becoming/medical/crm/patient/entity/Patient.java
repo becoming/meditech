@@ -23,9 +23,9 @@ public class Patient extends BasicEntity {
     @Column(name = "business_id")
     private UUID businessId;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Identity identity;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Address> addresses;
 }

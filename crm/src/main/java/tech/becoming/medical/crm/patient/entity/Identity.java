@@ -22,6 +22,9 @@ public class Identity extends BasicEntity {
     private String firstName;
     private String lastName;
 
+    private String medicalId;
+    private String nationalId;
+
     private Instant birthDate;
     private Instant deathDate;
 

@@ -1,3 +1,15 @@
-GET localhost:7373/patients
+POST  localhost:7373/patients
 Content-Type: application/json
 
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "medicalId": "1-MEDICALID",
+  "nationalId": "2-NATIONALID",
+  "birthDate": "31-12-1969 23:59:00"
+}
+
+###
+
+GET localhost:7373/patients
+Content-Type: application/json

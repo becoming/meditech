@@ -1,7 +1,9 @@
 package tech.becoming.medical.crm.patient;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.springframework.data.domain.Page;
+import tech.becoming.medical.crm.patient.dto.NewPatient;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 import tech.becoming.medical.crm.patient.entity.Patient;
 
@@ -15,7 +17,7 @@ import java.util.UUID;
 //https://www.baeldung.com/mapstruct-ignore-unmapped-properties#ignore-specific-fields
 //https://stackoverflow.com/a/62548185/1107450
 @Mapper(componentModel = "spring")
-public interface PMapper {
+public interface PatientMapper {
 
     default List<PatientView> toDto(Page<Patient> v) {
         return v.map(this::toDto)
@@ -32,10 +34,17 @@ public interface PMapper {
         return v != null ? v.toString() : null;
     }
 
-    default Set<PatientView> toDto(Iterable<Patient> games) {
+    default Set<PatientView> toDto(Iterable<Patient> v) {
         var result = new HashSet<PatientView>();
-        games.forEach(game -> result.add(toDto(game)));
+        v.forEach(game -> result.add(toDto(game)));
 
         return result;
     }
+
+    @Mapping(source = "firstName", target = "identity.firstName")
+    @Mapping(source = "lastName", target = "identity.lastName")
+    @Mapping(source = "medicalId", target = "identity.medicalId")
+    @Mapping(source = "nationalId", target = "identity.nationalId")
+    @Mapping(source = "birthDate", target = "identity.birthDate")
+    Patient toEntity(NewPatient v);
 }
