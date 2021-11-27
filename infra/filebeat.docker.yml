@@ -1,0 +1,15 @@
+#  curl -L -O https://raw.githubusercontent.com/elastic/beats/7.11/deploy/docker/filebeat.docker.yml
+
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/becoming/crm.log.json
+    json.keys_under_root: true
+    json.overwrite_keys: true
+
+setup.kibana:
+  host: "kibana:5601"
+
+output.elasticsearch:
+  hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
