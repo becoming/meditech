@@ -5,7 +5,6 @@ import org.mapstruct.Mapping;
 import org.springframework.data.domain.Page;
 import tech.becoming.medical.crm.patient.dto.NewPatient;
 import tech.becoming.medical.crm.patient.dto.PatientView;
-import tech.becoming.medical.crm.patient.entity.Patient;
 
 import java.util.HashSet;
 import java.util.List;

@@ -1,4 +1,4 @@
-package tech.becoming.medical.crm.patient.entity;
+package tech.becoming.medical.crm.core;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

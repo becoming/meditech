@@ -7,7 +7,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import tech.becoming.medical.crm.patient.dto.NewPatient;
 import tech.becoming.medical.crm.patient.dto.PatientView;
-import tech.becoming.medical.crm.patient.entity.Patient;
 
 import java.time.Instant;
 import java.util.List;

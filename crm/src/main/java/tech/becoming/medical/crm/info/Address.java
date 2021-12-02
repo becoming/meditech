@@ -1,22 +1,17 @@
-package tech.becoming.medical.crm.patient.entity;
+package tech.becoming.medical.crm.info;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tech.becoming.medical.crm.core.BasicEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 public class Address extends BasicEntity {
-
-    @OneToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
 
     private String number;
     private String street;
@@ -26,4 +21,6 @@ public class Address extends BasicEntity {
     private String department;
     private String country;
 
+    private AddressType type;
+    private String details;
 }
