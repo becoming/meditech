@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import tech.becoming.medical.crm.patient.PatientService;
-import tech.becoming.medical.crm.patient.dto.NewPatient;
+import tech.becoming.medical.crm.patient.dto.NewIdentity;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class PatientHttp {
     }
 
     @PostMapping
-    public Try<PatientView> create(@RequestBody NewPatient p) {
+    public Try<PatientView> create(@RequestBody NewIdentity p) {
         return service.create(p);
     }
 

@@ -6,7 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 import tech.becoming.common.exceptions.BadRequestException;
 import tech.becoming.common.exceptions.ExceptionDetail;
-import tech.becoming.medical.crm.patient.dto.NewPatient;
+import tech.becoming.medical.crm.patient.dto.NewIdentity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ class PatientHelper {
 
     private final PatientProperties properties;
 
-    public NewPatient validate(NewPatient p) {
+    public NewIdentity validate(NewIdentity p) {
 
         log.warn("TODO, implement me");
         return p;

@@ -13,7 +13,7 @@ import static tech.becoming.common.constants.DateTime.dd_MM_yyyy_HH_mm_ss;
 @Getter
 @Setter
 @NoArgsConstructor
-public class NewPatient {
+public class NewIdentity {
 
     private String firstName;
     private String lastName;

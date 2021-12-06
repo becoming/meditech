@@ -1,9 +1,9 @@
 package tech.becoming.medical.crm.patient;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.springframework.data.domain.Page;
-import tech.becoming.medical.crm.patient.dto.NewPatient;
+import tech.becoming.medical.crm.info.Identity;
+import tech.becoming.medical.crm.patient.dto.NewIdentity;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 
 import java.util.HashSet;
@@ -40,10 +40,5 @@ public interface PatientMapper {
         return result;
     }
 
-    @Mapping(source = "firstName", target = "identity.firstName")
-    @Mapping(source = "lastName", target = "identity.lastName")
-    @Mapping(source = "medicalId", target = "identity.medicalId")
-    @Mapping(source = "nationalId", target = "identity.nationalId")
-    @Mapping(source = "birthDate", target = "identity.birthDate")
-    Patient toEntity(NewPatient v);
+    Identity toEntity(NewIdentity v);
 }

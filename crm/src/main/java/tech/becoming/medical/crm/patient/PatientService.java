@@ -5,11 +5,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import tech.becoming.medical.crm.patient.dto.NewPatient;
+import tech.becoming.medical.crm.info.Identity;
+import tech.becoming.medical.crm.patient.dto.NewIdentity;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Slf4j
@@ -29,7 +31,7 @@ public class PatientService {
                 .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
     }
 
-    public Try<PatientView> create(NewPatient p) {
+    public Try<PatientView> create(NewIdentity p) {
         return Try.of(() -> p)
                 .map(helper::validate)
                 .map(mapper::toEntity)
@@ -39,16 +41,15 @@ public class PatientService {
                 .onFailure(e -> log.error("Could not create a new patient, e: {}", e.getMessage()));
     }
 
-    private Patient setupNew(Patient p) {
+    private Patient setupNew(Identity identity) {
         var now = Instant.now();
 
-        p.setCreated(now);
-        p.setUpdated(now);
-        p.getIdentity().setCreated(now);
-        p.getIdentity().setUpdated(now);
+        identity.setCreated(now);
+        identity.setUpdated(now);
 
+        var p = new Patient();
         p.setBusinessId(UUID.randomUUID());
-
+        p.setIdentities(Set.of(identity));
 
         return p;
     }
