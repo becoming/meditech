@@ -17,9 +17,9 @@ import java.util.UUID;
 public abstract class BasicEntity {
 
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue
     @GenericGenerator(
-            name = "UUID",
+            name = "uuid",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     @Column(name = "id", updatable = false, nullable = false)

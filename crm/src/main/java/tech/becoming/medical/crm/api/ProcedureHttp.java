@@ -2,13 +2,14 @@ package tech.becoming.medical.crm.api;
 
 import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.*;
+import tech.becoming.medical.crm.patient.dto.PatientView;
 import tech.becoming.medical.crm.procedure.MedicalProcedure;
 import tech.becoming.medical.crm.procedure.ProcedureService;
 import tech.becoming.medical.crm.procedure.ProcedureView;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("procedures")
@@ -16,6 +17,12 @@ import tech.becoming.medical.crm.procedure.ProcedureView;
 public class ProcedureHttp {
 
     private final ProcedureService service;
+
+    @GetMapping
+    public Try<List<ProcedureView>> findInRange(@RequestParam(defaultValue = "0") int page,
+                                              @RequestParam(defaultValue = "50") int size) {
+        return service.findInRange(PageRequest.of(page, size));
+    }
 
     @PostMapping
     public Try<MedicalProcedure> create(@RequestBody ProcedureView p) {

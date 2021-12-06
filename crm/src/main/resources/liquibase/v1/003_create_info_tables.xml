@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="0" author="rodi">
+        <createTable tableName="address" schemaName="tme">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created" type="datetime"/>
+            <column name="updated" type="datetime"/>
+
+            <column name="number" type="varchar(255)"/>
+            <column name="street" type="varchar(255)"/>
+            <column name="zip_code" type="varchar(255)"/>
+            <column name="city" type="varchar(255)"/>
+            <column name="region" type="varchar(255)"/>
+            <column name="department" type="varchar(255)"/>
+            <column name="country" type="varchar(255)"/>
+            <column name="type" type="varchar(255)"/>
+            <column name="details" type="varchar(999)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1" author="rodi">
+        <createTable tableName="identity" schemaName="tme">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created" type="datetime"/>
+            <column name="updated" type="datetime"/>
+
+            <column name="first_name" type="varchar(255)"/>
+            <column name="last_name" type="varchar(255)"/>
+            <column name="medical_id" type="varchar(255)"/>
+            <column name="national_id" type="varchar(255)"/>
+            <column name="birth_date" type="datetime"/>
+            <column name="death_date" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

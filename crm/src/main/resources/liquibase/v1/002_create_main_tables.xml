@@ -7,12 +7,12 @@
 
     <changeSet id="0" author="rodi">
         <createTable tableName="medical_procedure" schemaName="tme">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="id" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="created" type="datetime"/>
             <column name="updated" type="datetime"/>
-            <column name="business_id" type="varchar(32)"/>
+            <column name="business_id" type="uuid"/>
 
             <column name="type" type="varchar(255)"/>
             <column name="price" type="bigint"/>
@@ -22,43 +22,43 @@
 
     <changeSet id="1" author="rodi">
         <createTable tableName="medical_licence" schemaName="tme">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="id" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="created" type="datetime"/>
             <column name="updated" type="datetime"/>
-            <column name="business_id" type="varchar(32)"/>
+            <column name="business_id" type="uuid"/>
 
             <column name="value" type="varchar(999)"/>
             <column name="issuer" type="varchar(999)"/>
             <column name="expires" type="datetime"/>
             <column name="issued" type="datetime"/>
 
-            <column name="address_id" type="bigint"/>
+            <column name="address_id" type="uuid"/>
         </createTable>
     </changeSet>
 
     <changeSet id="2" author="rodi">
         <createTable tableName="doctor" schemaName="tme">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="id" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="created" type="datetime"/>
             <column name="updated" type="datetime"/>
-            <column name="business_id" type="varchar(32)"/>
+            <column name="business_id" type="uuid"/>
 
-            <column name="license_id" type="bigint"/>
+            <column name="license_id" type="uuid"/>
         </createTable>
     </changeSet>
 
     <changeSet id="3" author="rodi">
         <createTable tableName="patient" schemaName="tme">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="id" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="created" type="datetime"/>
             <column name="updated" type="datetime"/>
-            <column name="business_id" type="varchar(32)"/>
+            <column name="business_id" type="uuid"/>
         </createTable>
     </changeSet>
 

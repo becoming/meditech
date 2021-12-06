@@ -6,12 +6,16 @@ import lombok.Setter;
 import tech.becoming.medical.crm.core.BasicEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 public class Address extends BasicEntity {
+
+    public enum Type { PERSONAL, BUSINESS }
 
     private String number;
     private String street;
@@ -21,6 +25,9 @@ public class Address extends BasicEntity {
     private String department;
     private String country;
 
-    private AddressType type;
+//    https://www.baeldung.com/jpa-persisting-enums-in-jpa
+    @Enumerated(EnumType.STRING)
+    private Type type;
+
     private String details;
 }

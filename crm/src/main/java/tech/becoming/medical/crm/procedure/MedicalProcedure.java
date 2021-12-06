@@ -7,6 +7,8 @@ import lombok.Setter;
 import tech.becoming.medical.crm.core.BasicEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -22,6 +24,7 @@ public class MedicalProcedure extends BasicEntity {
 
     private UUID businessId;
 
+    @Enumerated(EnumType.STRING)
     private Type type;
 
     private Long price;

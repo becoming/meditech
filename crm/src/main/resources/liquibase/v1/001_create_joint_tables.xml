@@ -10,8 +10,8 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="doctor_id" type="bigint"/>
-            <column name="identity_id" type="bigint"/>
+            <column name="doctor_id" type="uuid"/>
+            <column name="identity_id" type="uuid"/>
         </createTable>
     </changeSet>
 
@@ -20,8 +20,8 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="patient_id" type="bigint"/>
-            <column name="identity_id" type="bigint"/>
+            <column name="patient_id" type="uuid"/>
+            <column name="identity_id" type="uuid"/>
         </createTable>
     </changeSet>
 
@@ -30,8 +30,8 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="patient_id" type="bigint"/>
-            <column name="address_id" type="bigint"/>
+            <column name="patient_id" type="uuid"/>
+            <column name="address_id" type="uuid"/>
         </createTable>
     </changeSet>
 
@@ -40,8 +40,8 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="doctor_id" type="bigint"/>
-            <column name="address_id" type="bigint"/>
+            <column name="doctor_id" type="uuid"/>
+            <column name="address_id" type="uuid"/>
         </createTable>
     </changeSet>
 

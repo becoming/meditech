@@ -2,8 +2,6 @@ package tech.becoming.medical.crm.procedure;
 
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
-import tech.becoming.medical.crm.patient.Patient;
-import tech.becoming.medical.crm.patient.dto.PatientView;
 
 import java.util.HashSet;
 import java.util.List;
@@ -17,12 +15,12 @@ import java.util.UUID;
 @Mapper(componentModel = "spring")
 public interface ProcedureMapper {
 
-    default List<PatientView> toDto(Page<Patient> v) {
+    default List<ProcedureView> toDto(Page<MedicalProcedure> v) {
         return v.map(this::toDto)
                 .getContent();
     }
 
-    PatientView toDto(Patient v);
+    ProcedureView toDto(MedicalProcedure v);
 
     default UUID toUUID(String v) {
         return v != null ? UUID.fromString(v) : null;
@@ -32,9 +30,9 @@ public interface ProcedureMapper {
         return v != null ? v.toString() : null;
     }
 
-    default Set<PatientView> toDto(Iterable<Patient> v) {
-        var result = new HashSet<PatientView>();
-        v.forEach(game -> result.add(toDto(game)));
+    default Set<ProcedureView> toDto(Iterable<MedicalProcedure> v) {
+        var result = new HashSet<ProcedureView>();
+        v.forEach(item -> result.add(toDto(item)));
 
         return result;
     }
