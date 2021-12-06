@@ -1,4 +1,4 @@
-package tech.becoming.medical.crm.medicalservice;
+package tech.becoming.medical.crm.procedure;
 
 
 import lombok.Getter;
@@ -14,11 +14,15 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MedicalService extends BasicEntity {
+public class MedicalProcedure extends BasicEntity {
+
+    public enum Type {
+        CONSULTATION, INTERVENTION, CHIRURGICAL
+    }
 
     private UUID businessId;
 
-    private ServiceType type;
+    private Type type;
 
     private Long price;
 

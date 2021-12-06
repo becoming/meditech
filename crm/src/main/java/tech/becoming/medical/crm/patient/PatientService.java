@@ -36,7 +36,7 @@ public class PatientService {
                 .map(this::setupNew)
                 .map(repository::save)
                 .map(mapper::toDto)
-                .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
+                .onFailure(e -> log.error("Could not create a new patient, e: {}", e.getMessage()));
     }
 
     private Patient setupNew(Patient p) {
