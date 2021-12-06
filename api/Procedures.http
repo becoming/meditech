@@ -1,0 +1,11 @@
+POST  localhost:7373/procedures
+Content-Type: application/json
+
+{
+  "date": "31-12-1969 23:59:00"
+}
+
+###
+
+GET localhost:7373/procedures
+Content-Type: application/json
