@@ -9,10 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>tech.becoming.medical</groupId>
-    <artifactId>crm</artifactId>
+    <artifactId>crm-back</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>crm</name>
-    <description>crm</description>
+
     <properties>
         <java.version>11</java.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
