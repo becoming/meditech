@@ -9,15 +9,17 @@ import {Patients} from "./components/patients";
 
 export function App() {
   return (
-    <BrowserRouter>
-      <Menu/>
-      <Routes>
-        <Route path="/about" element={<About/>} />
-        <Route path="/patients" element={<Patients/>} />
-        <Route path="/doctors" element={<Doctors/>} />
-        <Route path="/procedures" element={<Procedures/>} />
-      </Routes>
-    </BrowserRouter>
+    <div className="bp3-dark">
+      <BrowserRouter>
+        <Menu/>
+        <Routes>
+          <Route path="/about" element={<About/>} />
+          <Route path="/patients" element={<Patients/>} />
+          <Route path="/doctors" element={<Doctors/>} />
+          <Route path="/procedures" element={<Procedures/>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
