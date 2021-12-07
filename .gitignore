@@ -1,4 +1,4 @@
-crm/src/main/resources/application-local.properties
+crm-back/src/main/resources/application-local.properties
 
 HELP.md
 target/
