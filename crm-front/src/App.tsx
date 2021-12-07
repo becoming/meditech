@@ -1,19 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Button } from "@blueprintjs/core";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {About} from "./components/about";
+import {Doctors} from "./components/doctors";
+import {Menu} from "./components/menu";
+import {Procedures} from "./components/procedures";
+import {Patients} from "./components/patients";
 
-function App() {
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Button intent="success" text="button content"/>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Menu/>
+      <Routes>
+        <Route path="/about" element={<About/>} />
+        <Route path="/patients" element={<Patients/>} />
+        <Route path="/doctors" element={<Doctors/>} />
+        <Route path="/procedures" element={<Procedures/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
