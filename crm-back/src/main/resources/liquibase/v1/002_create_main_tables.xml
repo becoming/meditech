@@ -6,59 +6,59 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
     <changeSet id="0" author="rodi">
-        <createTable tableName="medical_procedure" schemaName="tme">
-            <column name="id" type="uuid">
+        <createTable tableName="MEDICAL_PROCEDURE" schemaName="TME">
+            <column name="ID" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="created" type="datetime"/>
-            <column name="updated" type="datetime"/>
-            <column name="business_id" type="uuid"/>
+            <column name="CREATED" type="datetime"/>
+            <column name="UPDATED" type="datetime"/>
+            <column name="BUSINESS_ID" type="uuid"/>
 
-            <column name="type" type="varchar(255)"/>
-            <column name="price" type="bigint"/>
-            <column name="scheduled_date" type="datetime"/>
+            <column name="TYPE" type="varchar(255)"/>
+            <column name="PRICE" type="bigint"/>
+            <column name="SCHEDULED_DATE" type="datetime"/>
         </createTable>
     </changeSet>
 
     <changeSet id="1" author="rodi">
-        <createTable tableName="medical_licence" schemaName="tme">
-            <column name="id" type="uuid">
+        <createTable tableName="MEDICAL_LICENCE" schemaName="TME">
+            <column name="ID" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="created" type="datetime"/>
-            <column name="updated" type="datetime"/>
-            <column name="business_id" type="uuid"/>
+            <column name="CREATED" type="datetime"/>
+            <column name="UPDATED" type="datetime"/>
+            <column name="BUSINESS_ID" type="uuid"/>
 
-            <column name="value" type="varchar(999)"/>
-            <column name="issuer" type="varchar(999)"/>
-            <column name="expires" type="datetime"/>
-            <column name="issued" type="datetime"/>
+            <column name="VALUE" type="varchar(999)"/>
+            <column name="ISSUER" type="varchar(999)"/>
+            <column name="EXPIRES" type="datetime"/>
+            <column name="ISSUED" type="datetime"/>
 
-            <column name="address_id" type="uuid"/>
+            <column name="ADDRESS_ID" type="uuid"/>
         </createTable>
     </changeSet>
 
     <changeSet id="2" author="rodi">
-        <createTable tableName="doctor" schemaName="tme">
-            <column name="id" type="uuid">
+        <createTable tableName="DOCTOR" schemaName="TME">
+            <column name="ID" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="created" type="datetime"/>
-            <column name="updated" type="datetime"/>
-            <column name="business_id" type="uuid"/>
+            <column name="CREATED" type="datetime"/>
+            <column name="UPDATED" type="datetime"/>
+            <column name="BUSINESS_ID" type="uuid"/>
 
-            <column name="license_id" type="uuid"/>
+            <column name="LICENSE_ID" type="uuid"/>
         </createTable>
     </changeSet>
 
     <changeSet id="3" author="rodi">
-        <createTable tableName="patient" schemaName="tme">
-            <column name="id" type="uuid">
+        <createTable tableName="PATIENT" schemaName="TME">
+            <column name="ID" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="created" type="datetime"/>
-            <column name="updated" type="datetime"/>
-            <column name="business_id" type="uuid"/>
+            <column name="CREATED" type="datetime"/>
+            <column name="UPDATED" type="datetime"/>
+            <column name="BUSINESS_ID" type="uuid"/>
         </createTable>
     </changeSet>
 

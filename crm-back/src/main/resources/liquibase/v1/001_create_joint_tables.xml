@@ -6,42 +6,42 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
     <changeSet id="1" author="rodi">
-        <createTable tableName="j_doctor_identity" schemaName="tme">
-            <column name="id" type="bigint" autoIncrement="true">
+        <createTable tableName="J_DOCTOR_IDENTITY" schemaName="TME">
+            <column name="ID" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="doctor_id" type="uuid"/>
-            <column name="identity_id" type="uuid"/>
+            <column name="DOCTOR_ID" type="uuid"/>
+            <column name="IDENTITY_ID" type="uuid"/>
         </createTable>
     </changeSet>
 
     <changeSet id="2" author="rodi">
-        <createTable tableName="j_patient_identity" schemaName="tme">
-            <column name="id" type="bigint" autoIncrement="true">
+        <createTable tableName="J_PATIENT_IDENTITY" schemaName="TME">
+            <column name="ID" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="patient_id" type="uuid"/>
-            <column name="identity_id" type="uuid"/>
+            <column name="PATIENT_ID" type="uuid"/>
+            <column name="IDENTITY_ID" type="uuid"/>
         </createTable>
     </changeSet>
 
     <changeSet id="3" author="rodi">
-        <createTable tableName="j_patient_address" schemaName="tme">
-            <column name="id" type="bigint" autoIncrement="true">
+        <createTable tableName="J_PATIENT_ADDRESS" schemaName="TME">
+            <column name="ID" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="patient_id" type="uuid"/>
-            <column name="address_id" type="uuid"/>
+            <column name="PATIENT_ID" type="uuid"/>
+            <column name="ADDRESS_ID" type="uuid"/>
         </createTable>
     </changeSet>
 
     <changeSet id="4" author="rodi">
-        <createTable tableName="j_doctor_address" schemaName="tme">
-            <column name="id" type="bigint" autoIncrement="true">
+        <createTable tableName="J_DOCTOR_ADDRESS" schemaName="TME">
+            <column name="ID" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="doctor_id" type="uuid"/>
-            <column name="address_id" type="uuid"/>
+            <column name="DOCTOR_ID" type="uuid"/>
+            <column name="ADDRESS_ID" type="uuid"/>
         </createTable>
     </changeSet>
 

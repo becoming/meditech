@@ -9,9 +9,11 @@ import tech.becoming.medical.crm.core.BasicEntity;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Table;
 import java.time.Instant;
 import java.util.UUID;
 
+@Table(name = "MEDICAL_PROCEDURE", schema = "TME")
 @Entity
 @Getter
 @Setter

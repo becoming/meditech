@@ -12,6 +12,7 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
+@Table(name = "DOCTOR", schema = "TME")
 @Entity
 @Getter
 @Setter
@@ -23,26 +24,26 @@ public class Doctor extends BasicEntity {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column(name = "business_id")
+    @Column(name = "BUSINESS_ID")
     private UUID businessId;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "license_id")
+    @JoinColumn(name = "LICENSE_ID")
     private MedicalLicence licence;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "j_doctor_identity",
-            joinColumns = @JoinColumn(name = "doctor_id"),
-            inverseJoinColumns = @JoinColumn(name = "identity_id")
+            name = "J_DOCTOR_IDENTITY", schema = "TME",
+            joinColumns = @JoinColumn(name = "DOCTOR_ID"),
+            inverseJoinColumns = @JoinColumn(name = "IDENTITY_ID")
     )
     private Set<Identity> identities;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "j_doctor_address",
-            joinColumns = @JoinColumn(name = "doctor_id"),
-            inverseJoinColumns = @JoinColumn(name = "address_id")
+            name = "J_DOCTOR_ADDRESS", schema = "TME",
+            joinColumns = @JoinColumn(name = "DOCTOR_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ADDRESS_ID")
     )
     private Set<Address> addresses;
 }

@@ -12,6 +12,7 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
+@Table(name = "PATIENT", schema = "TME")
 @Entity
 @Getter
 @Setter
@@ -23,22 +24,22 @@ public class Patient extends BasicEntity {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column(name = "business_id")
+    @Column(name = "BUSINESS_ID")
     private UUID businessId;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "j_patient_identity",
-            joinColumns = @JoinColumn(name = "patient_id"),
-            inverseJoinColumns = @JoinColumn(name = "identity_id")
+            name = "J_PATIENT_IDENTITY", schema = "TME",
+            joinColumns = @JoinColumn(name = "PATIENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "IDENTITY_ID")
     )
     private Set<Identity> identities;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "j_patient_address",
-            joinColumns = @JoinColumn(name = "patient_id"),
-            inverseJoinColumns = @JoinColumn(name = "address_id")
+            name = "J_PATIENT_ADDRESS", schema = "TME",
+            joinColumns = @JoinColumn(name = "PATIENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ADDRESS_ID")
     )
     private Set<Address> addresses;
 }

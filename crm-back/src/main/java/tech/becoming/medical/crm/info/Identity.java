@@ -6,8 +6,10 @@ import lombok.Setter;
 import tech.becoming.medical.crm.core.BasicEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.Instant;
 
+@Table(name = "IDENTITY", schema = "TME")
 @Entity
 @Getter
 @Setter

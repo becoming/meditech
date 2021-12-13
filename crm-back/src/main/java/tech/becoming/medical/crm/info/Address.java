@@ -8,7 +8,9 @@ import tech.becoming.medical.crm.core.BasicEntity;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Table;
 
+@Table(name = "ADDRESS", schema = "TME")
 @Entity
 @Getter
 @Setter

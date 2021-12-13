@@ -11,6 +11,7 @@ import javax.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
 
+@Table(name = "MEDICAL_LICENCE", schema = "TME")
 @Entity
 @Getter
 @Setter
@@ -27,11 +28,11 @@ public class MedicalLicence extends BasicEntity {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column(name = "business_id")
+    @Column(name = "BUSINESS_ID")
     private UUID businessId;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "ADDRESS_ID")
     private Address address;
 
 }
