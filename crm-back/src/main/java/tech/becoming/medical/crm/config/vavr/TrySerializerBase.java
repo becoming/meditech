@@ -1,4 +1,4 @@
-package tech.becoming.medical.crm.config;
+package tech.becoming.medical.crm.config.vavr;
 
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JavaType;

@@ -1,4 +1,4 @@
-POST  localhost:7373/procedures
+POST  localhost:7373/api/v1/procedures
 Content-Type: application/json
 
 {
@@ -7,5 +7,5 @@ Content-Type: application/json
 
 ###
 
-GET localhost:7373/procedures
+GET localhost:7373/api/v1/procedures
 Content-Type: application/json

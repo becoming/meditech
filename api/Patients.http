@@ -1,4 +1,4 @@
-POST  localhost:7373/patients
+POST  localhost:7373/api/v1/patients
 Content-Type: application/json
 
 {
@@ -11,5 +11,5 @@ Content-Type: application/json
 
 ###
 
-GET localhost:7373/patients
+GET localhost:7373/api/v1/patients
 Content-Type: application/json

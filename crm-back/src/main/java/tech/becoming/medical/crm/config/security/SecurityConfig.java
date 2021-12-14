@@ -1,20 +1,16 @@
-package tech.becoming.medical.crm.config;
+package tech.becoming.medical.crm.config.security;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.cors.CorsConfiguration;
 
+@Slf4j
 @RequiredArgsConstructor
 @EnableWebSecurity
-@Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public static final String EMPTY_LINE = "*                                 *";
@@ -22,16 +18,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String ADMIN = "admin";
     private static final String USER = "user";
-    private static final String USER_SOFT_BLOCKED = "user_soft_blocked";
 
     private final SecurityProperties properties;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       
-    	if(properties.isEnabled()) {
+
+        if (properties.isEnabled()) {
             http
                     .authorizeRequests()
+                    .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                     .antMatchers("/").permitAll()
 
                     .antMatchers("/index.html").permitAll()
@@ -41,12 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                     .antMatchers("/actuator/health").permitAll()
                     .antMatchers("/actuator/info").permitAll()
-                    .antMatchers("/api/**").hasAnyRole(ADMIN, USER, USER_SOFT_BLOCKED)
+                    .antMatchers("/api/v1/**").hasAnyRole(ADMIN, USER)
                     .antMatchers("/**").authenticated()
                     .anyRequest().authenticated()
                     .and()
-                    .cors()
-                    .and()
+                    .cors(cors -> cors.configurationSource(request -> corsConfiguration()))
                     .csrf().disable()
                     .oauth2ResourceServer().jwt();
         } else {
@@ -55,23 +50,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             log.error("*             WARNING             *");
             log.error("*       SECURITY IS DISABLED      *");
             log.error(EMPTY_LINE);
-            log.error("* app.security.is-enable=false *");
+            log.error("* app.security.enabled=false *");
             log.error(EMPTY_LINE);
             log.error(FULL_LINE);
 
             http
                     .authorizeRequests()
+                    .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                     .anyRequest().permitAll()
                     .and()
-                    .cors()
-                    .and()
+                    .cors(cors -> cors.configurationSource(request -> corsConfiguration()))
                     .csrf().disable()
                     .oauth2ResourceServer().jwt();
         }
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+    public CorsConfiguration corsConfiguration() {
+        var cors = new CorsConfiguration();
+        cors.setAllowedOrigins(properties.getCors());
+        cors.setAllowedHeaders(properties.getHeaders());
+
+        return cors;
     }
 }

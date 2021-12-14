@@ -12,7 +12,8 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("patients")
+//@CrossOrigin("${app.http.security.cors}")
+@RequestMapping("api/v1/patients")
 public class PatientHttp {
 
     private final PatientService service;

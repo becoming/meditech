@@ -12,8 +12,9 @@ import tech.becoming.medical.crm.procedure.ProcedureView;
 import java.util.List;
 
 @RestController
-@RequestMapping("procedures")
+@RequestMapping("api/v1/procedures")
 @RequiredArgsConstructor
+@CrossOrigin("${app.http.security.cors}")
 public class ProcedureHttp {
 
     private final ProcedureService service;
