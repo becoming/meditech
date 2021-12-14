@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {About} from "./components/about";
-import {Doctors} from "./components/doctors";
-import {Menu} from "./components/menu";
-import {Procedures} from "./components/procedures";
-import {Patients} from "./components/patients";
+import {About} from "./components/About";
+import {Doctors} from "./components/Doctors";
+import {Menu} from "./components/Menu";
+import {Procedures} from "./components/Procedures";
+import {Patients} from "./components/Patients";
 
 export function App() {
   return (

@@ -17,3 +17,7 @@ yarn
 # start the app
 yarn start
 ```
+
+SVG in CRA
+- https://blog.logrocket.com/how-to-use-svgs-in-react/
+
