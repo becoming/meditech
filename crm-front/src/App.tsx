@@ -9,7 +9,7 @@ import {Patients} from "./components/Patients";
 
 export function App() {
   return (
-    <div className="bp3-dark">
+    <div className="bp4-dark">
       <BrowserRouter>
         <Menu/>
         <Routes>
