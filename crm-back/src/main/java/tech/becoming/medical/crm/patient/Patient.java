@@ -27,13 +27,9 @@ public class Patient extends BasicEntity {
     @Column(name = "BUSINESS_ID")
     private UUID businessId;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "J_PATIENT_IDENTITY", schema = "TME",
-            joinColumns = @JoinColumn(name = "PATIENT_ID"),
-            inverseJoinColumns = @JoinColumn(name = "IDENTITY_ID")
-    )
-    private Set<Identity> identities;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDENTITY_ID")
+    private Identity identity;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(

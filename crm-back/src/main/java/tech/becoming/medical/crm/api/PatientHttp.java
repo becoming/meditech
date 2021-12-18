@@ -12,7 +12,6 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-//@CrossOrigin("${app.http.security.cors}")
 @RequestMapping("api/v1/patients")
 public class PatientHttp {
 

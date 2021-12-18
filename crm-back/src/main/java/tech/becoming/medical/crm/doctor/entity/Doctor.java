@@ -31,13 +31,9 @@ public class Doctor extends BasicEntity {
     @JoinColumn(name = "LICENSE_ID")
     private MedicalLicence licence;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "J_DOCTOR_IDENTITY", schema = "TME",
-            joinColumns = @JoinColumn(name = "DOCTOR_ID"),
-            inverseJoinColumns = @JoinColumn(name = "IDENTITY_ID")
-    )
-    private Set<Identity> identities;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDENTITY_ID")
+    private Identity identity;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(

@@ -2,17 +2,16 @@ import {useEffect, useState} from "react";
 import {httpHelperNoAuth} from "../helper/HttpHelper";
 import {UL} from "@blueprintjs/core";
 import {ListItem} from "./ListItem";
-import {PageTitle} from "../PageTitle";
 import {Patient} from "./vo/Patient";
 import {Toolbar} from "./Toolbar";
+import {patientService} from "./PatientService";
 
 export function Patients() {
 
   let [items, setData] = useState<Patient[]>([]);
 
   useEffect(() => {
-    httpHelperNoAuth
-      .get<Object>('/api/v1/patients')
+    patientService.getAll()
       .next((value: Patient[]) => setData(value));
   })
 

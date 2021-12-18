@@ -6,12 +6,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import tech.becoming.medical.crm.info.Identity;
+import tech.becoming.medical.crm.info.IdentityRepository;
 import tech.becoming.medical.crm.patient.dto.NewIdentity;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Slf4j
@@ -20,13 +20,14 @@ import java.util.UUID;
 public class PatientService {
 
     private final PatientHelper helper;
-    private final PatientRepository repository;
+    private final PatientRepository patientRepository;
+    private final IdentityRepository identityRepository;
     private final PatientMapper mapper;
 
     public Try<List<PatientView>> findInRange(PageRequest p) {
         return Try.of(() -> p)
                 .map(helper::validate)
-                .map(repository::findAll)
+                .map(patientRepository::findAll)
                 .map(mapper::toDto)
                 .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
     }
@@ -36,9 +37,17 @@ public class PatientService {
                 .map(helper::validate)
                 .map(mapper::toEntity)
                 .map(this::setupNew)
-                .map(repository::save)
+                .map(patientRepository::save)
+                .map(this::saveIdentity)
+                .map(patientRepository::save)
                 .map(mapper::toDto)
                 .onFailure(e -> log.error("Could not create a new patient, e: {}", e.getMessage()));
+    }
+
+    private Patient saveIdentity(Patient patient) {
+        var i = identityRepository.save(patient.getIdentity());
+        patient.setIdentity(i);
+        return patient;
     }
 
     private Patient setupNew(Identity identity) {
@@ -49,7 +58,9 @@ public class PatientService {
 
         var p = new Patient();
         p.setBusinessId(UUID.randomUUID());
-        p.setIdentities(Set.of(identity));
+        p.setIdentity(identity);
+        p.setCreated(now);
+        p.setUpdated(now);
 
         return p;
     }

@@ -19,13 +19,31 @@ class PatientHelper {
     private final PatientProperties properties;
 
     public NewIdentity validate(NewIdentity p) {
+        var details = new ArrayList<ExceptionDetail>();
 
-        log.warn("TODO, implement me");
+        if (isEmpty(p.getFirstName())) {
+            var i = ExceptionDetail.ofNameAndMessage(
+                    "firstName",
+                    "Please provide a first name.");
+
+            details.add(i);
+        }
+
+        if (isEmpty(p.getLastName())) {
+            var i = ExceptionDetail.ofNameAndMessage(
+                    "lastName",
+                    "Please provide a last name.");
+
+            details.add(i);
+        }
+
+        BadRequestException.throwIfHasDetails(details);
+
         return p;
     }
 
     public PageRequest validate(PageRequest p) {
-        List<ExceptionDetail> details = new ArrayList<>();
+        var details = new ArrayList<ExceptionDetail>();
 
         if (p.getPageNumber() < 0) {
             var i = ExceptionDetail.ofNameAndMessage(

@@ -1,23 +1,19 @@
 class HttpParams {
 
     // 'http://localhost:7373/api/v1/patients'
-    private scheme = process.env.REACT_APP_BACKEND_SCHEME;
-    private host = process.env.REACT_APP_BACKEND_HOST;
-    private port = process.env.REACT_APP_BACKEND_PORT;
+    private scheme = process.env.REACT_APP_BACKEND_SCHEME || "http";
+    private host = process.env.REACT_APP_BACKEND_HOST || "localhost";
+    private port = process.env.REACT_APP_BACKEND_PORT || "7373";
+    private prefix = process.env.REACT_APP_BACKEND_API_PREFIX || "";
 
-    // noinspection TypeScriptFieldCanBeMadeReadonly
-    private _url = "http://localhost:7373";
+    readonly url;
 
     private _authHeader: string = "Basic " + btoa("admin:password");
 
     constructor() {
-        if (this.scheme && this.host && this.port) {
-            this._url = this.scheme.concat("://").concat(this.host).concat(":").concat(this.port)
-        }
-    }
-
-    public get url(): string {
-        return this._url;
+        this.url = this.scheme.concat("://")
+          .concat(this.host).concat(":").concat(this.port)
+          .concat(this.prefix)
     }
 
     public get authHeader(): string {

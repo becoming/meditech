@@ -10,6 +10,7 @@ export function About() {
     {key: "Scheme", value: process.env.REACT_APP_BACKEND_SCHEME},
     {key: "Host", value: process.env.REACT_APP_BACKEND_HOST},
     {key: "Port", value: process.env.REACT_APP_BACKEND_PORT},
+    {key: "API Prefix", value: process.env.REACT_APP_BACKEND_API_PREFIX},
     {key: "Health URI", value: process.env.REACT_APP_BACKEND_HEALTH},
   ]
 
