@@ -10,7 +10,7 @@ export function ListItem(props: Props) {
   let p = props.patient;
 
   return <div className="bp4-card bp4-interactive">
-    <Link to={"/patients/1"}>
+    <Link to={"/patients/" + p.id}>
       {p.identity.firstName} {p.identity.lastName}
     </Link>
 

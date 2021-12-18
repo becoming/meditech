@@ -31,9 +31,9 @@
     }
 }
 
-.App-patients {
+.App-patients-ul {
     list-style-type: none;
-    margin: 0;
+    margin: 20px 0;
     padding-left: 0;
 }
 

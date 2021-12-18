@@ -10,7 +10,7 @@ export class PatientService {
   }
 
   getAll() {
-    return httpHelperNoAuth.get<Object>('/v1/patients')
+    return httpHelperNoAuth.get<Patient[]>('/v1/patients')
   }
 
 }

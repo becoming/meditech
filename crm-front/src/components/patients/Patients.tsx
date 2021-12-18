@@ -1,31 +1,27 @@
 import {useEffect, useState} from "react";
-import {httpHelperNoAuth} from "../helper/HttpHelper";
-import {UL} from "@blueprintjs/core";
 import {ListItem} from "./ListItem";
 import {Patient} from "./vo/Patient";
 import {Toolbar} from "./Toolbar";
 import {patientService} from "./PatientService";
+import {UL} from "@blueprintjs/core";
 
 export function Patients() {
 
-  let [items, setData] = useState<Patient[]>([]);
+  let [patients, setPatients] = useState<Patient[]>([]);
 
   useEffect(() => {
-    patientService.getAll()
-      .next((value: Patient[]) => setData(value));
-  })
+    patientService.getAll().subscribe(d => setPatients(d));
+  }, [])
 
-  let patients: JSX.Element[] = []
-  items.forEach(i => patients.push(<ListItem patient={i} />))
+  let patientsLi: JSX.Element[] = []
+  for (const i of patients) {
+    patientsLi.push(<ListItem key={i.id} patient={i}/>);
+  }
 
   return <div className={"App-page-container"}>
-    {/*<PageTitle value={"Patients"} />*/}
     <Toolbar />
-
-    <UL className={"App-patients"}>
-      <li>
-        {patients}
-      </li>
+    <UL className={"App-patients-ul"}>
+      {patientsLi}
     </UL>
 
   </div>
