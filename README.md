@@ -8,6 +8,13 @@
 
 ## Problems
 
+`useEffect()` "_constantly_" triggers itself
+
+- https://stackoverflow.com/a/56767883/1107450
+- for now, I've used a workaround, but I have to use a custom hook for that
+
+---
+
 Method springSecurityFilterChain in org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration required a bean of type 'org.springframework.security.oauth2.jwt.JwtDecoder' that could not be found.
 
 > we can add required dependencies and min configuration for that 
