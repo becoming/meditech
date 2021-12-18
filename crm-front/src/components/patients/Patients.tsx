@@ -4,6 +4,7 @@ import {UL} from "@blueprintjs/core";
 import {ListItem} from "./ListItem";
 import {PageTitle} from "../PageTitle";
 import {Patient} from "./vo/Patient";
+import {Toolbar} from "./Toolbar";
 
 export function Patients() {
 
@@ -19,7 +20,8 @@ export function Patients() {
   items.forEach(i => patients.push(<ListItem patient={i} />))
 
   return <div className={"App-page-container"}>
-    <PageTitle value={"Patients"} />
+    {/*<PageTitle value={"Patients"} />*/}
+    <Toolbar />
 
     <UL className={"App-patients"}>
       <li>

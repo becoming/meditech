@@ -5,6 +5,8 @@
   "dependencies": {
     "@blueprintjs/core": "4.0.0-beta.12",
     "@blueprintjs/popover2": "1.0.0-beta.12",
+    "@blueprintjs/datetime": "4.0.0-beta.12",
+    "@blueprintjs/select": "4.0.0-beta.12",
     "@testing-library/jest-dom": "5.16.1",
     "@testing-library/react": "12.1.2",
     "@testing-library/user-event": "13.5.0",

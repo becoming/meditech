@@ -10,8 +10,9 @@ export function PageTitle(props: {value: string, backUrl?: string}) {
   }
 
   return <div>
-    <h3 className="bp4-heading">
+    <span className={"App-toolbar-title"}>
       {backButton}
-      {props.value}</h3>
+      {props.value}
+    </span>
   </div>
 }

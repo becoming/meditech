@@ -17,7 +17,7 @@ export function Table(props: Props) {
         </tr>)
     })
 
-    return <table className="bp4-html-table .modifier">
+    return <table className="bp4-html-table">
         <thead>
             <tr>
                 <th>Variable</th>

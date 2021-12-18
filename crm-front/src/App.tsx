@@ -7,6 +7,7 @@ import {Menu} from "./components/Menu";
 import {Procedures} from "./components/Procedures";
 import {Patients} from "./components/patients/Patients";
 import {PatientProfile} from "./components/patients/PatientProfile";
+import {NewPatient} from "./components/patients/NewPatient";
 
 export function App() {
   return (
@@ -15,8 +16,11 @@ export function App() {
         <Menu/>
         <Routes>
           <Route path="/about" element={<About/>} />
+
           <Route path="/patients" element={<Patients/>} />
+          <Route path="/patients/new" element={<NewPatient/>} />
           <Route path="/patients/:id" element={<PatientProfile/>} />
+
           <Route path="/doctors" element={<Doctors/>} />
           <Route path="/procedures" element={<Procedures/>} />
         </Routes>

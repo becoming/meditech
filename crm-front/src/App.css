@@ -1,42 +1,69 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 3em;
-  pointer-events: none;
+    height: 3em;
+    pointer-events: none;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .App-patients {
-  list-style-type: none;
-  margin: 0;
-  padding-left: 0;
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
 }
 
 .App-page-container {
-  padding: 10px;
+    padding: 10px;
+}
+
+.App-form {
+    margin-top: 20px;
+    max-width: 500px;
+}
+
+.App-form-group {
+    border: solid thin rgba(204, 204, 204, 0.39);
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.App-text-yellow {
+    color: #ffb700;
+}
+
+.App-toolbar-title {
+    padding-top: 0;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: large;
+}
+
+.App-about-card-table {
+    margin-top: 20px;
+    width: 250px;
 }

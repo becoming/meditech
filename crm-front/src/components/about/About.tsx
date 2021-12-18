@@ -1,4 +1,6 @@
 import {KeyValue, Table} from "./Table";
+import {PageTitle} from "../PageTitle";
+import {Card} from "@blueprintjs/core";
 
 export function About() {
 
@@ -12,7 +14,9 @@ export function About() {
   ]
 
   return <div className={"App-page-container"}>
-    <h1 className="bp4-heading">About</h1>
-    <Table env={env} />
+    <PageTitle value={"About"} />
+    <Card className={"App-about-card-table"}>
+      <Table env={env} />
+    </Card>
   </div>
 }
