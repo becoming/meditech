@@ -5,7 +5,8 @@ import {About} from "./components/about/About";
 import {Doctors} from "./components/Doctors";
 import {Menu} from "./components/Menu";
 import {Procedures} from "./components/Procedures";
-import {Patients} from "./components/Patients";
+import {Patients} from "./components/patients/Patients";
+import {PatientProfile} from "./components/patients/PatientProfile";
 
 export function App() {
   return (
@@ -15,6 +16,7 @@ export function App() {
         <Routes>
           <Route path="/about" element={<About/>} />
           <Route path="/patients" element={<Patients/>} />
+          <Route path="/patients/:id" element={<PatientProfile/>} />
           <Route path="/doctors" element={<Doctors/>} />
           <Route path="/procedures" element={<Procedures/>} />
         </Routes>

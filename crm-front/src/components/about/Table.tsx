@@ -3,11 +3,11 @@ export interface KeyValue {
     value: string | number | undefined,
 }
 
-interface TableProps {
+interface Props {
     env: KeyValue[]
 }
 
-export function Table(props: TableProps) {
+export function Table(props: Props) {
 
     let trs:JSX.Element[] = [];
     props.env.forEach(i => {

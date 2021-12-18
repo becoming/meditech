@@ -109,3 +109,10 @@ https://create-react-app.dev/docs/adding-custom-environment-variables/
 
 ---
 
+useState with typed data
+
+- https://www.carlrippon.com/typed-usestate-with-typescript/
+- `let [items, setData] = useState<Patient[]>([]);`
+
+---
+

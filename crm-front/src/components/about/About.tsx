@@ -11,7 +11,7 @@ export function About() {
     {key: "Health URI", value: process.env.REACT_APP_BACKEND_HEALTH},
   ]
 
-  return <div>
+  return <div className={"App-page-container"}>
     <h1 className="bp4-heading">About</h1>
     <Table env={env} />
   </div>

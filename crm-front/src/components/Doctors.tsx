@@ -1,6 +1,8 @@
+import {PageTitle} from "./PageTitle";
+
 export function Doctors() {
-  return <div>
-    <h1 className="bp4-heading">Doctors</h1>
-    Doctors page
+  return <div className={"App-page-container"}>
+    <PageTitle value={"Doctors"} />
+
   </div>
 }
