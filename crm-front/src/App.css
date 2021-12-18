@@ -67,3 +67,7 @@
     margin-top: 20px;
     width: 250px;
 }
+
+.App-patient-list-item:hover {
+    background-color: #30353d;
+}

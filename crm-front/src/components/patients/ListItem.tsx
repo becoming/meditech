@@ -9,7 +9,7 @@ interface Props {
 export function ListItem(props: Props) {
   let p = props.patient;
 
-  return <div className="bp4-card bp4-interactive">
+  return <div className="bp4-card bp4-interactive App-patient-list-item">
     <Link to={"/patients/" + p.id}>
       {p.identity.firstName} {p.identity.lastName}
     </Link>
