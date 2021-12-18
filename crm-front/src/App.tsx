@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {About} from "./components/About";
+import {About} from "./components/about/About";
 import {Doctors} from "./components/Doctors";
 import {Menu} from "./components/Menu";
 import {Procedures} from "./components/Procedures";

@@ -2,10 +2,10 @@ import {Classes, Button, Intent, Card, Elevation} from "@blueprintjs/core";
 import {Classes as Classes2, Placement, Popover2} from "@blueprintjs/popover2";
 
 export function BackendInfo() {
-  return <Popover2
-    interactionKind="click"
-    // popoverClassName={Classes2.POPOVER2_CONTENT_SIZING}
-    placement={"auto"}
+
+
+
+  return <Popover2 interactionKind="click" placement={"auto"}
     content={
       <Card interactive={true} elevation={Elevation.TWO} style={{width: 200}}>
         <span>Card heading</span>
@@ -15,7 +15,7 @@ export function BackendInfo() {
     }
   >
     <Button intent={Intent.PRIMARY}
-            className={Classes.MINIMAL + " .bp4-dark"}
+            className={Classes.MINIMAL}
             icon="console" />
   </Popover2>
 }

@@ -6,7 +6,7 @@ export function Patients() {
   useEffect(() => {
 
     httpHelperNoAuth
-      .get<Object>('http://localhost:7373/api/v1/patients')
+      .get<Object>('/api/v1/patients')
       .next((value: Object) => console.log(value));
   })
 

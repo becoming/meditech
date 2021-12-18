@@ -97,3 +97,15 @@ app.http.security.headers=*
 # Trace CORS issues
 logging.level.org.springframework.web.cors=trace
 ```
+---
+
+Env variables in CRA reactjs
+
+https://create-react-app.dev/docs/adding-custom-environment-variables/
+
+- You need to restart the development server after changing .env files.
+- To define permanent environment variables, create a file called .env in the root of your project
+- `process.env.REACT_APP_NOT_SECRET_CODE`
+
+---
+
