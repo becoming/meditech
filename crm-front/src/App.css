@@ -68,6 +68,46 @@
     width: 250px;
 }
 
+.App-patient-list-item {
+    padding: 10px;
+    border-bottom: solid thin #3f4753;
+    cursor: pointer;
+}
+
 .App-patient-list-item:hover {
     background-color: #30353d;
+}
+
+.App-listing-created {
+    width: 80px;
+    overflow: hidden;
+    display: inline-block;
+    color: #5ddef4;
+}
+
+.App-listing-full-name {
+    width: 250px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.App-listing-birthdate {
+    width: 150px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.App-listing-address {
+    width: 450px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.App-listing-unknown {
+    color: #808893;
+}
+
+.App-listing-unknown-yellow {
+    color: #ffb700;
+    font-weight: bold;
 }
