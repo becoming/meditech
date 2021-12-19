@@ -8,8 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-import static org.springframework.http.HttpMethod.*;
-import static org.springframework.http.HttpMethod.HEAD;
+import static tech.becoming.common.constants.HttpMethod.*;
 
 @Component
 @Configuration
@@ -21,5 +20,5 @@ public class SecurityProperties {
     private boolean enabled;
     private List<String> cors;
     private List<String> headers;
-    private List<String> methods = List.of(GET.name(), POST.name(), PUT.name(), DELETE.name(), OPTIONS.name(), HEAD.name());
+    private List<String> methods = List.of(GET, POST, PUT, DELETE, OPTIONS, HEAD);
 }

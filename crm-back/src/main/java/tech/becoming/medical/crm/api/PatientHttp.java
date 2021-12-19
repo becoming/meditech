@@ -8,7 +8,9 @@ import tech.becoming.medical.crm.patient.PatientService;
 import tech.becoming.medical.crm.patient.dto.NewIdentity;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
@@ -21,6 +23,11 @@ public class PatientHttp {
     public Try<List<PatientView>> findInRange(@RequestParam(defaultValue = "0") int page,
                                             @RequestParam(defaultValue = "50") int size) {
         return service.findInRange(PageRequest.of(page, size));
+    }
+
+    @GetMapping("{id}")
+    public Try<PatientView> findById(@PathVariable UUID id) {
+        return service.findById(id);
     }
 
     @PostMapping

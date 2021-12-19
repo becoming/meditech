@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import tech.becoming.common.exceptions.NotFoundException;
 import tech.becoming.medical.crm.info.Identity;
 import tech.becoming.medical.crm.info.IdentityRepository;
 import tech.becoming.medical.crm.patient.dto.NewIdentity;
@@ -12,6 +13,7 @@ import tech.becoming.medical.crm.patient.dto.PatientView;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -23,6 +25,14 @@ public class PatientService {
     private final PatientRepository patientRepository;
     private final IdentityRepository identityRepository;
     private final PatientMapper mapper;
+
+    public Try<PatientView> findById(UUID id) {
+        return Try.of(() -> id)
+                .map(patientRepository::findById)
+                .map(NotFoundException::throwIfEmpty)
+                .map(mapper::toDto)
+                .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
+    }
 
     public Try<List<PatientView>> findInRange(PageRequest p) {
         return Try.of(() -> p)
