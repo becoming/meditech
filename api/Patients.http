@@ -13,3 +13,9 @@ Content-Type: application/json
 
 GET localhost:7373/api/v1/patients
 Content-Type: application/json
+
+###
+
+### please provide PATIENT_UUID, e.g. 3bc9b545-08d8-495a-8cf4-a000ac11723d
+GET localhost:7373/api/v1/patients/{PATIENT_UUID}
+Content-Type: application/json
