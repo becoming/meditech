@@ -111,3 +111,7 @@
     color: #ffb700;
     font-weight: bold;
 }
+
+.App-error-message {
+    margin-top: 20px;
+}

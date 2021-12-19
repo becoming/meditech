@@ -1,4 +1,4 @@
-import {httpHelper, httpHelperNoAuth} from "../helper/HttpHelper";
+import {httpHelper, httpHelperNoAuth} from "../helper/http/HttpHelper";
 import {newIdentity} from "./vo/NewIdentity";
 import {ReplaySubject} from "rxjs";
 import {Patient} from "./vo/Patient";
@@ -11,6 +11,10 @@ export class PatientService {
 
   getAll() {
     return httpHelperNoAuth.get<Patient[]>('/v1/patients')
+  }
+
+  getById(id: string) {
+    return httpHelperNoAuth.get<Patient>(`/v1/patients/${id}`)
   }
 
 }
