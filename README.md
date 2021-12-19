@@ -8,6 +8,17 @@
 
 ## Problems
 
+Reading path params with react router 6
+
+- https://reactrouter.com/docs/en/v6/getting-started/overview#reading-url-parameters
+```javascript
+// path="invoices/:invoiceId"
+
+let params = useParams();
+return <h1>Invoice {params.invoiceId}</h1>;
+```
+---
+
 `useEffect()` "_constantly_" triggers itself
 
 - https://stackoverflow.com/a/56767883/1107450

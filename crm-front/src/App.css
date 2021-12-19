@@ -115,3 +115,8 @@
 .App-error-message {
     margin-top: 20px;
 }
+
+.App-patient-identity {
+    width: 400px;
+}
+

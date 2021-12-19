@@ -4,18 +4,17 @@ import {patientService} from "./PatientService";
 import {Patient} from "./vo/Patient";
 import {useParams} from "react-router-dom";
 import {ErrorMessage} from "./ErrorMessage";
-import {fullName} from "../helper/PatientHelper";
+import {fullNameP} from "../helper/PatientHelper";
+import {PatientWidgets} from "./PatientWidgets";
 
 export function PatientProfile(props: any) {
 
   let params = useParams();
-  console.log(params)
-  console.log(props)
 
   let [patient, setPatient] = useState<Patient>();
   let [title, setTitle] = useState<string>("Patient loading...");
   let [error, setError] = useState<string | null>(null);
-  let errorWidget = <span />;
+  let content = <span />;
 
   useEffect(() => {
     let id = params.id;
@@ -24,7 +23,7 @@ export function PatientProfile(props: any) {
       patientService.getById(id).subscribe({
         next: p => {
           setPatient(p)
-          setTitle(fullName(p))
+          setTitle(fullNameP(p))
           setError(null)
         },
         error: err => {
@@ -36,17 +35,18 @@ export function PatientProfile(props: any) {
     } else {
       setError("The patient's ID was not found, are you on the right path ?")
     }
-    }, [])
+    }, [params.id])
 
   if(error) {
-    errorWidget = <ErrorMessage message={error} backUrl={"/patients"} />
+    content = <ErrorMessage message={error} backUrl={"/patients"} />
+  } else if(patient) {
+    content = <PatientWidgets patient={patient} />
+  } else {
+  //  just default behaviour with loading and things
   }
 
   return <div className={"App-page-container"}>
     <PageTitle value={title} backUrl={"/patients"} />
-    {errorWidget}
-
-
-
+    {content}
   </div>
 }
