@@ -1,5 +1,5 @@
-import {Classes, Button, Intent, Card, Elevation} from "@blueprintjs/core";
-import {Classes as Classes2, Placement, Popover2} from "@blueprintjs/popover2";
+import {Button, Card, Classes, Elevation, Intent} from "@blueprintjs/core";
+import {Classes as Classes2, Popover2} from "@blueprintjs/popover2";
 
 export function BackendInfo() {
 

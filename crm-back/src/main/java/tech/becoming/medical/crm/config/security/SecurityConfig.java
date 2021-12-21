@@ -8,10 +8,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.cors.CorsConfiguration;
 
-import java.util.List;
-
-import static org.springframework.http.HttpMethod.*;
-
 @Slf4j
 @RequiredArgsConstructor
 @EnableWebSecurity

@@ -3,7 +3,9 @@ package tech.becoming.medical.crm.info;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
 @Repository
 public interface IdentityRepository extends CrudRepository<Identity, UUID> {

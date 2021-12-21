@@ -1,6 +1,6 @@
 import {PatientIdentity} from "./vo/PatientIdentity";
 import {Card} from "@blueprintjs/core";
-import {fullNameI, fullNameP} from "../helper/PatientHelper";
+import {fullNameI} from "../helper/PatientHelper";
 
 const addTr = (key: string, value: string) => {
   return <tr>

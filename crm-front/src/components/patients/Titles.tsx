@@ -1,4 +1,4 @@
-import {Title} from "../patieTitles.tsxTitles.tsx";
+import {Title} from "../Title";
 import {ItemRenderer} from "@blueprintjs/select";
 import {MenuItem} from "@blueprintjs/core";
 import {highlightText} from "../helper/StringHelper";

@@ -8,7 +8,6 @@ import tech.becoming.medical.crm.patient.PatientService;
 import tech.becoming.medical.crm.patient.dto.NewIdentity;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.UUID;
 

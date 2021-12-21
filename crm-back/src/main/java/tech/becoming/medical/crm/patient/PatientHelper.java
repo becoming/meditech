@@ -9,7 +9,6 @@ import tech.becoming.common.exceptions.ExceptionDetail;
 import tech.becoming.medical.crm.patient.dto.NewIdentity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Slf4j
 @Component

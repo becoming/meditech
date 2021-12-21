@@ -4,7 +4,6 @@ import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
-import tech.becoming.medical.crm.patient.dto.PatientView;
 import tech.becoming.medical.crm.procedure.MedicalProcedure;
 import tech.becoming.medical.crm.procedure.ProcedureService;
 import tech.becoming.medical.crm.procedure.ProcedureView;
