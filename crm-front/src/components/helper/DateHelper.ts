@@ -7,3 +7,10 @@ export const newPatientDateFormatter: DateFormatProps = {
   placeholder: "M/D/YYYY",
 };
 
+export const toDate = (dateWithTime?: string) => {
+  if(dateWithTime) {
+    return dateWithTime.split(" ")[0]
+  }
+
+  return dateWithTime;
+}

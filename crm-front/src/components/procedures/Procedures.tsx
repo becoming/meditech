@@ -1,4 +1,4 @@
-import {PageTitle} from "./PageTitle";
+import {PageTitle} from "../PageTitle";
 
 export function Procedures() {
   return <div className={"App-page-container"}>

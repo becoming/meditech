@@ -9,11 +9,11 @@ export class PatientService {
     return httpHelper.post(newIdentity(title, firstname, lastname), "/v1/patients")
   }
 
-  getAll() {
+  getAll(): ReplaySubject<Patient[]> {
     return httpHelperNoAuth.get<Patient[]>('/v1/patients')
   }
 
-  getById(id: string) {
+  getById(id: string): ReplaySubject<Patient> {
     return httpHelperNoAuth.get<Patient>(`/v1/patients/${id}`)
   }
 

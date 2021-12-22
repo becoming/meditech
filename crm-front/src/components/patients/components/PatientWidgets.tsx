@@ -1,4 +1,4 @@
-import {Patient} from "./vo/Patient";
+import {Patient} from "../vo/Patient";
 import {Identity} from "./Identity";
 
 interface Props {
@@ -7,6 +7,7 @@ interface Props {
 
 export function PatientWidgets(props: Props) {
   return <div className={"App-page-container"}>
-    <Identity identity={props.patient.identity} />
+    <Identity identity={props.patient.identity}
+              patientId={props.patient.id} />
   </div>
 }

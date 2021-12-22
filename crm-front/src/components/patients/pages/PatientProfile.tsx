@@ -1,26 +1,28 @@
-import {PageTitle} from "../PageTitle";
+import {PageTitle} from "../../PageTitle";
 import {useEffect, useState} from "react";
-import {patientService} from "./PatientService";
-import {Patient} from "./vo/Patient";
+import {patientService} from "../PatientService";
+import {Patient} from "../vo/Patient";
 import {useParams} from "react-router-dom";
-import {ErrorMessage} from "./ErrorMessage";
-import {fullNameP} from "../helper/PatientHelper";
-import {PatientWidgets} from "./PatientWidgets";
+import {ErrorMessage} from "../components/ErrorMessage";
+import {fullNameP} from "../../helper/PatientHelper";
+import {PatientWidgets} from "../components/PatientWidgets";
+import {Subscription} from "rxjs";
 
-export function PatientProfile(props: any) {
+export function PatientProfile() {
 
   let params = useParams();
 
   let [patient, setPatient] = useState<Patient>();
-  let [title, setTitle] = useState<string>("Patient loading...");
+  let [title, setTitle] = useState<string>("Patient is loading...");
   let [error, setError] = useState<string | null>(null);
   let content = <span />;
 
   useEffect(() => {
     let id = params.id;
+    let sub:Subscription;
 
     if(id) {
-      patientService.getById(id).subscribe({
+      sub = patientService.getById(id).subscribe({
         next: p => {
           setPatient(p)
           setTitle(fullNameP(p))
@@ -34,6 +36,10 @@ export function PatientProfile(props: any) {
       });
     } else {
       setError("The patient's ID was not found, are you on the right path ?")
+    }
+
+    return () => {
+      if (sub) sub.unsubscribe()
     }
     }, [params.id])
 

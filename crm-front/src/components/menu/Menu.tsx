@@ -1,5 +1,5 @@
 import {Alignment, Button, Classes, Navbar, NavbarDivider, NavbarGroup, NavbarHeading} from "@blueprintjs/core";
-import {ReactComponent as Logo} from "../Logo-Becoming-Tech.svg"
+import {ReactComponent as Logo} from "../../Logo-Becoming-Tech.svg"
 import {Link} from "react-router-dom";
 
 export function Menu() {
@@ -9,7 +9,9 @@ export function Menu() {
         <NavbarHeading>
           <Logo className={"App-logo"} />
         </NavbarHeading>
+
         <NavbarDivider />
+
         <Link to="/patients">
           <Button className={Classes.MINIMAL} icon="people" text="Patients" />
         </Link>

@@ -1,10 +1,10 @@
 import {Button, ControlGroup, FormGroup, InputGroup} from "@blueprintjs/core";
-import {PageTitle} from "../PageTitle";
+import {PageTitle} from "../../PageTitle";
 import {Select} from "@blueprintjs/select";
 import {useCallback, useState} from "react";
-import {Title} from "../Title";
-import {renderTitle, titles} from "./Titles";
-import {patientService} from "./PatientService";
+import {Title} from "../vo/Title";
+import {renderTitle, titles} from "../components/Titles";
+import {patientService} from "../PatientService";
 import {useNavigate} from "react-router-dom";
 
 const TitleSelect = Select.ofType<Title>();

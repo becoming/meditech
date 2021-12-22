@@ -15,8 +15,13 @@ import static tech.becoming.common.constants.DateTime.dd_MM_yyyy_HH_mm_ss;
 @NoArgsConstructor
 public class PatientIdentityView extends BasicDto {
 
+    private String id;
+
     private String firstName;
     private String lastName;
+
+    private String medicalId;
+    private String nationalId;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = dd_MM_yyyy_HH_mm_ss, timezone = UTC)
     private Instant birthDate;

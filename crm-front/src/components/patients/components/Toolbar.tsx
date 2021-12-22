@@ -1,11 +1,15 @@
 import {Button, ControlGroup, InputGroup} from "@blueprintjs/core";
 import {Link} from "react-router-dom";
-import {PageTitle} from "../PageTitle";
+import {PageTitle} from "../../PageTitle";
 
-export function Toolbar() {
+interface Props {
+  title: string
+}
+
+export function Toolbar(props: Props) {
 
   return <ControlGroup fill={false} vertical={false}>
-    <PageTitle value={"Patients"} />
+    <PageTitle value={props.title} />
     <InputGroup placeholder="Find patients..." />
     <Link to={"/patients/new"}>
       <Button icon="new-person">New patient</Button>

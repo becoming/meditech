@@ -12,5 +12,5 @@ export function Created(props: Props) {
     extraClass = ""
   }
 
-  return <span className={extraClass + " App-listing-created"} title={"Created on " + value}>{value.split(" ")[0]}</span>
+  return <span className={extraClass + " App-listing-created"} title={"Patient since " + value}>{value.split(" ")[0]}</span>
 }

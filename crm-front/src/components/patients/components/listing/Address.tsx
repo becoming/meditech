@@ -1,5 +1,5 @@
-import {toLuxFormat} from "../helper/AddressHelper";
-import {PatientAddress} from "../patients/vo/PatientAddress";
+import {toLuxFormat} from "../../../helper/AddressHelper";
+import {PatientAddress} from "../../vo/PatientAddress";
 
 interface Props {
   value: PatientAddress[]

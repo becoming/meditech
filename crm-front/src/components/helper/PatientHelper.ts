@@ -6,5 +6,8 @@ export const fullNameP = (p: Patient): string => {
 }
 
 export const fullNameI = (i: PatientIdentity): string => {
-  return i.firstName.concat(" ").concat(i.lastName);
+  let firstName = i.firstName || ""
+  let lastName = i.lastName || ""
+
+  return firstName.concat(" ").concat(lastName);
 }

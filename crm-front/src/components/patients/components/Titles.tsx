@@ -1,7 +1,7 @@
-import {Title} from "../Title";
+import {Title} from "../vo/Title";
 import {ItemRenderer} from "@blueprintjs/select";
 import {MenuItem} from "@blueprintjs/core";
-import {highlightText} from "../helper/StringHelper";
+import {highlightText} from "../../helper/StringHelper";
 
 export const titles: Title[] = [{name: "Mister"}, {name: "Miss"}, {name: "Madame"}, {name: "Doctor"}, {name: ""}]
 

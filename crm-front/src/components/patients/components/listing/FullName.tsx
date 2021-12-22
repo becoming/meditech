@@ -1,6 +1,6 @@
 interface Props {
-  firstName: string
-  lastName: string
+  firstName?: string
+  lastName?: string
 }
 
 export function FullName(props: Props) {
