@@ -20,7 +20,7 @@ export function NewPatientPage() {
     setTitle(newFilm);
   }, []);
 
-  const onCreate = () => {
+  const onContinue = () => {
     setLoading(true);
 
     patientService.create(title.name, firstName, lastName)
@@ -64,7 +64,7 @@ export function NewPatientPage() {
         <FormGroup label="&nbsp;">
           <Button rightIcon="arrow-right" intent="success" text="Continue"
                   disabled={loading}
-                  onClick={onCreate}/>
+                  onClick={onContinue}/>
         </FormGroup>
 
       </ControlGroup>
