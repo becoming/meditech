@@ -3,8 +3,8 @@ package tech.becoming.medical.crm.doctor;
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
 import tech.becoming.medical.crm.doctor.dto.DoctorView;
-import tech.becoming.medical.crm.doctor.dto.NewDoctor;
-import tech.becoming.medical.crm.doctor.entity.Doctor;
+import tech.becoming.medical.crm.doctor.dto.NewDoctorRequest;
+import tech.becoming.medical.crm.doctor.entity.DoctorEntity;
 
 import java.util.HashSet;
 import java.util.List;
@@ -18,12 +18,12 @@ import java.util.UUID;
 @Mapper(componentModel = "spring")
 public interface DoctorMapper {
 
-    default List<DoctorView> toDto(Page<Doctor> v) {
+    default List<DoctorView> toDto(Page<DoctorEntity> v) {
         return v.map(this::toDto)
                 .getContent();
     }
 
-    DoctorView toDto(Doctor v);
+    DoctorView toDto(DoctorEntity v);
 
     default UUID toUUID(String v) {
         return v != null ? UUID.fromString(v) : null;
@@ -33,12 +33,12 @@ public interface DoctorMapper {
         return v != null ? v.toString() : null;
     }
 
-    default Set<DoctorView> toDto(Iterable<Doctor> v) {
+    default Set<DoctorView> toDto(Iterable<DoctorEntity> v) {
         var result = new HashSet<DoctorView>();
         v.forEach(game -> result.add(toDto(game)));
 
         return result;
     }
 
-    Doctor toEntity(NewDoctor v);
+    DoctorEntity toEntity(NewDoctorRequest v);
 }

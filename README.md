@@ -8,6 +8,13 @@
 
 ## Problems
 
+Unsubscribe inside a `useEffect`
+- https://stackoverflow.com/a/47330460/1107450
+- https://stackoverflow.com/questions/56450975/to-fix-cancel-all-subscriptions-and-asynchronous-tasks-in-a-useeffect-cleanup-f
+- 
+
+---
+
 Reading path params with react router 6
 
 - https://reactrouter.com/docs/en/v6/getting-started/overview#reading-url-parameters
@@ -130,7 +137,7 @@ https://create-react-app.dev/docs/adding-custom-environment-variables/
 useState with typed data
 
 - https://www.carlrippon.com/typed-usestate-with-typescript/
-- `let [items, setData] = useState<Patient[]>([]);`
+- `let [items, setData] = useState<PatientView[]>([]);`
 
 ---
 

@@ -6,7 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 import tech.becoming.common.exceptions.BadRequestException;
 import tech.becoming.common.exceptions.ExceptionDetail;
-import tech.becoming.medical.crm.patient.dto.NewIdentity;
+import tech.becoming.medical.crm.patient.dto.NewIdentityRequest;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ class PatientHelper {
 
     private final PatientProperties properties;
 
-    public NewIdentity validate(NewIdentity p) {
+    public NewIdentityRequest validate(NewIdentityRequest p) {
         var details = new ArrayList<ExceptionDetail>();
 
         if (isEmpty(p.getFirstName())) {

@@ -6,10 +6,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import tech.becoming.common.exceptions.NotFoundException;
-import tech.becoming.medical.crm.info.Identity;
-import tech.becoming.medical.crm.info.IdentityRepository;
-import tech.becoming.medical.crm.patient.dto.NewIdentity;
+import tech.becoming.medical.crm.common.IdentityEntity;
+import tech.becoming.medical.crm.common.IdentityRepository;
+import tech.becoming.medical.crm.patient.dto.NewIdentityRequest;
 import tech.becoming.medical.crm.patient.dto.PatientView;
+import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
 import java.time.Instant;
 import java.util.List;
@@ -41,7 +42,7 @@ public class PatientService {
                 .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
     }
 
-    public Try<PatientView> create(NewIdentity p) {
+    public Try<PatientView> create(NewIdentityRequest p) {
         return Try.of(() -> p)
                 .map(helper::validate)
                 .map(mapper::toEntity)
@@ -53,19 +54,19 @@ public class PatientService {
                 .onFailure(e -> log.error("Could not create a new patient, e: {}", e.getMessage()));
     }
 
-    private Patient saveIdentity(Patient patient) {
+    private PatientEntity saveIdentity(PatientEntity patient) {
         var i = identityRepository.save(patient.getIdentity());
         patient.setIdentity(i);
         return patient;
     }
 
-    private Patient setupNew(Identity identity) {
+    private PatientEntity setupNew(IdentityEntity identity) {
         var now = Instant.now();
 
         identity.setCreated(now);
         identity.setUpdated(now);
 
-        var p = new Patient();
+        var p = new PatientEntity();
         p.setBusinessId(UUID.randomUUID());
         p.setIdentity(identity);
         p.setCreated(now);

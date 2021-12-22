@@ -1,4 +1,4 @@
-import {Button, Classes, Icon} from "@blueprintjs/core";
+import {Button, Classes} from "@blueprintjs/core";
 import {Link} from "react-router-dom";
 
 interface Props {
@@ -7,6 +7,8 @@ interface Props {
 
 export function EditLink(props: Props) {
   return <Link to={props.link}>
-    <Button intent={"none"} rightIcon="annotation" text={"Edit"} />
+    <Button intent={"primary"} className={Classes.MINIMAL}
+            rightIcon="annotation"
+            text={"Edit"} />
   </Link>
 }

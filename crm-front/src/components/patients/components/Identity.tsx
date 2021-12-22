@@ -1,7 +1,7 @@
-import {PatientIdentity} from "../vo/PatientIdentity";
+import {PatientIdentityView} from "../vo/PatientIdentityView";
 import {Card} from "@blueprintjs/core";
-import {fullNameI} from "../../helper/PatientHelper";
-import {toDate} from "../../helper/DateHelper";
+import {fullNameI} from "../../../helpers/PatientHelper";
+import {toDate} from "../../../helpers/DateHelper";
 import {EditLink} from "./EditLink";
 
 const addTr = (key: string, value?: string, title?: string) => {
@@ -16,7 +16,7 @@ const addTr = (key: string, value?: string, title?: string) => {
 }
 
 interface Props {
-  identity: PatientIdentity
+  identity: PatientIdentityView
   patientId: string
 }
 export function Identity(props: Props) {

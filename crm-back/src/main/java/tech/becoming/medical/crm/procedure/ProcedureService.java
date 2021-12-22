@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import tech.becoming.medical.crm.procedure.dto.ProcedureView;
+import tech.becoming.medical.crm.procedure.entity.MedicalProcedureEntity;
 
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class ProcedureService {
                 .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
     }
 
-    public Try<MedicalProcedure> create(ProcedureView p) {
+    public Try<MedicalProcedureEntity> create(ProcedureView p) {
         return Try.of(() -> p)
                 .map(mapper::toEntity)
                 .map(repo::save);

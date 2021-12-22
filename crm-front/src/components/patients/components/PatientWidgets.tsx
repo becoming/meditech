@@ -1,8 +1,8 @@
-import {Patient} from "../vo/Patient";
+import {PatientView} from "../vo/PatientView";
 import {Identity} from "./Identity";
 
 interface Props {
-  patient: Patient
+  patient: PatientView
 }
 
 export function PatientWidgets(props: Props) {

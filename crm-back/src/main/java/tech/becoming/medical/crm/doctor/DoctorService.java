@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import tech.becoming.medical.crm.doctor.dto.DoctorView;
-import tech.becoming.medical.crm.doctor.dto.NewDoctor;
+import tech.becoming.medical.crm.doctor.dto.NewDoctorRequest;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class DoctorService {
                 .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
     }
 
-    public Try<DoctorView> create(NewDoctor p) {
+    public Try<DoctorView> create(NewDoctorRequest p) {
         return Try.of(() -> p)
 //                .map(helper::validate)
                 .map(mapper::toEntity)
