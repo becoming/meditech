@@ -30,7 +30,7 @@ export function EditIdentityPage() {
   }
 
   return <div className={"App-page-container"}>
-    <PageTitle value={"Edit identity"} backUrl={"/patients/" + params.patientId}/>
+    <PageTitle value={"Edit patient's identity"} backUrl={"/patients/" + params.patientId}/>
 
     <div className={"App-form"}>
       <FormGroup
@@ -62,7 +62,7 @@ export function EditIdentityPage() {
           labelFor="birthdate"
           disabled={loading}
         >
-
+          <Button className={Classes.MINIMAL} icon={"cross"} intent={"warning"} text={"Reset date"}/>
           <DatePicker
             className={Classes.ELEVATION_1}
             onChange={(date: Date) => setBirthDate(date)}
@@ -76,6 +76,7 @@ export function EditIdentityPage() {
           labelFor="birthdate"
           disabled={loading}
         >
+          <Button className={Classes.MINIMAL} icon={"cross"} intent={"warning"} text={"Reset date"}/>
 
           <DatePicker
             className={Classes.ELEVATION_1}
@@ -91,10 +92,10 @@ export function EditIdentityPage() {
       >
 
         <Link to={`/patients/${params.patientId}`}>
-          <Button className={Classes.MINIMAL} intent={"none"} icon="arrow-left" text={"Cancel"}/>
+          <Button className={Classes.MINIMAL} intent={"none"} text={"Cancel"}/>
         </Link>
 
-        <Button intent={"success"} rightIcon="arrow-right" text={"Continue"} onClick={onContinue}/>
+        <Button intent={"success"} icon="small-tick" text={"Save identity"} onClick={onContinue}/>
 
       </FormGroup>
     </div>

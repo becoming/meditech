@@ -62,7 +62,7 @@ export function NewPatientPage() {
         </FormGroup>
 
         <FormGroup label="&nbsp;">
-          <Button rightIcon="arrow-right" intent="success" text="Continue"
+          <Button icon="small-tick" intent="success" text="Create patient"
                   disabled={loading}
                   onClick={onContinue}/>
         </FormGroup>
