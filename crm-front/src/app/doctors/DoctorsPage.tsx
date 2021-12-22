@@ -1,6 +1,6 @@
 import {PageTitle} from "../PageTitle";
 
-export function Doctors() {
+export function DoctorsPage() {
   return <div className={"App-page-container"}>
     <PageTitle value={"Doctors"} />
 
