@@ -9,10 +9,8 @@ export function PageTitle(props: {value: string, backUrl?: string}) {
     </Link>
   }
 
-  return <div>
-    <span className={"App-toolbar-title"}>
+  return <div className={"App-toolbar-title"}>
       {backButton}
       {props.value}
-    </span>
   </div>
 }

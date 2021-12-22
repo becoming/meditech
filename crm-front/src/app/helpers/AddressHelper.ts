@@ -1,4 +1,4 @@
-import {PatientAddressView} from "../components/patients/vo/PatientAddressView";
+import {PatientAddressView} from "../patients/vo/PatientAddressView";
 
 export const toLuxFormat = (a: PatientAddressView): string => {
   if(!a) {

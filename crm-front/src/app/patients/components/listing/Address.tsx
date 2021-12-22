@@ -1,4 +1,4 @@
-import {toLuxFormat} from "../../../../helpers/AddressHelper";
+import {toLuxFormat} from "../../../helpers/AddressHelper";
 import {PatientAddressView} from "../../vo/PatientAddressView";
 
 interface Props {

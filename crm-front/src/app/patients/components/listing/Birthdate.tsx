@@ -1,4 +1,4 @@
-import {toDate} from "../../../../helpers/DateHelper";
+import {toDate} from "../../../helpers/DateHelper";
 
 interface Props {
   date?: string

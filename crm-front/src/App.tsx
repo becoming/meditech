@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {AboutPage} from "./components/about/AboutPage";
-import {Doctors} from "./components/doctors/Doctors";
-import {Menu} from "./components/menu/Menu";
-import {ProceduresPage} from "./components/procedures/ProceduresPage";
-import {PatientsListingPage} from "./components/patients/pages/PatientsListingPage";
-import {PatientProfilePage} from "./components/patients/pages/PatientProfilePage";
-import {NewPatientPage} from "./components/patients/pages/NewPatientPage";
-import {EditAddressPage} from "./components/patients/pages/EditAddressPage";
-import {EditIdentityPage} from "./components/patients/pages/EditIdentityPage";
-import {NewAddressPage} from "./components/patients/pages/NewAddressPage";
+import {AboutPage} from "./app/about/AboutPage";
+import {Doctors} from "./app/doctors/Doctors";
+import {Menu} from "./app/menu/Menu";
+import {ProceduresPage} from "./app/procedures/ProceduresPage";
+import {PatientsListingPage} from "./app/patients/pages/PatientsListingPage";
+import {PatientProfilePage} from "./app/patients/pages/PatientProfilePage";
+import {NewPatientPage} from "./app/patients/pages/NewPatientPage";
+import {EditAddressPage} from "./app/patients/pages/EditAddressPage";
+import {EditIdentityPage} from "./app/patients/pages/EditIdentityPage";
+import {NewAddressPage} from "./app/patients/pages/NewAddressPage";
 
 export function App() {
   return (

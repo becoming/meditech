@@ -4,7 +4,7 @@ import {patientService} from "../PatientService";
 import {PatientView} from "../vo/PatientView";
 import {useParams} from "react-router-dom";
 import {ErrorMessage} from "../components/ErrorMessage";
-import {fullNameP} from "../../../helpers/PatientHelper";
+import {fullNameP} from "../../helpers/PatientHelper";
 import {PatientWidgets} from "../components/PatientWidgets";
 import {Subscription} from "rxjs";
 

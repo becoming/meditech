@@ -1,4 +1,4 @@
-import {httpHelper, httpHelperNoAuth} from "../../helpers/http/HttpHelper";
+import {httpHelper, httpHelperNoAuth} from "../helpers/http/HttpHelper";
 import {newIdentity} from "./vo/NewIdentityRequest";
 import {ReplaySubject} from "rxjs";
 import {PatientView} from "./vo/PatientView";
