@@ -4,6 +4,8 @@ import {DatePicker} from "@blueprintjs/datetime";
 import {cloneIdentity, PatientIdentityVO} from "../../vo/PatientIdentityVO";
 import {ChangeEvent, useState} from "react";
 import {patientService} from "../../PatientService";
+import {WarningMessage} from "../WarningMessage";
+import {toUTC} from "../../../helpers/DateHelper";
 
 interface Props {
   patientId: string
@@ -13,18 +15,16 @@ interface Props {
 
 export function EditIdentityForm(props: Props) {
   const [disabled, setDisabled] = useState(false);
-
-  let identity = props.identity
-
-  let newIdentity = cloneIdentity(identity)
+  const [error, setError] = useState(false);
+  const [newIdentity] = useState(cloneIdentity(props.identity));
 
   const onFirstName = (e: ChangeEvent<HTMLInputElement>) => newIdentity.firstName = e.target.value
   const onLastName = (e: ChangeEvent<HTMLInputElement>) => newIdentity.lastName = e.target.value
-  const onBirthDate = (date: Date) => newIdentity.birthDate = date.toISOString()
-  const onDeathDate = (date: Date) => newIdentity.deathDate = date.toISOString()
+  const onBirthDate = (date: Date) => newIdentity.birthDate = toUTC(date)
+  const onDeathDate = (date: Date) => newIdentity.deathDate = toUTC(date)
 
   const onSave = () => {
-    if(!identity) return
+    if(!props.identity) return
 
     setDisabled(true);
 
@@ -33,13 +33,19 @@ export function EditIdentityForm(props: Props) {
         next: (p) => props.onSave(p),
         error: err => {
           setDisabled(false)
-          console.log(err)
+          setError(err)
         },
         complete: () => setDisabled(false)
       })
   }
 
+  let errorMsg = <span />
+  if(error) {
+    errorMsg = <WarningMessage message={"Could not save the edits, maybe try again later ?"} />
+  }
+
   return <div className={"App-page-container"}>
+
     <div className={"App-form"}>
       <FormGroup
         intent={"primary"}
@@ -49,7 +55,7 @@ export function EditIdentityForm(props: Props) {
         disabled={disabled}
       >
         <InputGroup id="firstName" placeholder="John" disabled={disabled} intent={"primary"}
-                    value={identity?.firstName} onChange={onFirstName}/>
+                    value={props.identity.firstName} onChange={onFirstName}/>
       </FormGroup>
 
       <FormGroup
@@ -60,7 +66,7 @@ export function EditIdentityForm(props: Props) {
         disabled={disabled}
       >
         <InputGroup id="lastName" placeholder="Doe" disabled={disabled} intent={"primary"}
-                    value={identity?.lastName} onChange={onLastName}/>
+                    value={props.identity.lastName} onChange={onLastName}/>
       </FormGroup>
 
       <ControlGroup>
@@ -106,6 +112,9 @@ export function EditIdentityForm(props: Props) {
         <Button intent={"success"} icon="small-tick" text={"Save identity"} onClick={onSave}/>
 
       </FormGroup>
+
+      {errorMsg}
+
     </div>
 
   </div>;

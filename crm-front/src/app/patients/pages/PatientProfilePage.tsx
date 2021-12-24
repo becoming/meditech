@@ -1,6 +1,6 @@
 import {PageTitle} from "../../PageTitle";
 import {useParams} from "react-router-dom";
-import {ErrorMessage} from "../components/ErrorMessage";
+import {WarningMessage} from "../components/WarningMessage";
 import {PatientWidgets} from "../components/PatientWidgets";
 import {usePatient} from "../hooks/usePatient";
 
@@ -14,7 +14,7 @@ export function PatientProfilePage() {
   if(patient) {
     content = <PatientWidgets patient={patient} />
   } else if(error) {
-    content = <ErrorMessage message={error} backUrl={"/patients"} />
+    content = <WarningMessage message={error} backUrl={"/patients"} />
   }
 
   return <div className={"App-page-container"}>

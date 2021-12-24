@@ -14,3 +14,17 @@ export const toDate = (dateWithTime?: string) => {
 
   return dateWithTime;
 }
+
+export const toUTC = (date: Date): string => {
+  return ""
+    + zeroDate(date.getUTCDate()) + "-" + zeroDate(date.getUTCMonth()) + "-" + date.getUTCFullYear() + " "
+    + zeroTime(date.getUTCHours()) + ":" + zeroTime(date.getUTCMinutes()) + ":" + zeroTime(date.getUTCSeconds())
+}
+
+const zeroDate = (nr: number) => {
+  return String(nr + 1).padStart(2, '0')
+}
+
+const zeroTime = (nr: number) => {
+  return String(nr).padStart(2, '0')
+}
