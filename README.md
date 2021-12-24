@@ -8,6 +8,48 @@
 
 ## Problems
 
+Custom handler for json exceptions, when using an extension of `ResponseEntityExceptionHandler`, you need to override functions instead of declaring `@ExceptionHandler`. This is because there is already a function to handle this kind of exceptions.
+
+- org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler.handleException
+
+```java
+public class GenericExceptionHandler extends ResponseEntityExceptionHandler {
+    @Override
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(
+            HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        
+        return handleExceptionInternal(ex, details, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+}
+```
+
+---
+
+Interface with a field that's a lambda has to declare the return type after `=>` sign
+
+```typescript
+interface Props {
+  onSave: (v: PatientIdentityVO) => void // void is the return type
+}
+```
+
+a compatible lambda will be `const onSave = (ignored: PatientIdentityVO) => {}`
+- where `{}` is the body of the lambda, not the return type.
+
+---
+
+Create custom hook
+- this project has folders with custom hooks for precise cases
+- one hook per file, file name has the name of the hook
+- hook start with the word __use__, without additional verbs
+    - OK `usePatient`
+    - NOK `usePatientLoad` or `useLoadPatient`
+- https://reactjs.org/docs/hooks-custom.html
+- https://reactjs.org/docs/hooks-rules.html
+- https://reactjs.org/docs/hooks-faq.html
+
+---
+
 Unsubscribe inside a `useEffect`
 - https://stackoverflow.com/a/47330460/1107450
 - https://stackoverflow.com/questions/56450975/to-fix-cancel-all-subscriptions-and-asynchronous-tasks-in-a-useeffect-cleanup-f

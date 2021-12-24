@@ -1,6 +1,6 @@
-import {PatientIdentityView} from "../vo/PatientIdentityView";
+import {PatientIdentityVO} from "../vo/PatientIdentityVO";
 import {Card} from "@blueprintjs/core";
-import {fullNameI} from "../../helpers/PatientHelper";
+import {identityFullName} from "../../helpers/PatientHelper";
 import {toDate} from "../../helpers/DateHelper";
 import {EditLink} from "./EditLink";
 
@@ -16,13 +16,13 @@ const addTr = (key: string, value?: string, title?: string) => {
 }
 
 interface Props {
-  identity: PatientIdentityView
+  identity: PatientIdentityVO
   patientId: string
 }
 export function Identity(props: Props) {
 
   let trs:JSX.Element[] = [];
-  trs.push(addTr("Full name", fullNameI(props.identity), ))
+  trs.push(addTr("Full name", identityFullName(props.identity), ))
   trs.push(addTr("Patient since", toDate(props.identity.created), `Patient since ${props.identity.created}`))
   trs.push(addTr("Birth date", toDate(props.identity.birthDate)))
 

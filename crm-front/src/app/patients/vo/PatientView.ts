@@ -1,9 +1,9 @@
-import {PatientIdentityView} from "./PatientIdentityView";
+import {PatientIdentityVO} from "./PatientIdentityVO";
 import {PatientAddressView} from "./PatientAddressView";
 
 export interface PatientView {
   id: string
 
-  identity: PatientIdentityView
+  identity: PatientIdentityVO
   addresses: PatientAddressView[]
 }

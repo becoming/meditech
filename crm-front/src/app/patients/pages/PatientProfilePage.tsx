@@ -1,54 +1,20 @@
 import {PageTitle} from "../../PageTitle";
-import {useEffect, useState} from "react";
-import {patientService} from "../PatientService";
-import {PatientView} from "../vo/PatientView";
 import {useParams} from "react-router-dom";
 import {ErrorMessage} from "../components/ErrorMessage";
-import {fullNameP} from "../../helpers/PatientHelper";
 import {PatientWidgets} from "../components/PatientWidgets";
-import {Subscription} from "rxjs";
+import {usePatient} from "../hooks/usePatient";
 
 export function PatientProfilePage() {
 
   let params = useParams();
+  let [patient, title, error] = usePatient(params.id);
 
-  let [patient, setPatient] = useState<PatientView>();
-  let [title, setTitle] = useState<string>("Patient is loading...");
-  let [error, setError] = useState<string | null>(null);
   let content = <span />;
 
-  useEffect(() => {
-    let id = params.id;
-    let sub:Subscription;
-
-    if(id) {
-      sub = patientService.getById(id).subscribe({
-        next: p => {
-          setPatient(p)
-          setTitle(fullNameP(p))
-          setError(null)
-        },
-        error: err => {
-          setError("I cannot load this patient. What a bummer..")
-          setTitle("Oops")
-          console.error(err)
-        }
-      });
-    } else {
-      setError("The patient's ID was not found, are you on the right path ?")
-    }
-
-    return () => {
-      if (sub) sub.unsubscribe()
-    }
-    }, [params.id])
-
-  if(error) {
-    content = <ErrorMessage message={error} backUrl={"/patients"} />
-  } else if(patient) {
+  if(patient) {
     content = <PatientWidgets patient={patient} />
-  } else {
-  //  just default behaviour with loading and things
+  } else if(error) {
+    content = <ErrorMessage message={error} backUrl={"/patients"} />
   }
 
   return <div className={"App-page-container"}>

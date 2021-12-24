@@ -1,11 +1,11 @@
 import {PatientView} from "../patients/vo/PatientView";
-import {PatientIdentityView} from "../patients/vo/PatientIdentityView";
+import {PatientIdentityVO} from "../patients/vo/PatientIdentityVO";
 
-export const fullNameP = (p: PatientView): string => {
-  return fullNameI(p.identity);
+export const patientFullName = (p: PatientView): string => {
+  return identityFullName(p.identity);
 }
 
-export const fullNameI = (i: PatientIdentityView): string => {
+export const identityFullName = (i: PatientIdentityVO): string => {
   let firstName = i.firstName || ""
   let lastName = i.lastName || ""
 

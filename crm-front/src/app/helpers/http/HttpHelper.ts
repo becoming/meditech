@@ -9,7 +9,7 @@ import {
     CONTENT_TYPE,
     HTTP_DELETE,
     HTTP_GET,
-    HTTP_POST,
+    HTTP_POST, HTTP_PUT,
     TEXT_PLAIN
 } from "./HttpConst";
 
@@ -27,6 +27,10 @@ class HttpHelper {
 
     post<T>(body: any, url: string | string []): ReplaySubject<T> {
         return this.doFetch(this.createDefaultRequest(url, HTTP_POST, body))
+    }
+
+    put<T>(body: any, url: string | string []): ReplaySubject<T> {
+        return this.doFetch(this.createDefaultRequest(url, HTTP_PUT, body))
     }
 
     get<T>(uri: string | string []): ReplaySubject<T> {
