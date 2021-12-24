@@ -3,6 +3,7 @@ package tech.becoming.medical.crm.common;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tech.becoming.medical.crm.patient.dto.PatientIdentityView;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -24,4 +25,16 @@ public class IdentityEntity extends BasicEntity {
     private Instant birthDate;
     private Instant deathDate;
 
+    public IdentityEntity update(PatientIdentityView p) {
+        firstName = p.getFirstName();
+        lastName = p.getLastName();
+        medicalId = p.getMedicalId();
+        nationalId = p.getNationalId();
+        birthDate = p.getBirthDate();
+        deathDate = p.getDeathDate();
+
+        setUpdated(Instant.now());
+
+        return this;
+    }
 }

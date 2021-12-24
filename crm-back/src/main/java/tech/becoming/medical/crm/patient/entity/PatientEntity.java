@@ -9,6 +9,7 @@ import tech.becoming.medical.crm.common.AddressEntity;
 import tech.becoming.medical.crm.common.IdentityEntity;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.Set;
 import java.util.UUID;
 
@@ -38,4 +39,23 @@ public class PatientEntity extends BasicEntity {
             inverseJoinColumns = @JoinColumn(name = "ADDRESS_ID")
     )
     private Set<AddressEntity> addresses;
+
+    public boolean hasIdentityId(UUID identityId) {
+        return identity.getId().equals(identityId);
+    }
+
+    public static PatientEntity setupNew(IdentityEntity identity) {
+        var now = Instant.now();
+
+        identity.setCreated(now);
+        identity.setUpdated(now);
+
+        var p = new PatientEntity();
+        p.setBusinessId(UUID.randomUUID());
+        p.setIdentity(identity);
+        p.setCreated(now);
+        p.setUpdated(now);
+
+        return p;
+    }
 }

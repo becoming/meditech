@@ -1,27 +1,28 @@
 package tech.becoming.medical.crm.config;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import tech.becoming.common.exceptions.AbstractRuntimeException;
+import tech.becoming.common.exceptions.HttpExceptionBody;
 
-import java.time.Instant;
+import static tech.becoming.common.constants.HttpStatusCode.BAD_REQUEST_400;
 
 @ControllerAdvice
+@Slf4j
 public class GenericExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(value = {AbstractRuntimeException.class})
-    protected ResponseEntity<Object> handleConflict(AbstractRuntimeException ex, WebRequest request) {
-        String bodyOfResponse = ex.toString();
-        var details = ErrorBody.builder()
-                .timestamp(Instant.now())
+    @ExceptionHandler(AbstractRuntimeException.class)
+    private ResponseEntity<Object> handleConflict(AbstractRuntimeException ex, WebRequest request) {
+
+        var details = HttpExceptionBody.builder()
                 .message(ex.toString())
                 .status(ex.getHttpCode())
                 .error(ex.getMessage())
@@ -34,22 +35,21 @@ public class GenericExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, details, new HttpHeaders(), status, request);
     }
 
-}
+    @Override
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(
+            HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
-@Builder
-@Getter
-class ErrorBody {
-    private Instant timestamp = Instant.now();
-    private int status = 500;
-    private String error = "Internal Server Error";
-    private String message = "";
-    private String path = "";
-}
+        var details = HttpExceptionBody.builder()
+                .message(ex.toString())
+                .status(BAD_REQUEST_400)
+                .error(ex.getMessage())
+                .path(((ServletWebRequest) request).getRequest().getRequestURI())
+                .build();
 
-// {
-//     "timestamp": "2021-04-03T18:41:16.587+00:00",
-//     "status": 500,
-//     "error": "Internal Server Error",
-//     "message": "",
-//     "path": "/robots/2"
-// }
+        log.debug(ex.getMessage());
+
+        return handleExceptionInternal(ex, details, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+
+}

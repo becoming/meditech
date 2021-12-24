@@ -4,8 +4,8 @@ import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
-import tech.becoming.medical.crm.patient.PatientService;
 import tech.becoming.medical.crm.patient.dto.NewIdentityRequest;
+import tech.becoming.medical.crm.patient.dto.PatientIdentityView;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 
 import java.util.List;
@@ -32,6 +32,19 @@ public class PatientHttp {
     @PostMapping
     public Try<PatientView> create(@RequestBody NewIdentityRequest p) {
         return service.create(p);
+    }
+
+    @PutMapping("{patientId}/identity/{identityId}")
+    public Try<PatientIdentityView> update(@PathVariable UUID patientId,
+                                           @PathVariable UUID identityId,
+                                           @RequestBody PatientIdentityView p) {
+        return service.updateIdentity(patientId, identityId, p);
+    }
+
+    @GetMapping("{patientId}/identity/{identityId}")
+    public Try<PatientIdentityView> update(@PathVariable UUID patientId,
+                                           @PathVariable UUID identityId) {
+        return service.getIdentity(patientId, identityId);
     }
 
 }

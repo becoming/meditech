@@ -5,10 +5,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import tech.becoming.common.exceptions.BadRequestException;
 import tech.becoming.common.exceptions.NotFoundException;
 import tech.becoming.medical.crm.common.IdentityEntity;
 import tech.becoming.medical.crm.common.IdentityRepository;
 import tech.becoming.medical.crm.patient.dto.NewIdentityRequest;
+import tech.becoming.medical.crm.patient.dto.PatientIdentityView;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
@@ -46,12 +48,36 @@ public class PatientService {
         return Try.of(() -> p)
                 .map(helper::validate)
                 .map(mapper::toEntity)
-                .map(this::setupNew)
-                .map(patientRepository::save)
+                .map(PatientEntity::setupNew)
+                .map(patientRepository::save) // FIXME start, solve this double save
                 .map(this::saveIdentity)
-                .map(patientRepository::save)
+                .map(patientRepository::save) // FIXME end
                 .map(mapper::toDto)
                 .onFailure(e -> log.error("Could not create a new patient, e: {}", e.getMessage()));
+    }
+
+    public Try<PatientIdentityView> getIdentity(UUID patientId, UUID identityId) {
+        return Try.of(() -> patientId)
+                .map(patientRepository::findById)
+                .map(NotFoundException::throwIfEmpty)
+                .map(patient -> patient.getIdentity().getId().equals(identityId))
+                .map(BadRequestException::throwIfFalse)
+                .map($ -> identityRepository.findById(identityId))
+                .map(NotFoundException::throwIfEmpty)
+                .map(mapper::toDto);
+    }
+
+    public Try<PatientIdentityView> updateIdentity(UUID patientId, UUID identityId, PatientIdentityView p) {
+        return Try.of(() -> patientId)
+                .map(patientRepository::findById)
+                .map(NotFoundException::throwIfEmpty)
+                .map(it -> it.hasIdentityId(identityId))
+                .map(BadRequestException::throwIfFalse)
+                .map($ -> identityRepository.findById(identityId))
+                .map(NotFoundException::throwIfEmpty)
+                .map(it -> it.update(p))
+                .map(identityRepository::save)
+                .map(mapper::toDto);
     }
 
     private PatientEntity saveIdentity(PatientEntity patient) {
@@ -60,18 +86,4 @@ public class PatientService {
         return patient;
     }
 
-    private PatientEntity setupNew(IdentityEntity identity) {
-        var now = Instant.now();
-
-        identity.setCreated(now);
-        identity.setUpdated(now);
-
-        var p = new PatientEntity();
-        p.setBusinessId(UUID.randomUUID());
-        p.setIdentity(identity);
-        p.setCreated(now);
-        p.setUpdated(now);
-
-        return p;
-    }
 }

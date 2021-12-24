@@ -4,6 +4,7 @@ import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
 import tech.becoming.medical.crm.common.IdentityEntity;
 import tech.becoming.medical.crm.patient.dto.NewIdentityRequest;
+import tech.becoming.medical.crm.patient.dto.PatientIdentityView;
 import tech.becoming.medical.crm.patient.dto.PatientView;
 import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
@@ -42,4 +43,8 @@ public interface PatientMapper {
     }
 
     IdentityEntity toEntity(NewIdentityRequest v);
+
+    IdentityEntity toEntity(PatientIdentityView p);
+
+    PatientIdentityView toDto(IdentityEntity v);
 }

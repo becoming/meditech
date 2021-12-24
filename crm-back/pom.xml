@@ -18,9 +18,12 @@
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
         <org.projectlombok.version>1.18.22</org.projectlombok.version>
         <org.projectlombok.binding.version>0.2.0</org.projectlombok.binding.version>
-        <org.liquibase.version>4.6.1</org.liquibase.version>
+        <org.liquibase.version>4.6.2</org.liquibase.version>
         <elastic-apm.version>1.27.0</elastic-apm.version>
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <becoming.common.version>1.1.1-SNAPSHOT</becoming.common.version>
+        <vavr.version>0.10.4</vavr.version>
+        <vavr.jackson.version>0.10.3</vavr.jackson.version>
     </properties>
     <dependencies>
         <dependency>
@@ -65,17 +68,17 @@
         <dependency>
             <groupId>tech.becoming</groupId>
             <artifactId>common</artifactId>
-            <version>1.1.0</version>
+            <version>${becoming.common.version}</version>
         </dependency>
         <dependency>
             <groupId>io.vavr</groupId>
             <artifactId>vavr</artifactId>
-            <version>0.10.4</version>
+            <version>${vavr.version}</version>
         </dependency>
         <dependency>
             <groupId>io.vavr</groupId>
             <artifactId>vavr-jackson</artifactId>
-            <version>0.10.3</version>
+            <version>${vavr.jackson.version}</version>
         </dependency>
 
         <dependency>
