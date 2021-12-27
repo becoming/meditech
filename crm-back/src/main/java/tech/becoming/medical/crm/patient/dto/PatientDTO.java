@@ -9,11 +9,9 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PatientView extends BasicDto {
+public class PatientDTO extends BasicDto {
 
-    private String id;
-
-    private PatientIdentityView identity;
-    private Set<PatientAddressView> addresses;
+    private PatientIdentityDTO identity;
+    private Set<PatientAddressDTO> addresses;
 
 }

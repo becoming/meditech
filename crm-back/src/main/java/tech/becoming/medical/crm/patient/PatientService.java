@@ -7,14 +7,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import tech.becoming.common.exceptions.BadRequestException;
 import tech.becoming.common.exceptions.NotFoundException;
-import tech.becoming.medical.crm.common.IdentityEntity;
 import tech.becoming.medical.crm.common.IdentityRepository;
-import tech.becoming.medical.crm.patient.dto.NewIdentityRequest;
-import tech.becoming.medical.crm.patient.dto.PatientIdentityView;
-import tech.becoming.medical.crm.patient.dto.PatientView;
+import tech.becoming.medical.crm.patient.dto.NewIdentityDTO;
+import tech.becoming.medical.crm.patient.dto.PatientDTO;
+import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
 import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
-import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,7 +26,7 @@ public class PatientService {
     private final IdentityRepository identityRepository;
     private final PatientMapper mapper;
 
-    public Try<PatientView> findById(UUID id) {
+    public Try<PatientDTO> findById(UUID id) {
         return Try.of(() -> id)
                 .map(patientRepository::findById)
                 .map(NotFoundException::throwIfEmpty)
@@ -36,7 +34,7 @@ public class PatientService {
                 .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
     }
 
-    public Try<List<PatientView>> findInRange(PageRequest p) {
+    public Try<List<PatientDTO>> findInRange(PageRequest p) {
         return Try.of(() -> p)
                 .map(helper::validate)
                 .map(patientRepository::findAll)
@@ -44,7 +42,7 @@ public class PatientService {
                 .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
     }
 
-    public Try<PatientView> create(NewIdentityRequest p) {
+    public Try<PatientDTO> create(NewIdentityDTO p) {
         return Try.of(() -> p)
                 .map(helper::validate)
                 .map(mapper::toEntity)
@@ -56,7 +54,7 @@ public class PatientService {
                 .onFailure(e -> log.error("Could not create a new patient, e: {}", e.getMessage()));
     }
 
-    public Try<PatientIdentityView> getIdentity(UUID patientId, UUID identityId) {
+    public Try<PatientIdentityDTO> getIdentity(UUID patientId, UUID identityId) {
         return Try.of(() -> patientId)
                 .map(patientRepository::findById)
                 .map(NotFoundException::throwIfEmpty)
@@ -67,7 +65,7 @@ public class PatientService {
                 .map(mapper::toDto);
     }
 
-    public Try<PatientIdentityView> updateIdentity(UUID patientId, UUID identityId, PatientIdentityView p) {
+    public Try<PatientIdentityDTO> updateIdentity(UUID patientId, UUID identityId, PatientIdentityDTO p) {
         return Try.of(() -> patientId)
                 .map(patientRepository::findById)
                 .map(NotFoundException::throwIfEmpty)

@@ -3,9 +3,9 @@ package tech.becoming.medical.crm.patient;
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
 import tech.becoming.medical.crm.common.IdentityEntity;
-import tech.becoming.medical.crm.patient.dto.NewIdentityRequest;
-import tech.becoming.medical.crm.patient.dto.PatientIdentityView;
-import tech.becoming.medical.crm.patient.dto.PatientView;
+import tech.becoming.medical.crm.patient.dto.NewIdentityDTO;
+import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
+import tech.becoming.medical.crm.patient.dto.PatientDTO;
 import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
 import java.util.HashSet;
@@ -20,12 +20,12 @@ import java.util.UUID;
 @Mapper(componentModel = "spring")
 public interface PatientMapper {
 
-    default List<PatientView> toDto(Page<PatientEntity> v) {
+    default List<PatientDTO> toDto(Page<PatientEntity> v) {
         return v.map(this::toDto)
                 .getContent();
     }
 
-    PatientView toDto(PatientEntity v);
+    PatientDTO toDto(PatientEntity v);
 
     default UUID toUUID(String v) {
         return v != null ? UUID.fromString(v) : null;
@@ -35,16 +35,16 @@ public interface PatientMapper {
         return v != null ? v.toString() : null;
     }
 
-    default Set<PatientView> toDto(Iterable<PatientEntity> v) {
-        var result = new HashSet<PatientView>();
+    default Set<PatientDTO> toDto(Iterable<PatientEntity> v) {
+        var result = new HashSet<PatientDTO>();
         v.forEach(game -> result.add(toDto(game)));
 
         return result;
     }
 
-    IdentityEntity toEntity(NewIdentityRequest v);
+    IdentityEntity toEntity(NewIdentityDTO v);
 
-    IdentityEntity toEntity(PatientIdentityView p);
+    IdentityEntity toEntity(PatientIdentityDTO p);
 
-    PatientIdentityView toDto(IdentityEntity v);
+    PatientIdentityDTO toDto(IdentityEntity v);
 }

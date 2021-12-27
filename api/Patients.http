@@ -6,7 +6,7 @@ Content-Type: application/json
   "lastName": "Doe",
   "medicalId": "1-MEDICALID",
   "nationalId": "2-NATIONALID",
-  "birthDate": "31-12-1969 23:59:00"
+  "birthDate": "2021-12-30T23:59:59.000Z"
 }
 
 ###

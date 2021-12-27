@@ -7,9 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PatientAddressView extends BasicDto {
-
-    private String id;
+public class PatientAddressDTO extends BasicDto {
 
     private String number;
     private String street;
