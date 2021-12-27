@@ -12,6 +12,7 @@ import React from "react";
 
 export function AllRoutes() {
   return <Routes>
+    <Route path="/" element={<PatientsListingPage/>} />
     <Route path="/patients" element={<PatientsListingPage/>} />
     <Route path="/patients/new" element={<NewPatientPage/>} />
     <Route path="/patients/:id" element={<PatientProfilePage/>} />
