@@ -2,12 +2,12 @@ import {Button, ControlGroup, FormGroup, InputGroup} from "@blueprintjs/core";
 import {PageTitle} from "../../PageTitle";
 import {Select} from "@blueprintjs/select";
 import {useCallback, useState} from "react";
-import {TitleView} from "../vo/TitleView";
+import {TitleVO} from "../vo/TitleVO";
 import {renderTitle, titles} from "../components/Titles";
 import {patientService} from "../PatientService";
 import {useNavigate} from "react-router-dom";
 
-const TitleSelect = Select.ofType<TitleView>();
+const TitleSelect = Select.ofType<TitleVO>();
 
 export function NewPatientPage() {
   const [title, setTitle] = useState(titles[0]);
@@ -16,7 +16,7 @@ export function NewPatientPage() {
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
-  const handleItemSelect = useCallback((newFilm: TitleView) => {
+  const handleItemSelect = useCallback((newFilm: TitleVO) => {
     setTitle(newFilm);
   }, []);
 

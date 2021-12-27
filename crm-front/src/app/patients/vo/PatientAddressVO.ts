@@ -1,4 +1,4 @@
-export interface PatientAddressView {
+export interface PatientAddressVO {
   id: string
   number: string
   street: string

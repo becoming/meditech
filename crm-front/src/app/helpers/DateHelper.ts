@@ -15,7 +15,11 @@ export const toDate = (dateWithTime?: string) => {
   return dateWithTime;
 }
 
-export const toUTC = (date: Date): string => {
+export const toUTC = (date: string): Date => {
+  return Date()
+}
+
+export const toUTCString = (date: Date): string => {
   return ""
     + zero(date.getUTCDate()) + "-" + zero(date.getUTCMonth()) + "-" + date.getUTCFullYear() + " "
     + zero(date.getUTCHours()) + ":" + zero(date.getUTCMinutes()) + ":" + zero(date.getUTCSeconds())

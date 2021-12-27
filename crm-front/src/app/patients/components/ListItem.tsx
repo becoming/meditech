@@ -1,12 +1,12 @@
 import {useNavigate} from "react-router-dom";
-import {PatientView} from "../vo/PatientView";
+import {PatientVO} from "../vo/PatientVO";
 import {FullName} from "./listing/FullName";
 import {Birthdate} from "./listing/Birthdate";
 import {Address} from "./listing/Address";
 import {Created} from "./listing/Created";
 
 interface Props {
-  patient: PatientView
+  patient: PatientVO
 }
 
 export function ListItem(props: Props) {

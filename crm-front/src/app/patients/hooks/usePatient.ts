@@ -2,10 +2,10 @@ import {useEffect, useState} from "react";
 import {Subscription} from "rxjs";
 import {patientService} from "../PatientService";
 import {patientFullName} from "../../helpers/PatientHelper";
-import {PatientView} from "../vo/PatientView";
+import {PatientVO} from "../vo/PatientVO";
 
-export function usePatient(patientId?: string): [PatientView|undefined, string, string|null] {
-  let [patient, setPatient] = useState<PatientView>();
+export function usePatient(patientId?: string): [PatientVO|undefined, string, string|null] {
+  let [patient, setPatient] = useState<PatientVO>();
   let [title, setTitle] = useState<string>("Patient is loading...");
   let [error, setError] = useState<string | null>(null);
 

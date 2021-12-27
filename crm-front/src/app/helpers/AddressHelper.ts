@@ -1,6 +1,6 @@
-import {PatientAddressView} from "../patients/vo/PatientAddressView";
+import {PatientAddressVO} from "../patients/vo/PatientAddressVO";
 
-export const toLuxFormat = (a: PatientAddressView): string => {
+export const toLuxFormat = (a: PatientAddressVO): string => {
   if(!a) {
     return "[no address]";
   }

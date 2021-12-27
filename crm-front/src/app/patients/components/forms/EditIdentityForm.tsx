@@ -5,7 +5,7 @@ import {cloneIdentity, PatientIdentityVO} from "../../vo/PatientIdentityVO";
 import {ChangeEvent, useState} from "react";
 import {patientService} from "../../PatientService";
 import {WarningMessage} from "../WarningMessage";
-import {toUTC} from "../../../helpers/DateHelper";
+import {toUTCString} from "../../../helpers/DateHelper";
 
 interface Props {
   patientId: string
@@ -20,8 +20,10 @@ export function EditIdentityForm(props: Props) {
 
   const onFirstName = (e: ChangeEvent<HTMLInputElement>) => newIdentity.firstName = e.target.value
   const onLastName = (e: ChangeEvent<HTMLInputElement>) => newIdentity.lastName = e.target.value
-  const onBirthDate = (date: Date) => newIdentity.birthDate = toUTC(date)
-  const onDeathDate = (date: Date) => newIdentity.deathDate = toUTC(date)
+  const onBirthDate = (date: Date) => newIdentity.birthDate = toUTCString(date)
+  const onBirthDateReset = () => newIdentity.birthDate = undefined
+  const onDeathDate = (date: Date) => newIdentity.deathDate = toUTCString(date)
+  const onDeathDateReset = () => newIdentity.deathDate = undefined
 
   const onSave = () => {
     if(!props.identity) return
@@ -76,7 +78,8 @@ export function EditIdentityForm(props: Props) {
           labelFor="birthdate"
           disabled={disabled}
         >
-          <Button className={Classes.MINIMAL} icon={"cross"} intent={"warning"} text={"Reset date"}/>
+          <Button className={Classes.MINIMAL} icon={"cross"} intent={"warning"} text={"Reset date"}
+                  disabled={disabled}/>
           <DatePicker
             className={Classes.ELEVATION_1}
             onChange={onBirthDate}
@@ -90,10 +93,12 @@ export function EditIdentityForm(props: Props) {
           labelFor="birthdate"
           disabled={disabled}
         >
-          <Button className={Classes.MINIMAL} icon={"cross"} intent={"warning"} text={"Reset date"}/>
+          <Button className={Classes.MINIMAL} icon={"cross"} intent={"warning"} text={"Reset date"}
+                  disabled={disabled} onClick={onBirthDateReset}/>
 
           <DatePicker
             className={Classes.ELEVATION_1}
+            value={toUTCString()}
             onChange={(date: Date) => onDeathDate(date)}
           />
 

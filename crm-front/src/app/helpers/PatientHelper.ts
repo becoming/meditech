@@ -1,7 +1,7 @@
-import {PatientView} from "../patients/vo/PatientView";
+import {PatientVO} from "../patients/vo/PatientVO";
 import {PatientIdentityVO} from "../patients/vo/PatientIdentityVO";
 
-export const patientFullName = (p: PatientView): string => {
+export const patientFullName = (p: PatientVO): string => {
   return identityFullName(p.identity);
 }
 

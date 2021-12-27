@@ -1,8 +1,8 @@
 import {toLuxFormat} from "../../../helpers/AddressHelper";
-import {PatientAddressView} from "../../vo/PatientAddressView";
+import {PatientAddressVO} from "../../vo/PatientAddressVO";
 
 interface Props {
-  value: PatientAddressView[]
+  value: PatientAddressVO[]
 }
 
 export function Address(props: Props) {

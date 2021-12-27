@@ -1,13 +1,13 @@
 import {useEffect, useState} from "react";
 import {ListItem} from "../components/ListItem";
-import {PatientView} from "../vo/PatientView";
+import {PatientVO} from "../vo/PatientVO";
 import {Toolbar} from "../components/Toolbar";
 import {patientService} from "../PatientService";
 import {UL} from "@blueprintjs/core";
 
 export function PatientsListingPage() {
 
-  let [patients, setPatients] = useState<PatientView[]>([]);
+  let [patients, setPatients] = useState<PatientVO[]>([]);
   let [title, setTitle] = useState<string>("Patients are loading...");
 
   useEffect(() => {
