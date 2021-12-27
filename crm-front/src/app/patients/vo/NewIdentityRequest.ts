@@ -4,7 +4,7 @@ export interface NewIdentityRequest {
   lastName: string
 }
 
-export const newIdentity = (title: string, firstname: string, lastname: string): NewIdentityRequest => {
+export const toNewIdentity = (title: string, firstname: string, lastname: string): NewIdentityRequest => {
   return {
     title: title,
     firstName: firstname,

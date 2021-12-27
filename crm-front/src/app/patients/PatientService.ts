@@ -1,13 +1,13 @@
 import {httpHelper, httpHelperNoAuth} from "../helpers/http/HttpHelper";
-import {newIdentity} from "./vo/NewIdentityRequest";
+import {toNewIdentity} from "./vo/NewIdentityRequest";
 import {ReplaySubject} from "rxjs";
-import {PatientVO} from "./vo/PatientVO";
+import {PatientVO, toPatients} from "./vo/PatientVO";
 import {PatientIdentityVO} from "./vo/PatientIdentityVO";
 
 export class PatientService {
 
   create(title: string, firstname: string, lastname: string): ReplaySubject<PatientVO> {
-    return httpHelper.post(newIdentity(title, firstname, lastname), "/v1/patients")
+    return httpHelper.post(toNewIdentity(title, firstname, lastname), "/v1/patients")
   }
 
   getAll(): ReplaySubject<PatientVO[]> {

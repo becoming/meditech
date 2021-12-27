@@ -5,7 +5,6 @@ import {cloneIdentity, PatientIdentityVO} from "../../vo/PatientIdentityVO";
 import {ChangeEvent, useState} from "react";
 import {patientService} from "../../PatientService";
 import {WarningMessage} from "../WarningMessage";
-import {toUTCString} from "../../../helpers/DateHelper";
 
 interface Props {
   patientId: string
@@ -20,13 +19,13 @@ export function EditIdentityForm(props: Props) {
 
   const onFirstName = (e: ChangeEvent<HTMLInputElement>) => newIdentity.firstName = e.target.value
   const onLastName = (e: ChangeEvent<HTMLInputElement>) => newIdentity.lastName = e.target.value
-  const onBirthDate = (date: Date) => newIdentity.birthDate = toUTCString(date)
+  const onBirthDate = (date: Date) => newIdentity.birthDate = date
   const onBirthDateReset = () => newIdentity.birthDate = undefined
-  const onDeathDate = (date: Date) => newIdentity.deathDate = toUTCString(date)
+  const onDeathDate = (date: Date) => newIdentity.deathDate = date
   const onDeathDateReset = () => newIdentity.deathDate = undefined
 
   const onSave = () => {
-    if(!props.identity) return
+    if (!props.identity) return
 
     setDisabled(true);
 
@@ -41,9 +40,9 @@ export function EditIdentityForm(props: Props) {
       })
   }
 
-  let errorMsg = <span />
-  if(error) {
-    errorMsg = <WarningMessage message={"Could not save the edits, maybe try again later ?"} />
+  let errorMsg = <span/>
+  if (error) {
+    errorMsg = <WarningMessage message={"Could not save the edits, maybe try again later ?"}/>
   }
 
   return <div className={"App-page-container"}>
@@ -79,9 +78,10 @@ export function EditIdentityForm(props: Props) {
           disabled={disabled}
         >
           <Button className={Classes.MINIMAL} icon={"cross"} intent={"warning"} text={"Reset date"}
-                  disabled={disabled}/>
+                  disabled={disabled} onClick={onBirthDateReset}/>
           <DatePicker
             className={Classes.ELEVATION_1}
+            value={props.identity.birthDate}
             onChange={onBirthDate}
           />
 
@@ -94,11 +94,11 @@ export function EditIdentityForm(props: Props) {
           disabled={disabled}
         >
           <Button className={Classes.MINIMAL} icon={"cross"} intent={"warning"} text={"Reset date"}
-                  disabled={disabled} onClick={onBirthDateReset}/>
+                  disabled={disabled} onClick={onDeathDateReset}/>
 
           <DatePicker
             className={Classes.ELEVATION_1}
-            value={toUTCString()}
+            value={props.identity.deathDate}
             onChange={(date: Date) => onDeathDate(date)}
           />
 
@@ -107,8 +107,7 @@ export function EditIdentityForm(props: Props) {
 
       <FormGroup
         intent={"primary"}
-        disabled={disabled}
-      >
+        disabled={disabled}>
 
         <Link to={`/patients/${props.patientId}`}>
           <Button className={Classes.MINIMAL} intent={"none"} text={"Cancel"}/>

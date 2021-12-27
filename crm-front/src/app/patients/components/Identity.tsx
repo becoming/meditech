@@ -1,7 +1,7 @@
 import {PatientIdentityVO} from "../vo/PatientIdentityVO";
 import {Card} from "@blueprintjs/core";
 import {identityFullName} from "../../helpers/PatientHelper";
-import {toDate} from "../../helpers/DateHelper";
+import {toDateString, toDateTimeString} from "../../helpers/DateHelper";
 import {EditLink} from "./EditLink";
 
 const addTr = (key: string, value?: string, title?: string) => {
@@ -23,14 +23,14 @@ export function Identity(props: Props) {
 
   let trs:JSX.Element[] = [];
   trs.push(addTr("Full name", identityFullName(props.identity), ))
-  trs.push(addTr("Patient since", toDate(props.identity.created), `Patient since ${props.identity.created}`))
-  trs.push(addTr("Birth date", toDate(props.identity.birthDate)))
+  trs.push(addTr("Patient since", toDateString(props.identity.created), `Patient since ${props.identity.created}`))
+  trs.push(addTr("Birth date", toDateString(props.identity.birthDate)))
 
   if(props.identity.deathDate) {
-    trs.push(addTr("Death date", toDate(props.identity.deathDate)))
+    trs.push(addTr("Death date", toDateString(props.identity.deathDate)))
   }
 
-  trs.push(addTr("Last time updated", props.identity.updated))
+  trs.push(addTr("Last time updated", toDateTimeString(props.identity.updated)))
 
   return <Card className={"App-patient-identity"}>
     <table className="bp4-html-table bp4-html-table-striped">

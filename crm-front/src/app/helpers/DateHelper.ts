@@ -1,22 +1,32 @@
-import {DateFormatProps} from "@blueprintjs/datetime";
-
-export const newPatientDateFormatter: DateFormatProps = {
-  // note that the native implementation of Date functions differs between browsers
-  formatDate: date => date.toLocaleDateString(),
-  parseDate: str => new Date(str),
-  placeholder: "M/D/YYYY",
-};
-
-export const toDate = (dateWithTime?: string) => {
+export const toDate = (dateWithTime?: string): Date | undefined => {
   if(dateWithTime) {
-    return dateWithTime.split(" ")[0]
+    return new Date(dateWithTime)
   }
+
+  return undefined;
+}
+
+//FIXME, find a better suited name, or override, or .. HZ
+export const toDate2 = (dateWithTime: string): Date => {
+  return new Date(dateWithTime)
+}
+
+export const toDateString = (dateWithTime?: Date) => {
+  if(dateWithTime) return toDateString2(dateWithTime)
 
   return dateWithTime;
 }
 
-export const toUTC = (date: string): Date => {
-  return Date()
+export const toDateString2 = (dateWithTime: Date) => {
+  return `${zero(dateWithTime.getDate())}-${zero(dateWithTime.getMonth())}-${dateWithTime.getFullYear()}`
+}
+
+export const toDateTimeString = (dateWithTime?: Date) => {
+  if(dateWithTime) {
+    return dateWithTime.toString()
+  }
+
+  return dateWithTime;
 }
 
 export const toUTCString = (date: Date): string => {

@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import {ListItem} from "../components/ListItem";
-import {PatientVO} from "../vo/PatientVO";
+import {ListItem} from "../components/listing/ListItem";
+import {PatientVO, toPatients} from "../vo/PatientVO";
 import {Toolbar} from "../components/Toolbar";
 import {patientService} from "../PatientService";
 import {UL} from "@blueprintjs/core";
@@ -13,7 +13,8 @@ export function PatientsListingPage() {
   useEffect(() => {
     patientService.getAll().subscribe({
       next: d => {
-        setPatients(d)
+        let p = toPatients(d)
+        setPatients(p)
         setTitle("Patients")
       }
     });
