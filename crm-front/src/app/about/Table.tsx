@@ -11,7 +11,7 @@ export function Table(props: Props) {
 
     let trs:JSX.Element[] = [];
     props.env.forEach(i => {
-        trs.push(<tr>
+        trs.push(<tr key={i.key}>
             <td>{i.key}</td>
             <td>{i.value}</td>
         </tr>)
