@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {Subscription} from "rxjs";
 import {patientService} from "../PatientService";
 import {identityFullName} from "../../helpers/PatientHelper";
-import {PatientIdentityVO} from "../vo/PatientIdentityVO";
+import {PatientIdentityVO, toIdentity} from "../vo/PatientIdentityVO";
 
 export function usePatientIdentity(patientId?: string, identityId?: string): [PatientIdentityVO|undefined, string, string|null] {
   let [identity, setIdentity] = useState<PatientIdentityVO>();
@@ -15,7 +15,7 @@ export function usePatientIdentity(patientId?: string, identityId?: string): [Pa
     if(patientId && identityId) {
       sub = patientService.getIdentityById(patientId, identityId).subscribe({
         next: p => {
-          setIdentity(p)
+          setIdentity(toIdentity(p))
           setTitle("Edit " + identityFullName(p) + "'s identity")
           setError(null)
         },

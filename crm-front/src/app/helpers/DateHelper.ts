@@ -23,7 +23,7 @@ export const toDateString2 = (dateWithTime: Date) => {
 
 export const toDateTimeString = (dateWithTime?: Date) => {
   if(dateWithTime) {
-    return dateWithTime.toString()
+    return `${zero(dateWithTime.getDate())}-${zero(dateWithTime.getMonth())}-${dateWithTime.getFullYear()} ${zero(dateWithTime.getHours())}:${zero(dateWithTime.getMinutes())}`
   }
 
   return dateWithTime;

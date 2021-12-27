@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {Subscription} from "rxjs";
 import {patientService} from "../PatientService";
 import {patientFullName} from "../../helpers/PatientHelper";
-import {PatientVO} from "../vo/PatientVO";
+import {PatientVO, toPatient} from "../vo/PatientVO";
 
 export function usePatient(patientId?: string): [PatientVO|undefined, string, string|null] {
   let [patient, setPatient] = useState<PatientVO>();
@@ -16,7 +16,7 @@ export function usePatient(patientId?: string): [PatientVO|undefined, string, st
     if(id) {
       sub = patientService.getById(id).subscribe({
         next: p => {
-          setPatient(p)
+          setPatient(toPatient(p))
           setTitle(patientFullName(p))
           setError(null)
         },

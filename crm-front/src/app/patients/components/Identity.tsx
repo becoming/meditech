@@ -23,13 +23,16 @@ export function Identity(props: Props) {
 
   let trs:JSX.Element[] = [];
   trs.push(addTr("Full name", identityFullName(props.identity), ))
-  trs.push(addTr("Patient since", toDateString(props.identity.created), `Patient since ${props.identity.created}`))
-  trs.push(addTr("Birth date", toDateString(props.identity.birthDate)))
+
+  if(props.identity.birthDate) {
+    trs.push(addTr("Birth date", toDateString(props.identity.birthDate)))
+  }
 
   if(props.identity.deathDate) {
     trs.push(addTr("Death date", toDateString(props.identity.deathDate)))
   }
 
+  trs.push(addTr("Patient since", toDateTimeString(props.identity.created), `Patient since ${props.identity.created}`))
   trs.push(addTr("Last time updated", toDateTimeString(props.identity.updated)))
 
   return <Card className={"App-patient-identity"}>

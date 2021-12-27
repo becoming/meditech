@@ -13,8 +13,7 @@ export function PatientsListingPage() {
   useEffect(() => {
     patientService.getAll().subscribe({
       next: d => {
-        let p = toPatients(d)
-        setPatients(p)
+        setPatients(toPatients(d))
         setTitle("Patients")
       }
     });
