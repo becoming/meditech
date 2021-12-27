@@ -1,10 +1,11 @@
 import {Link} from "react-router-dom";
 import {Button, Classes, ControlGroup, FormGroup, InputGroup} from "@blueprintjs/core";
 import {DatePicker} from "@blueprintjs/datetime";
-import {cloneIdentity, PatientIdentityVO} from "../../vo/PatientIdentityVO";
+import {PatientIdentityVO} from "../../vo/PatientIdentityVO";
 import {ChangeEvent, useState} from "react";
 import {patientService} from "../../PatientService";
 import {WarningMessage} from "../WarningMessage";
+import {toDateString} from "../../../helpers/DateHelper";
 
 interface Props {
   patientId: string
@@ -15,21 +16,20 @@ interface Props {
 export function EditIdentityForm(props: Props) {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState(false);
-  const [newIdentity] = useState(cloneIdentity(props.identity));
+  const [birthDateLabel, setBirthDateLabel] = useState(toDateString(props.identity.birthDate));
+  const [deathDateLabel, setDeathDateLabel] = useState(toDateString(props.identity.deathDate));
 
-  const onFirstName = (e: ChangeEvent<HTMLInputElement>) => newIdentity.firstName = e.target.value
-  const onLastName = (e: ChangeEvent<HTMLInputElement>) => newIdentity.lastName = e.target.value
-  const onBirthDate = (date: Date) => newIdentity.birthDate = date
-  const onBirthDateReset = () => newIdentity.birthDate = undefined
-  const onDeathDate = (date: Date) => newIdentity.deathDate = date
-  const onDeathDateReset = () => newIdentity.deathDate = undefined
+  const onFirstName = (e: ChangeEvent<HTMLInputElement>) => props.identity.firstName = e.target.value
+  const onLastName = (e: ChangeEvent<HTMLInputElement>) => props.identity.lastName = e.target.value
+  const onBirthDate = (date: Date) => (props.identity.birthDate = date) && setBirthDateLabel(toDateString(date))
+  const onDeathDate = (date: Date) => (props.identity.deathDate = date) && setDeathDateLabel(toDateString(date))
 
   const onSave = () => {
     if (!props.identity) return
 
     setDisabled(true);
 
-    patientService.updateIdentity(newIdentity, props.patientId)
+    patientService.updateIdentity(props.identity, props.patientId)
       .subscribe({
         next: (p) => props.onSave(p),
         error: err => {
@@ -45,6 +45,8 @@ export function EditIdentityForm(props: Props) {
     errorMsg = <WarningMessage message={"Could not save the edits, maybe try again later ?"}/>
   }
 
+  let disabledClass = disabled ? "App-disabled-date-picker" : ""
+
   return <div className={"App-page-container"}>
 
     <div className={"App-form"}>
@@ -56,7 +58,7 @@ export function EditIdentityForm(props: Props) {
         disabled={disabled}
       >
         <InputGroup id="firstName" placeholder="John" disabled={disabled} intent={"primary"}
-                    value={props.identity.firstName} onChange={onFirstName}/>
+                    defaultValue={props.identity.firstName} onChange={onFirstName}/>
       </FormGroup>
 
       <FormGroup
@@ -67,39 +69,40 @@ export function EditIdentityForm(props: Props) {
         disabled={disabled}
       >
         <InputGroup id="lastName" placeholder="Doe" disabled={disabled} intent={"primary"}
-                    value={props.identity.lastName} onChange={onLastName}/>
+                    defaultValue={props.identity.lastName} onChange={onLastName}/>
       </FormGroup>
 
       <ControlGroup>
         <FormGroup
           intent={"primary"}
-          label={"Birth date"}
+          label={"Birth date, " + birthDateLabel}
           labelFor="birthdate"
           disabled={disabled}
         >
-          <Button className={Classes.MINIMAL} icon={"cross"} intent={"warning"} text={"Reset date"}
-                  disabled={disabled} onClick={onBirthDateReset}/>
           <DatePicker
-            className={Classes.ELEVATION_1}
-            value={props.identity.birthDate}
+            className={`${Classes.ELEVATION_1} ${disabledClass}`}
+            defaultValue={props.identity.birthDate}
             onChange={onBirthDate}
+            showActionsBar={true}
+            clearButtonText={"Reset date"}
+            todayButtonText={"Select today"}
           />
 
         </FormGroup>
 
         <FormGroup
           intent={"primary"}
-          label={"Death date"}
+          label={"Death date, " + deathDateLabel}
           labelFor="birthdate"
           disabled={disabled}
         >
-          <Button className={Classes.MINIMAL} icon={"cross"} intent={"warning"} text={"Reset date"}
-                  disabled={disabled} onClick={onDeathDateReset}/>
-
           <DatePicker
-            className={Classes.ELEVATION_1}
-            value={props.identity.deathDate}
-            onChange={(date: Date) => onDeathDate(date)}
+            className={`${Classes.ELEVATION_1} ${disabledClass}`}
+            defaultValue={props.identity.deathDate}
+            onChange={onDeathDate}
+            showActionsBar={true}
+            clearButtonText={"Reset date"}
+            todayButtonText={"Select today"}
           />
 
         </FormGroup>
@@ -110,10 +113,11 @@ export function EditIdentityForm(props: Props) {
         disabled={disabled}>
 
         <Link to={`/patients/${props.patientId}`}>
-          <Button className={Classes.MINIMAL} intent={"none"} text={"Cancel"}/>
+          <Button className={Classes.MINIMAL} intent={"none"} text={"Cancel"} disabled={disabled}/>
         </Link>
 
-        <Button intent={"success"} icon="small-tick" text={"Save identity"} onClick={onSave}/>
+        <Button intent={"success"} icon="small-tick" text={"Save identity"}
+                onClick={onSave} disabled={disabled}/>
 
       </FormGroup>
 

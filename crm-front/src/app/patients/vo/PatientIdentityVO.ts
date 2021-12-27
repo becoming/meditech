@@ -1,5 +1,5 @@
 import {BasicVO} from "./BasicVO";
-import {toDate, toDate2} from "../../helpers/DateHelper";
+import {cloneDate, cloneDate2, toDate, toDate2} from "../../helpers/DateHelper";
 
 export interface PatientIdentityVO extends BasicVO{
 
@@ -16,8 +16,8 @@ export interface PatientIdentityVO extends BasicVO{
 export const cloneIdentity = (i: PatientIdentityVO): PatientIdentityVO => {
   return {
     id: i.id,
-    created: i.created,
-    updated: i.updated,
+    created: cloneDate2(i.created),
+    updated: cloneDate2(i.created),
 
     medicalId: i.medicalId,
     nationalId: i.nationalId,
@@ -25,8 +25,8 @@ export const cloneIdentity = (i: PatientIdentityVO): PatientIdentityVO => {
     firstName: i.firstName,
     lastName: i.lastName,
 
-    birthDate: i.birthDate,
-    deathDate: i.deathDate,
+    birthDate: cloneDate(i.birthDate),
+    deathDate: cloneDate(i.deathDate),
   }
 }
 

@@ -120,3 +120,8 @@
     width: 400px;
 }
 
+.App-disabled-date-picker {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 65%;
+}
