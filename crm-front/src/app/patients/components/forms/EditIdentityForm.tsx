@@ -1,11 +1,10 @@
-import {Link} from "react-router-dom";
-import {Button, Classes, ControlGroup, FormGroup, InputGroup} from "@blueprintjs/core";
-import {DatePicker} from "@blueprintjs/datetime";
+import {ControlGroup} from "@blueprintjs/core";
 import {PatientIdentityVO} from "../../vo/PatientIdentityVO";
-import {ChangeEvent, useState} from "react";
+import {useState} from "react";
 import {patientService} from "../../PatientService";
-import {WarningMessage} from "../WarningMessage";
-import {toDateString} from "../../../helpers/DateHelper";
+import {FormInput} from "../FormInput";
+import {FormDate} from "../FormDate";
+import {FormCancelSave} from "../FormCancelSave";
 
 interface Props {
   patientId: string
@@ -16,13 +15,11 @@ interface Props {
 export function EditIdentityForm(props: Props) {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState(false);
-  const [birthDateLabel, setBirthDateLabel] = useState(toDateString(props.identity.birthDate));
-  const [deathDateLabel, setDeathDateLabel] = useState(toDateString(props.identity.deathDate));
 
-  const onFirstName = (e: ChangeEvent<HTMLInputElement>) => props.identity.firstName = e.target.value
-  const onLastName = (e: ChangeEvent<HTMLInputElement>) => props.identity.lastName = e.target.value
-  const onBirthDate = (date: Date) => (props.identity.birthDate = date) && setBirthDateLabel(toDateString(date))
-  const onDeathDate = (date: Date) => (props.identity.deathDate = date) && setDeathDateLabel(toDateString(date))
+  const onFirstName = (value: string) => props.identity.firstName = value
+  const onLastName = (value: string) => props.identity.lastName = value
+  const onBirthDate = (date: Date) => props.identity.birthDate = date
+  const onDeathDate = (date: Date) => props.identity.deathDate = date
 
   const onSave = () => {
     if (!props.identity) return
@@ -40,89 +37,42 @@ export function EditIdentityForm(props: Props) {
       })
   }
 
-  let errorMsg = <span/>
-  if (error) {
-    errorMsg = <WarningMessage message={"Could not save the edits, maybe try again later ?"}/>
-  }
-
-  let disabledClass = disabled ? "App-disabled-date-picker" : ""
-
   return <div className={"App-page-container"}>
 
     <div className={"App-form"}>
-      <FormGroup
-        intent={"primary"}
-        label={"First name"}
-        labelInfo={"(required)"}
-        labelFor="firstName"
-        disabled={disabled}
-      >
-        <InputGroup id="firstName" placeholder="John" disabled={disabled} intent={"primary"}
-                    defaultValue={props.identity.firstName} onChange={onFirstName}/>
-      </FormGroup>
 
-      <FormGroup
-        intent={"primary"}
-        label={"Last name"}
-        labelInfo={"(required)"}
-        labelFor="lastName"
-        disabled={disabled}
-      >
-        <InputGroup id="lastName" placeholder="Doe" disabled={disabled} intent={"primary"}
-                    defaultValue={props.identity.lastName} onChange={onLastName}/>
-      </FormGroup>
+      <FormInput htmlId={"firstName"}
+                 label={"First name"}
+                 placeholder={"John"}
+                 required={true}
+                 disabled={disabled}
+                 value={props.identity.firstName}
+                 onChange={onFirstName} />
+
+      <FormInput htmlId={"lastName"}
+                 label={"Last name"}
+                 placeholder={"Doe"}
+                 required={true}
+                 disabled={disabled}
+                 value={props.identity.lastName}
+                 onChange={onLastName} />
 
       <ControlGroup>
-        <FormGroup
-          intent={"primary"}
-          label={"Birth date, " + birthDateLabel}
-          labelFor="birthdate"
-          disabled={disabled}
-        >
-          <DatePicker
-            className={`${Classes.ELEVATION_1} ${disabledClass}`}
-            defaultValue={props.identity.birthDate}
-            onChange={onBirthDate}
-            showActionsBar={true}
-            clearButtonText={"Reset date"}
-            todayButtonText={"Select today"}
-          />
+        <FormDate title={"Birth date"}
+                  onChange={onBirthDate}
+                  date={props.identity.birthDate}
+                  disabled={disabled} />
 
-        </FormGroup>
-
-        <FormGroup
-          intent={"primary"}
-          label={"Death date, " + deathDateLabel}
-          labelFor="birthdate"
-          disabled={disabled}
-        >
-          <DatePicker
-            className={`${Classes.ELEVATION_1} ${disabledClass}`}
-            defaultValue={props.identity.deathDate}
-            onChange={onDeathDate}
-            showActionsBar={true}
-            clearButtonText={"Reset date"}
-            todayButtonText={"Select today"}
-          />
-
-        </FormGroup>
+        <FormDate title={"Death date"}
+                  onChange={onDeathDate}
+                  date={props.identity.deathDate}
+                  disabled={disabled} />
       </ControlGroup>
 
-      <FormGroup
-        intent={"primary"}
-        disabled={disabled}>
-
-        <Link to={`/patients/${props.patientId}`}>
-          <Button className={Classes.MINIMAL} intent={"none"} text={"Cancel"} disabled={disabled}/>
-        </Link>
-
-        <Button intent={"success"} icon="small-tick" text={"Save identity"}
-                onClick={onSave} disabled={disabled}/>
-
-      </FormGroup>
-
-      {errorMsg}
-
+      <FormCancelSave disabled={disabled}
+                      cancelLink={`/patients/${props.patientId}`}
+                      onSave={onSave}
+                      error={error} />
     </div>
 
   </div>;
