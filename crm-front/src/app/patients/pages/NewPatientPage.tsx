@@ -1,36 +1,33 @@
-import {Button, ControlGroup, FormGroup, InputGroup} from "@blueprintjs/core";
+import {ControlGroup} from "@blueprintjs/core";
 import {PageTitle} from "../../PageTitle";
-import {Select} from "@blueprintjs/select";
-import {useCallback, useState} from "react";
-import {TitleVO} from "../vo/TitleVO";
-import {renderTitle, titles} from "../components/Titles";
+import {useState} from "react";
+import {titles} from "../components/Titles";
 import {patientService} from "../PatientService";
 import {useNavigate} from "react-router-dom";
-
-const TitleSelect = Select.ofType<TitleVO>();
+import {FormTitleSelect} from "../components/FormTitleSelect";
+import {FormInput} from "../components/FormInput";
+import {FormCancelSave} from "../components/FormCancelSave";
 
 export function NewPatientPage() {
+  const [error, setError] = useState(false);
+
   const [title, setTitle] = useState(titles[0]);
   const [firstName, setFirst] = useState("");
   const [lastName, setLast] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+
   let navigate = useNavigate();
 
-  const handleItemSelect = useCallback((newFilm: TitleVO) => {
-    setTitle(newFilm);
-  }, []);
-
-  const onContinue = () => {
-    setLoading(true);
+  const onSave = () => {
+    setDisabled(true);
 
     patientService.create(title.name, firstName, lastName)
       .subscribe({
         next: (p) => navigate("/patients/" + p.id),
-        error: err => {
-          setLoading(false)
-          console.log(err)
-        },
-        complete: () => setLoading(false)
+        error: e => {
+          setDisabled(false)
+          setError(e)
+        }
       })
   }
 
@@ -39,35 +36,27 @@ export function NewPatientPage() {
 
     <div className={"App-form"}>
 
-      <ControlGroup vertical={false}>
-        <FormGroup label="Title">
-          <TitleSelect
-            disabled={loading}
-            key={title.name}
-            items={titles}
-            activeItem={title}
-            onItemSelect={handleItemSelect}
-            itemRenderer={renderTitle}>
-            <Button icon="caret-down" intent="none" text={title.name} disabled={loading}/>
-          </TitleSelect>
-        </FormGroup>
-        <FormGroup label="First name" labelFor="firstName">
-          <InputGroup id="firstName" placeholder="John" disabled={loading}
-                      onChange={(e) => setFirst(e.target.value)}/>
-        </FormGroup>
+      <FormTitleSelect disabled={disabled} onItemSelect={setTitle} />
 
-        <FormGroup label="Last name" labelFor="lastName">
-          <InputGroup id="lastName" placeholder="Doe" disabled={loading}
-                      onChange={(e) => setLast(e.target.value)}/>
-        </FormGroup>
+      <FormInput htmlId={"firstName"}
+                 label={"First name"}
+                 placeholder={"John"}
+                 required={true}
+                 disabled={disabled}
+                 onChange={setFirst} />
 
-        <FormGroup label="&nbsp;">
-          <Button icon="small-tick" intent="success" text="Create patient"
-                  disabled={loading}
-                  onClick={onContinue}/>
-        </FormGroup>
+      <FormInput htmlId={"lastName"}
+                 label={"Last name"}
+                 placeholder={"Doe"}
+                 required={true}
+                 disabled={disabled}
+                 onChange={setLast} />
 
-      </ControlGroup>
+      <FormCancelSave disabled={disabled}
+                      cancelLink="/patients"
+                      onSave={onSave}
+                      error={error} />
+
 
     </div>
   </div>
