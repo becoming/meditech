@@ -1,5 +1,6 @@
 import {toLuxFormat} from "../../../helpers/AddressHelper";
 import {PatientAddressVO} from "../../vo/PatientAddressVO";
+import {Card} from "@blueprintjs/core";
 
 interface Props {
   value: PatientAddressVO[]
@@ -15,5 +16,7 @@ export function Address(props: Props) {
     extraClass = ""
   }
 
-  return <span className={extraClass + " App-listing-address"} title={value}>{value}</span>
+  return <Card>
+    <span className={extraClass + " App-listing-address"} title={value}>{value}</span>
+  </Card>
 }
