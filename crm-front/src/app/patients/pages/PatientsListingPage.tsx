@@ -26,7 +26,7 @@ export function PatientsListingPage() {
 
   return <div className={"App-page-container"}>
     <Toolbar title={title} />
-    <UL className={"App-patients-ul"}>
+    <UL className={"App-page-content App-patients-ul"}>
       {patientsLi}
     </UL>
 

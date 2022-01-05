@@ -18,27 +18,31 @@
     color: white;
 }
 
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 .App-patients-ul {
     list-style-type: none;
+}
+
+/*FIXME, find a better way to size text areas*/
+.App-json-text-337px {
+    height: 337px;
+}
+
+.App-json-text {
+    width: 100%;
+    background-color: #383e47;
+    color: #c7c9cc;
+    font-family: monospace;
+}
+
+.App-page-content {
     margin: 20px 0;
     padding-left: 0;
 }
 
 .App-page-container {
-    padding: 10px;
+    margin-top: 70px;
+    margin-left: 20px;
+    padding-left: 0;
 }
 
 .App-form {
@@ -57,15 +61,17 @@
 }
 
 .App-toolbar-title {
-    padding-top: 0;
-    margin-right: 20px;
     font-weight: bold;
     font-size: large;
 }
 
+.App-padding-left-0 {
+    padding-left: 0 !important;
+}
+
 .App-about-card-table {
     margin-top: 20px;
-    width: 450px;
+    width: 100%;
 }
 
 .App-patient-list-item {

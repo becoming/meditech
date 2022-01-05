@@ -1,6 +1,13 @@
 # How to's 
 >for the found issues while coding the project.
 
+Pretty print json object
+
+- https://stackoverflow.com/questions/16862627/json-stringify-output-to-div-in-pretty-print-way
+- `JSON.stringify(data, undefined, 2)`
+
+---
+
 Dates are treated always as UTC with __ISO 8601__ standard
 - `Instant` on the backend, the latest version of spring boot has the latest version of jackson who is converting to __ISO 8601__ string by default
 - `new Date("2021-12-30T23:59:59.000Z")` on the frontend

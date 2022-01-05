@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 export function Menu() {
   return <div>
-    <Navbar>
+    <Navbar fixedToTop={true} >
       <NavbarGroup align={Alignment.LEFT}>
         <NavbarHeading>
           <Logo className={"App-logo"} />
