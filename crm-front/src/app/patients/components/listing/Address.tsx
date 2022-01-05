@@ -16,7 +16,5 @@ export function Address(props: Props) {
     extraClass = ""
   }
 
-  return <Card>
-    <span className={extraClass + " App-listing-address"} title={value}>{value}</span>
-  </Card>
+  return <span className={extraClass + " App-listing-address"} title={value}>{value}</span>
 }
