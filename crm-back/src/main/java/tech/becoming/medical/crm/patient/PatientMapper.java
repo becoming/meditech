@@ -17,7 +17,7 @@ import java.util.UUID;
 //https://www.baeldung.com/mapstruct-custom-mapper#custom-mapper-annotation
 //https://www.baeldung.com/mapstruct-ignore-unmapped-properties#ignore-specific-fields
 //https://stackoverflow.com/a/62548185/1107450
-@Mapper(componentModel = "spring")
+@Mapper
 public interface PatientMapper {
 
     default List<PatientDTO> toDto(Page<PatientEntity> v) {
