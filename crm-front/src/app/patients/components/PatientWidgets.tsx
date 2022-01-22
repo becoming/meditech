@@ -10,7 +10,7 @@ interface Props {
 
 export function PatientWidgets(props: Props) {
 
-  let patient = props.patient;
+  let patient = props.patient
   let addresses
 
   if (hasAddress(patient)) {

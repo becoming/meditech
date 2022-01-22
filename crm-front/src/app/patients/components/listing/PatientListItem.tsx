@@ -4,7 +4,7 @@ import {FullName} from "./FullName";
 import {Birthdate} from "./Birthdate";
 import {Created} from "./Created";
 import {toDateString, toDateString2} from "../../../helpers/DateHelper";
-import {Address} from "./Address";
+import {AddressBasic} from "./AddressBasic";
 
 interface Props {
   patient: PatientVO
@@ -19,7 +19,7 @@ export function PatientListItem(props: Props) {
     <Created dateTime={toDateString2(identity.created)} />
     <FullName firstName={identity.firstName} lastName={identity.lastName} />
     <Birthdate date={toDateString(identity.birthDate)} />
-    <Address value={patient.addresses} patientId={patient.id} />
+    <AddressBasic value={patient.addresses} patientId={patient.id} />
   </div>
 
 }

@@ -5,7 +5,7 @@ import {PatientIdentityVO} from "../vo/PatientIdentityVO";
 import {WarningMessage} from "../components/WarningMessage";
 import {EditIdentityForm} from "../components/forms/EditIdentityForm";
 
-export function EditIdentityPage() {
+export function IdentityEditPage() {
 
   let params = useParams();
   let navigate = useNavigate();

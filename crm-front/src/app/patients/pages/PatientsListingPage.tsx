@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {PatientListItem} from "../components/listing/PatientListItem";
 import {PatientVO, toPatients} from "../vo/PatientVO";
-import {Toolbar} from "../components/Toolbar";
+import {PatientsListingToolbar} from "../components/PatientsListingToolbar";
 import {patientService} from "../PatientService";
 import {UL} from "@blueprintjs/core";
 import {EnvVars} from "../../about/EnvVars";
@@ -29,7 +29,7 @@ export function PatientsListingPage() {
   return <div className={"App-page-container container"}>
     <div className={"row"}>
       <div className={"col-sm-12"}>
-        <Toolbar title={title} />
+        <PatientsListingToolbar title={title} />
       </div>
     </div>
 

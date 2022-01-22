@@ -4,15 +4,16 @@ import {PageTitle} from "../../PageTitle";
 
 interface Props {
   title: string
+  patientId: string
 }
 
-export function Toolbar(props: Props) {
+export function PatientProfileToolbar(props: Props) {
 
   return <ControlGroup fill={false} vertical={false}>
-    <PageTitle value={props.title} />
+    <PageTitle value={props.title} backUrl={"/patients"} />
     <InputGroup placeholder="Find patients..." />
-    <Link to={"/patients/new"}>
-      <Button icon="new-person">New patient</Button>
+    <Link to={`/patients/${props.patientId}/address/new`}>
+      <Button icon="add-location">New address</Button>
     </Link>
   </ControlGroup>
 

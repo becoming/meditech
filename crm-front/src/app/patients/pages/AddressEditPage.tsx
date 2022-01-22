@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {PageTitle} from "../../PageTitle";
 
-export function NewAddressPage() {
+export function AddressEditPage() {
 
   let params = useParams();
 
