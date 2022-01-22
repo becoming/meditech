@@ -6,7 +6,7 @@ import {PatientVO, toPatient} from "../vo/PatientVO";
 
 export function usePatient(patientId?: string): [PatientVO|undefined, string, string|null] {
   let [patient, setPatient] = useState<PatientVO>();
-  let [title, setTitle] = useState<string>("Patient is loading...");
+  let [patientName, setPatientName] = useState<string>("Patient is loading...");
   let [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -17,12 +17,12 @@ export function usePatient(patientId?: string): [PatientVO|undefined, string, st
       sub = patientService.getById(id).subscribe({
         next: p => {
           setPatient(toPatient(p))
-          setTitle(patientFullName(p))
+          setPatientName(patientFullName(p))
           setError(null)
         },
         error: err => {
           setError("I cannot load this patient. What a bummer..")
-          setTitle("Oops")
+          setPatientName("Oops")
           console.error(err)
         }
       });
@@ -35,5 +35,5 @@ export function usePatient(patientId?: string): [PatientVO|undefined, string, st
     }
   }, [patientId])
 
-  return [patient, title, error]
+  return [patient, patientName, error]
 }

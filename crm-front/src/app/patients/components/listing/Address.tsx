@@ -1,20 +1,20 @@
 import {toLuxFormat} from "../../../helpers/AddressHelper";
 import {PatientAddressVO} from "../../vo/PatientAddressVO";
-import {Card} from "@blueprintjs/core";
+import {EditLink} from "../EditLink";
 
 interface Props {
   value: PatientAddressVO[]
+  patientId: string
 }
 
 export function Address(props: Props) {
 
-  let value = "[no-address]";
-  let extraClass = "App-listing-unknown"
-
-  if(props.value && props.value.length > 0) {
-    value = toLuxFormat(props.value[0])
-    extraClass = ""
+  if (props.value.length > 0) {
+    let value = toLuxFormat(props.value[0])
+    return <span className={"App-listing-address"} title={value}>{value}</span>
   }
 
-  return <span className={extraClass + " App-listing-address"} title={value}>{value}</span>
+  return <span className={"App-listing-unknown App-listing-address"}>
+    [no-address]
+  </span>
 }

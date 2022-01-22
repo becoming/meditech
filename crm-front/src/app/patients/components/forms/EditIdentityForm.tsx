@@ -37,7 +37,7 @@ export function EditIdentityForm(props: Props) {
       })
   }
 
-  return <div className={"App-page-container"}>
+  return <div>
 
     <div className={"App-form"}>
 

@@ -3,12 +3,11 @@ import {useParams} from "react-router-dom";
 import {WarningMessage} from "../components/WarningMessage";
 import {PatientWidgets} from "../components/PatientWidgets";
 import {usePatient} from "../hooks/usePatient";
-import {Toolbar} from "../../about/Toolbar";
 
 export function PatientProfilePage() {
 
   let params = useParams();
-  let [patient, title, error] = usePatient(params.id);
+  let [patient, title, error] = usePatient(params.patientId);
 
   let content = <span/>;
 

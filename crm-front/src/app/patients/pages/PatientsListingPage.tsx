@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {ListItem} from "../components/listing/ListItem";
+import {PatientListItem} from "../components/listing/PatientListItem";
 import {PatientVO, toPatients} from "../vo/PatientVO";
 import {Toolbar} from "../components/Toolbar";
 import {patientService} from "../PatientService";
@@ -23,7 +23,7 @@ export function PatientsListingPage() {
 
   let patientsLi: JSX.Element[] = []
   for (const i of patients) {
-    patientsLi.push(<ListItem key={i.id} patient={i}/>);
+    patientsLi.push(<PatientListItem key={i.id} patient={i}/>);
   }
 
   return <div className={"App-page-container container"}>
@@ -36,7 +36,7 @@ export function PatientsListingPage() {
     <div className={"App-page-content"}>
       <div className={"row"}>
         <div className={"col-sm-12"}>
-          <UL className={"App-page-content App-patients-ul"}>
+          <UL className={"App-patients-ul"}>
             {patientsLi}
           </UL>
         </div>

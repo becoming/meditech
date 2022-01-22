@@ -28,12 +28,12 @@ export const toDateString = (dateWithTime?: Date) => {
 }
 
 export const toDateString2 = (dateWithTime: Date) => {
-  return `${zero(dateWithTime.getDate())}-${zero(dateWithTime.getMonth() + 1)}-${dateWithTime.getFullYear()}`
+  return `${zero(dateWithTime.getDate())}.${zero(dateWithTime.getMonth() + 1)}.${dateWithTime.getFullYear()}`
 }
 
 export const toDateTimeString = (dateWithTime?: Date) => {
   if (dateWithTime) {
-    return `${zero(dateWithTime.getDate())}-${zero(dateWithTime.getMonth())}-${dateWithTime.getFullYear()} ${zero(dateWithTime.getHours())}:${zero(dateWithTime.getMinutes())}`
+    return `${zero(dateWithTime.getDate())}.${zero(dateWithTime.getMonth())}.${dateWithTime.getFullYear()} ${zero(dateWithTime.getHours())}:${zero(dateWithTime.getMinutes())}`
   }
 
   return dateWithTime;
@@ -41,7 +41,7 @@ export const toDateTimeString = (dateWithTime?: Date) => {
 
 export const toUTCString = (date: Date): string => {
   return ""
-    + zero(date.getUTCDate()) + "-" + zero(date.getUTCMonth()) + "-" + date.getUTCFullYear() + " "
+    + zero(date.getUTCDate()) + "." + zero(date.getUTCMonth()) + "." + date.getUTCFullYear() + " "
     + zero(date.getUTCHours()) + ":" + zero(date.getUTCMinutes()) + ":" + zero(date.getUTCSeconds())
 }
 

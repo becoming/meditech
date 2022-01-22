@@ -15,10 +15,10 @@ export function AllRoutes() {
     <Route path="/" element={<PatientsListingPage/>} />
     <Route path="/patients" element={<PatientsListingPage/>} />
     <Route path="/patients/new" element={<NewPatientPage/>} />
-    <Route path="/patients/:id" element={<PatientProfilePage/>} />
+    <Route path="/patients/:patientId" element={<PatientProfilePage/>} />
     <Route path="/patients/:patientId/identity/:identityId/edit" element={<EditIdentityPage />} />
     <Route path="/patients/:patientId/address/new" element={<NewAddressPage />} />
-    <Route path="/patients/:patientId/address/:addressId/edit" element={<EditAddressPage />} />
+    <Route path="/patients/:patientId/address/edit" element={<EditAddressPage />} />
 
     <Route path="/procedures" element={<ProceduresPage/>} />
     <Route path="/doctors" element={<DoctorsPage/>} />

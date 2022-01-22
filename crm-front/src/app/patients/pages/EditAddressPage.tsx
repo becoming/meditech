@@ -1,14 +1,25 @@
 import {useParams} from "react-router-dom";
 import {PageTitle} from "../../PageTitle";
+import {usePatient} from "../hooks/usePatient";
 
 export function EditAddressPage() {
 
   let params = useParams();
 
-  return <div>
-    <PageTitle value={"Edit address"} backUrl={"/patients/" + params.patientId}/>
+  let [patient, patientName, error] = usePatient(params.patientId);
+  let title = "Working.."
 
-    <p>params.patientId {params.patientId}</p>
-    <p>params.addressId {params.addressId}</p>
+  if(patient) {
+
+    title = "Edit " + patientName + "'s addresses"
+  } else if(error) {
+
+    title = patientName
+  }
+
+  return <div className={"App-page-container"}>
+    <PageTitle value={title} backUrl={"/patients/" + params.patientId}/>
+
+
   </div>;
 }

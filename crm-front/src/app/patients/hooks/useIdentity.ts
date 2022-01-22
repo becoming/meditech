@@ -6,7 +6,7 @@ import {PatientIdentityVO, toIdentity} from "../vo/PatientIdentityVO";
 
 export function usePatientIdentity(patientId?: string, identityId?: string): [PatientIdentityVO|undefined, string, string|null] {
   let [identity, setIdentity] = useState<PatientIdentityVO>();
-  let [title, setTitle] = useState<string>("Identity is loading...");
+  let [identityName, setIdentityName] = useState<string>("Identity is loading...");
   let [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -16,12 +16,12 @@ export function usePatientIdentity(patientId?: string, identityId?: string): [Pa
       sub = patientService.getIdentityById(patientId, identityId).subscribe({
         next: p => {
           setIdentity(toIdentity(p))
-          setTitle("Edit " + identityFullName(p) + "'s identity")
+          setIdentityName(identityFullName(p))
           setError(null)
         },
         error: err => {
           setError("I cannot load this patient's identity. What a bummer..")
-          setTitle("Oops")
+          setIdentityName("Oops")
           console.error(err)
         }
       });
@@ -34,5 +34,5 @@ export function usePatientIdentity(patientId?: string, identityId?: string): [Pa
     }
   }, [patientId])
 
-  return [identity, title, error]
+  return [identity, identityName, error]
 }

@@ -20,6 +20,7 @@
 
 .App-patients-ul {
     list-style-type: none;
+    padding-left: 0;
 }
 
 /*FIXME, find a better way to size text areas*/
