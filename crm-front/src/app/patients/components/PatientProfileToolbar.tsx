@@ -12,7 +12,7 @@ export function PatientProfileToolbar(props: Props) {
   return <ControlGroup fill={false} vertical={false}>
     <PageTitle value={props.title} backUrl={"/patients"} />
     <InputGroup placeholder="Find patients..." />
-    <Link to={`/patients/${props.patientId}/address/new`}>
+    <Link to={`/patients/${props.patientId}/address/create`}>
       <Button icon="add-location">New address</Button>
     </Link>
   </ControlGroup>

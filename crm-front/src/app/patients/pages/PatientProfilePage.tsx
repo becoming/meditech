@@ -7,7 +7,7 @@ import {PatientProfileToolbar} from "../components/PatientProfileToolbar";
 export function PatientProfilePage() {
 
   let params = useParams();
-  let [patient, title, error] = usePatient(params.patientId);
+  let [patient, patientName, error] = usePatient(params.patientId);
   let patientId = params.patientId || ""
 
   let content = <span/>;
@@ -21,7 +21,7 @@ export function PatientProfilePage() {
   return <div className={"App-page-container container"}>
     <div className={"row"}>
       <div className={"col-sm-12"}>
-        <PatientProfileToolbar title={title} patientId={patientId}/>
+        <PatientProfileToolbar title={patientName} patientId={patientId}/>
       </div>
     </div>
 

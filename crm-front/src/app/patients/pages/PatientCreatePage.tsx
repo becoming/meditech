@@ -5,9 +5,9 @@ import {patientService} from "../PatientService";
 import {useNavigate} from "react-router-dom";
 import {FormTitleSelect} from "../components/FormTitleSelect";
 import {FormInput} from "../components/FormInput";
-import {FormCancelSave} from "../components/FormCancelSave";
+import {FormActionButtons} from "../components/FormActionButtons";
 
-export function NewPatientPage() {
+export function PatientCreatePage() {
   const [error, setError] = useState(false);
 
   const [title, setTitle] = useState(titles[0]);
@@ -51,10 +51,10 @@ export function NewPatientPage() {
                  disabled={disabled}
                  onChange={setLast} />
 
-      <FormCancelSave disabled={disabled}
-                      cancelLink="/patients"
-                      onSave={onSave}
-                      error={error} />
+      <FormActionButtons disabled={disabled}
+                         cancelLink="/patients"
+                         onSave={onSave}
+                         error={error} />
 
 
     </div>

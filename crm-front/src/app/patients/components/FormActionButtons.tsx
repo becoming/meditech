@@ -8,7 +8,7 @@ interface Props {
   onSave: () => void
   error?: boolean
 }
-export function FormCancelSave(props: Props) {
+export function FormActionButtons(props: Props) {
 
   let errorMsg = <span/>
   if (props.error) {

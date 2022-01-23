@@ -3,11 +3,10 @@ import {PageTitle} from "../../PageTitle";
 import {usePatient} from "../hooks/usePatient";
 import {useState} from "react";
 import {addressService} from "../AddressService";
-import {useAddress} from "../hooks/useAddress";
-import {AddressUpdateRequest} from "../vo/AddressUpdateRequest";
+import {AddressCreateRequest} from "../vo/AddressCreateRequest";
 import {AddressEditForm} from "../components/forms/AddressEditForm";
 
-export function AddressEditPage() {
+export function AddressCreatePage() {
 
   let params = useParams();
   let navigate = useNavigate();
@@ -16,15 +15,14 @@ export function AddressEditPage() {
   const [error, setError] = useState(false);
 
   let [, patientName,] = usePatient(params.patientId);
-  let [address,] = useAddress(params.patientId, params.addressId);
 
-  const onSave = (addressUpdate: AddressUpdateRequest) => {
-    if (params.patientId && params.addressId) {
+  const onSave = (address: AddressCreateRequest) => {
+    if (params.patientId) {
       setDisabled(true);
 
-      addressUpdate.addressId = params.addressId;
+      address.patientId = params.patientId
 
-      addressService.update(params.addressId, addressUpdate)
+      addressService.create(address)
         .subscribe({
           next: (p) => navigate("/patients/" + p.id),
           error: e => {
@@ -41,10 +39,9 @@ export function AddressEditPage() {
   return <div className={"App-page-container"}>
     <PageTitle value={"New address for " + patientName} backUrl={"/patients/" + params.patientId}/>
 
-    <AddressEditForm onUpdate={onSave}
+    <AddressEditForm onCreate={onSave}
                      patientId={params.patientId}
                      disabled={disabled}
-                     address={address}
                      error={error} />
   </div>;
 }

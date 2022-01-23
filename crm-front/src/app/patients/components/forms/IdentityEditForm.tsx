@@ -4,7 +4,7 @@ import {useState} from "react";
 import {patientService} from "../../PatientService";
 import {FormInput} from "../FormInput";
 import {FormDate} from "../FormDate";
-import {FormCancelSave} from "../FormCancelSave";
+import {FormActionButtons} from "../FormActionButtons";
 
 interface Props {
   patientId: string
@@ -12,7 +12,7 @@ interface Props {
   onSave: (v: PatientIdentityVO) => void
 }
 
-export function EditIdentityForm(props: Props) {
+export function IdentityEditForm(props: Props) {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState(false);
 
@@ -69,10 +69,10 @@ export function EditIdentityForm(props: Props) {
                   disabled={disabled} />
       </ControlGroup>
 
-      <FormCancelSave disabled={disabled}
-                      cancelLink={`/patients/${props.patientId}`}
-                      onSave={onSave}
-                      error={error} />
+      <FormActionButtons disabled={disabled}
+                         cancelLink={`/patients/${props.patientId}`}
+                         onSave={onSave}
+                         error={error} />
     </div>
 
   </div>;

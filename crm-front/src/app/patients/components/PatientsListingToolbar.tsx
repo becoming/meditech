@@ -11,7 +11,7 @@ export function PatientsListingToolbar(props: Props) {
   return <ControlGroup fill={false} vertical={false}>
     <PageTitle value={props.title} />
     <InputGroup placeholder="Find patients..." />
-    <Link to={"/patients/new"}>
+    <Link to={"/patients/create"}>
       <Button icon="new-person">New patient</Button>
     </Link>
   </ControlGroup>

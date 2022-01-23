@@ -3,7 +3,7 @@ import {PageTitle} from "../../PageTitle";
 import {usePatientIdentity} from "../hooks/useIdentity";
 import {PatientIdentityVO} from "../vo/PatientIdentityVO";
 import {WarningMessage} from "../components/WarningMessage";
-import {EditIdentityForm} from "../components/forms/EditIdentityForm";
+import {IdentityEditForm} from "../components/forms/IdentityEditForm";
 
 export function IdentityEditPage() {
 
@@ -20,7 +20,7 @@ export function IdentityEditPage() {
   let title = "Working.."
 
   if(identity && params.patientId) {
-    content = <EditIdentityForm identity={identity} patientId={params.patientId} onSave={onSave} />
+    content = <IdentityEditForm identity={identity} patientId={params.patientId} onSave={onSave} />
     title = "Edit " + identityName + "'s identity"
   } else if(error) {
     content = <WarningMessage message={error} backUrl={"/patients"} />
