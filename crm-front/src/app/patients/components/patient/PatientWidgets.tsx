@@ -1,8 +1,8 @@
-import {hasAddress, PatientVO} from "../vo/PatientVO";
-import {Identity} from "./Identity";
-import {AddressList} from "./listing/AddressList";
+import {hasAddress, PatientVO} from "../../vo/PatientVO";
+import {Identity} from "../Identity";
+import {AddressList} from "../listing/AddressList";
 import {Card} from "@blueprintjs/core";
-import {EditLink} from "./EditLink";
+import {EditLink} from "../EditLink";
 
 interface Props {
   patient: PatientVO

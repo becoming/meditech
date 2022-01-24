@@ -1,8 +1,8 @@
 import {useParams} from "react-router-dom";
 import {WarningMessage} from "../components/WarningMessage";
-import {PatientWidgets} from "../components/PatientWidgets";
+import {PatientWidgets} from "../components/patient/PatientWidgets";
 import {usePatient} from "../hooks/usePatient";
-import {PatientProfileToolbar} from "../components/PatientProfileToolbar";
+import {PatientProfileToolbar} from "../components/patient/PatientProfileToolbar";
 
 export function PatientProfilePage() {
 

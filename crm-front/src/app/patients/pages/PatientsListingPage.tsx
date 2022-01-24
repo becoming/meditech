@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {PatientListItem} from "../components/listing/PatientListItem";
 import {PatientVO, toPatients} from "../vo/PatientVO";
-import {PatientsListingToolbar} from "../components/PatientsListingToolbar";
+import {PatientsListingToolbar} from "../components/patient/PatientsListingToolbar";
 import {patientService} from "../PatientService";
 import {UL} from "@blueprintjs/core";
 import {EnvVars} from "../../about/EnvVars";
