@@ -72,6 +72,7 @@ export function IdentityEditForm(props: Props) {
       <FormActionButtons disabled={disabled}
                          cancelLink={`/patients/${props.patientId}`}
                          onSave={onSave}
+                         saveLabel={"Save identity"}
                          error={error} />
     </div>
 
