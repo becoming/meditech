@@ -6,6 +6,7 @@ import {addressService} from "../AddressService";
 import {useAddress} from "../hooks/useAddress";
 import {AddressUpdateRequest} from "../vo/AddressUpdateRequest";
 import {AddressEditForm} from "../components/forms/AddressEditForm";
+import {WarningMessage} from "../components/WarningMessage";
 
 export function AddressEditPage() {
 
@@ -16,7 +17,7 @@ export function AddressEditPage() {
   const [error, setError] = useState(false);
 
   let [, patientName,] = usePatient(params.patientId);
-  let [address,] = useAddress(params.patientId, params.addressId);
+  let [address, addressError] = useAddress(params.patientId, params.addressId);
 
   const onSave = (addressUpdate: AddressUpdateRequest) => {
     if (params.patientId && params.addressId) {
@@ -35,16 +36,24 @@ export function AddressEditPage() {
     } else {
       setDisabled(false)
     }
+  }
 
+  let form
+  if(addressError) {
+    form = <WarningMessage message={"Oh no, cannot find this address"}/>
+  } else if(address) {
+    form = <AddressEditForm onUpdate={onSave}
+                            patientId={params.patientId}
+                            disabled={disabled}
+                            address={address}
+                            error={error} />
+  } else {
+    form = <span>Loading address...</span>
   }
 
   return <div className={"App-page-container"}>
-    <PageTitle value={"New address for " + patientName} backUrl={"/patients/" + params.patientId}/>
+    <PageTitle value={"Edit address for " + patientName} backUrl={"/patients/" + params.patientId}/>
 
-    <AddressEditForm onUpdate={onSave}
-                     patientId={params.patientId}
-                     disabled={disabled}
-                     address={address}
-                     error={error} />
+    {form}
   </div>;
 }

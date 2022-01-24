@@ -4,6 +4,7 @@ import {useState} from "react";
 import {AddressRequest} from "../../vo/AddressRequest";
 import {AddressUpdateRequest} from "../../vo/AddressUpdateRequest";
 import {AddressCreateRequest} from "../../vo/AddressCreateRequest";
+import {Card} from "@blueprintjs/core";
 
 interface Props {
   onUpdate?: (address: AddressUpdateRequest) => void;
@@ -42,20 +43,19 @@ export function AddressEditForm(props: Props) {
 
   const onSave = () => {
 
-    if(props.onUpdate) {
+    if (props.onUpdate) {
       let na: AddressUpdateRequest = {addressId: ""}
       props.onUpdate(fillAddress(na))
     }
 
-    if(props.onCreate) {
+    if (props.onCreate) {
       let na: AddressCreateRequest = {patientId: ""}
       props.onCreate(fillAddress(na))
     }
   }
 
-  return <div className={"App-page-container"}>
-    <div className={"App-form"}>
-
+  return <div className={"App-form"}>
+    <Card>
       <FormInput htmlId={"number"}
                  label={"Number"}
                  placeholder={"69/A"}
@@ -101,8 +101,9 @@ export function AddressEditForm(props: Props) {
       <FormActionButtons disabled={props.disabled}
                          cancelLink={"/patients/" + props.patientId}
                          onSave={onSave}
+                         saveLabel={"Save address"}
                          error={props.error}/>
 
-    </div>
-  </div>;
+    </Card>
+  </div>
 }

@@ -40,8 +40,8 @@ export function AddressCreatePage() {
     <PageTitle value={"New address for " + patientName} backUrl={"/patients/" + params.patientId}/>
 
     <AddressEditForm onCreate={onSave}
-                     patientId={params.patientId}
-                     disabled={disabled}
-                     error={error} />
+                       patientId={params.patientId}
+                       disabled={disabled}
+                       error={error} />
   </div>;
 }

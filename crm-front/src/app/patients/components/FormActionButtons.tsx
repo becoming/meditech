@@ -7,6 +7,7 @@ interface Props {
   cancelLink: string
   onSave: () => void
   error?: boolean
+  saveLabel?: string
 }
 export function FormActionButtons(props: Props) {
 
@@ -14,6 +15,8 @@ export function FormActionButtons(props: Props) {
   if (props.error) {
     errorMsg = <WarningMessage message={"Could not save the edits, maybe try again later ?"}/>
   }
+
+  let saveLabel = props.saveLabel || "Save"
 
   return <FormGroup
     intent={"primary"}
@@ -25,7 +28,7 @@ export function FormActionButtons(props: Props) {
               disabled={props.disabled}/>
     </Link>
 
-    <Button intent={"success"} icon="small-tick" text={"Save identity"}
+    <Button intent={"success"} icon="small-tick" text={saveLabel}
             onClick={props.onSave}
             disabled={props.disabled}/>
 

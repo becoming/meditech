@@ -18,8 +18,9 @@ export function PatientWidgets(props: Props) {
   } else {
     addresses =
       <Card>
-        <EditLink link={`/patients/${props.patient.id}/address/edit`}
-                  value={"Add address"}/>
+        <span>We have no addresses for this patient</span>
+        <EditLink link={`/patients/${props.patient.id}/address/create`}
+                  value={"New address"}/>
       </Card>
   }
 
