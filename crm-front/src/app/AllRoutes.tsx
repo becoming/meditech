@@ -4,7 +4,7 @@ import {PatientCreatePage} from "./patients/pages/PatientCreatePage";
 import {PatientProfilePage} from "./patients/pages/PatientProfilePage";
 import {IdentityEditPage} from "./patients/pages/IdentityEditPage";
 import {AddressCreatePage} from "./patients/pages/AddressCreatePage";
-import {ProceduresPage} from "./procedures/ProceduresPage";
+import {ProceduresPage} from "./procedures/pages/ProceduresPage";
 import {DoctorsPage} from "./doctors/DoctorsPage";
 import {AboutPage} from "./about/AboutPage";
 import React from "react";
