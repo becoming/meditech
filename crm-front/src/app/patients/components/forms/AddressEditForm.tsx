@@ -27,16 +27,13 @@ export function AddressEditForm(props: Props) {
   const [country, setCountry] = useState(address?.country);
 
   const fillAddress = function <T extends AddressRequest>(newAddress: T): T {
-    // @ts-ignore
-    newAddress = {
-      city: city,
-      country: country,
-      department: department,
-      number: number,
-      region: region,
-      street: street,
-      zipCode: zipCode
-    }
+    newAddress.city = city
+    newAddress.country = country
+    newAddress.department = department
+    newAddress.number = number
+    newAddress.region = region
+    newAddress.street = street
+    newAddress.zipCode = zipCode
 
     return newAddress
   }
