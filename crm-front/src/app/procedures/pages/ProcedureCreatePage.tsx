@@ -1,10 +1,9 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {PageTitle} from "../../PageTitle";
-import {usePatient} from "../hooks/usePatient";
 import {useState} from "react";
-import {addressService} from "../AddressService";
-import {AddressCreateRequest} from "../vo/AddressCreateRequest";
-import {AddressEditForm} from "../components/forms/AddressEditForm";
+import {procedureService} from "../ProcedureService";
+import {ProcedureRequest} from "../vo/ProcedureRequest";
+import {ProcedureEditForm} from "../forms/ProcedureEditForm";
 
 export function ProcedureCreatePage() {
 
@@ -14,15 +13,11 @@ export function ProcedureCreatePage() {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState(false);
 
-  let [, patientName,] = usePatient(params.patientId);
-
-  const onSave = (address: AddressCreateRequest) => {
+  const onSave = (request: ProcedureRequest) => {
     if (params.patientId) {
       setDisabled(true);
 
-      address.patientId = params.patientId
-
-      addressService.create(address)
+      procedureService.create(request)
         .subscribe({
           next: (p) => navigate("/patients/" + p.id),
           error: e => {
@@ -37,10 +32,9 @@ export function ProcedureCreatePage() {
   }
 
   return <div className={"App-page-container"}>
-    <PageTitle value={"New address for " + patientName} backUrl={"/patients/" + params.patientId}/>
+    <PageTitle value={"Creating new procedure"} backUrl={"/patients/" + params.patientId}/>
 
-    <AddressEditForm onCreate={onSave}
-                       patientId={params.patientId}
+    <ProcedureEditForm onCreate={onSave}
                        disabled={disabled}
                        error={error} />
   </div>;
