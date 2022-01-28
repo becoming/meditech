@@ -1,4 +1,4 @@
-import {Button, Card, Classes, Code, Label} from "@blueprintjs/core";
+import {Button, Card, Label} from "@blueprintjs/core";
 import {httpHelper} from "../helpers/http/HttpHelper";
 import {useEffect, useState} from "react";
 import {Subscription} from "rxjs";
@@ -8,8 +8,6 @@ export function HealthInfo() {
   let url = `${process.env.REACT_APP_BACKEND_SCHEME}://${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}${process.env.REACT_APP_BACKEND_INFO}`
   let [healthDetails, setHealthDetails] = useState<any>("");
   let [retry, setRetry] = useState(false);
-  // let [error, setError] = useState<any>(undefined);
-
 
   useEffect(() => {
     setHealthDetails("Loading...")
@@ -20,7 +18,7 @@ export function HealthInfo() {
     })
 
     return () => sub && sub.unsubscribe()
-  }, [retry])
+  }, [retry, url])
 
 
   return <Card>

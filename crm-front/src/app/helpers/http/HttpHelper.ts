@@ -9,7 +9,8 @@ import {
   CONTENT_TYPE,
   HTTP_DELETE,
   HTTP_GET,
-  HTTP_POST, HTTP_PUT,
+  HTTP_POST,
+  HTTP_PUT,
   TEXT_PLAIN
 } from "./HttpConst";
 

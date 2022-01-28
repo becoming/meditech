@@ -1,6 +1,5 @@
 import {Button, Classes} from "@blueprintjs/core";
 import {Link} from "react-router-dom";
-import {IconName} from "@blueprintjs/icons";
 
 interface Props {
   link: string

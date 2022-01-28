@@ -4,8 +4,6 @@ import {PatientVO, toPatients} from "../vo/PatientVO";
 import {PatientsListingToolbar} from "../components/patient/PatientsListingToolbar";
 import {patientService} from "../PatientService";
 import {UL} from "@blueprintjs/core";
-import {EnvVars} from "../../about/EnvVars";
-import {HealthInfo} from "../../about/HealthInfo";
 
 export function PatientsListingPage() {
 

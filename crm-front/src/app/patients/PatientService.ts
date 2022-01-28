@@ -1,7 +1,7 @@
 import {httpHelper, httpHelperNoAuth} from "../helpers/http/HttpHelper";
 import {toNewIdentity} from "./vo/IdentityCreateRequest";
 import {ReplaySubject} from "rxjs";
-import {PatientVO, toPatients} from "./vo/PatientVO";
+import {PatientVO} from "./vo/PatientVO";
 import {PatientIdentityVO} from "./vo/PatientIdentityVO";
 
 export class PatientService {
