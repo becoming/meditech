@@ -37,13 +37,14 @@ export function ProcedureEditPage() {
   }
 
   let form
-  if(procedureError) {
+  if (procedureError) {
     form = <WarningMessage message={"Oh no, cannot find this address"}/>
-  } else if(procedure) {
+  } else if (procedure) {
     form = <ProcedureEditForm onUpdate={onSave}
-                            disabled={disabled}
-                            procedure={procedure}
-                            error={error} />
+                              disabled={disabled}
+                              procedure={procedure}
+                              cancelLink={"/procedures/" + procedure.id}
+                              error={error}/>
   } else {
     form = <span>Loading procedure...</span>
   }

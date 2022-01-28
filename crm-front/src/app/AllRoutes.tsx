@@ -9,6 +9,8 @@ import {DoctorsPage} from "./doctors/DoctorsPage";
 import {AboutPage} from "./about/AboutPage";
 import React from "react";
 import {AddressEditPage} from "./patients/pages/AddressEditPage";
+import {ProcedureCreatePage} from "./procedures/pages/ProcedureCreatePage";
+import {ProcedureEditPage} from "./procedures/pages/ProcedureEditPage";
 
 export function AllRoutes() {
   return <Routes>
@@ -21,6 +23,9 @@ export function AllRoutes() {
     <Route path="/patients/:patientId/address/:addressId/edit" element={<AddressEditPage />} />
 
     <Route path="/procedures" element={<ProceduresPage/>} />
+    <Route path="/procedures/create" element={<ProcedureCreatePage/>} />
+    <Route path="/procedures/:procedureId/edit" element={<ProcedureEditPage/>} />
+
     <Route path="/doctors" element={<DoctorsPage/>} />
 
     <Route path="/about" element={<AboutPage/>} />

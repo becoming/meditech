@@ -32,10 +32,11 @@ export function ProcedureCreatePage() {
   }
 
   return <div className={"App-page-container"}>
-    <PageTitle value={"Creating new procedure"} backUrl={"/patients/" + params.patientId}/>
+    <PageTitle value={"New procedure"} backUrl={"/procedures"}/>
 
     <ProcedureEditForm onCreate={onSave}
                        disabled={disabled}
+                       cancelLink={"/procedures/"}
                        error={error} />
   </div>;
 }

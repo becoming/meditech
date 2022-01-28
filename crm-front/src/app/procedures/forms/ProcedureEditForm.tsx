@@ -12,6 +12,7 @@ interface Props {
   procedure?: ProcedureVO
   disabled: boolean
   error: boolean
+  cancelLink: string
 }
 
 export function ProcedureEditForm(props: Props) {
@@ -74,7 +75,7 @@ export function ProcedureEditForm(props: Props) {
                  onChange={setCurrency}/>
 
       <FormActionButtons disabled={props.disabled}
-                         cancelLink={"/procedures/" + procedure.id}
+                         cancelLink={props.cancelLink}
                          onSave={onSave}
                          saveLabel={"Save address"}
                          error={props.error}/>
