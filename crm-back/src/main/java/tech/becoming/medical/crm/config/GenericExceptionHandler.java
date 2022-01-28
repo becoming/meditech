@@ -20,7 +20,7 @@ import static tech.becoming.common.constants.HttpStatusCode.BAD_REQUEST_400;
 public class GenericExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(AbstractRuntimeException.class)
-    private ResponseEntity<Object> handleConflict(AbstractRuntimeException ex, WebRequest request) {
+    private ResponseEntity<Object> handleGenericExceptions(AbstractRuntimeException ex, WebRequest request) {
 
         var details = HttpExceptionBody.builder()
                 .message(ex.toString())
