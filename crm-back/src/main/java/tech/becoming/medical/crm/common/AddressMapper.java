@@ -2,8 +2,6 @@ package tech.becoming.medical.crm.common;
 
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
-import tech.becoming.medical.crm.patient.dto.PatientDTO;
-import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
 import java.util.List;
 
@@ -16,6 +14,8 @@ public interface AddressMapper {
         return v.map(this::toDto)
                 .getContent();
     }
+
+    AddressEntity toNewEntity(NewAddressDTO v);
 
     AddressEntity toEntity(AddressDTO v);
 }

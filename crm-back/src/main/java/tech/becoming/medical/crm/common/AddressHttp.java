@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
@@ -16,13 +17,19 @@ public class AddressHttp {
 
     @GetMapping
     public Try<List<AddressDTO>> findByCountry(@RequestParam(defaultValue = "all") String country,
-                                               @RequestParam(defaultValue = "0") int page,
-                                               @RequestParam(defaultValue = "50") int size){
+                                                  @RequestParam(defaultValue = "0") int page,
+                                                  @RequestParam(defaultValue = "50") int size){
         return addressService.findByCountry(country, PageRequest.of(page,size));
     }
 
     @PostMapping
-    public Try<AddressDTO> createAddress(@RequestBody AddressDTO addressDTO){
-        return addressService.createAddress(addressDTO);
+    public Try<AddressDTO> createAddress(@RequestBody NewAddressDTO newAddressDTO){
+        return addressService.createAddress(newAddressDTO);
+    }
+
+    @PutMapping("{addressId}")
+    public Try<AddressDTO> updateAddress(@PathVariable UUID addressId,
+                                         @RequestBody AddressDTO addressDTO){
+        return addressService.updateAddress(addressId, addressDTO);
     }
 }
