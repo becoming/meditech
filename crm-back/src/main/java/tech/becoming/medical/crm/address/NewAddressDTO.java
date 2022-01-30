@@ -1,15 +1,13 @@
-package tech.becoming.medical.crm.patient.dto;
+package tech.becoming.medical.crm.address;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tech.becoming.medical.crm.common.BasicDto;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class PatientAddressDTO extends BasicDto {
-
+public class NewAddressDTO {
     private String number;
     private String street;
     private String zipCode;

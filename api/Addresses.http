@@ -1,0 +1,41 @@
+#
+GET http://localhost:7373/api/v1/addresses?country=DE&page=5&size=10&region=NorthEast
+
+###
+
+GET http://localhost:7373/api/v1/addresses
+
+###
+GET http://localhost:7373/api/v1/addresses?country=%
+
+###
+POST http://localhost:7373/api/v1/addresses
+Content-Type: application/json
+
+{
+  "number": "1",
+  "street": "Dacia",
+  "zipCode": "0001",
+  "city": "Bucharest",
+  "patientId": "0123456789",
+  "region": "Ilfov",
+  "department": "Sud",
+  "country": "RO"
+}
+
+###
+
+PUT http://localhost:7373/api/v1/addresses/a0d031dc-175e-4932-8089-bcaec042cce3
+Content-Type: application/json
+
+{
+  "number": "1",
+  "street": "Dacia",
+  "zipCode": "0001",
+  "city": "Bucharest",
+  "region": "Ilfov",
+  "department": "Sud",
+  "country": "RO"
+}
+
+###

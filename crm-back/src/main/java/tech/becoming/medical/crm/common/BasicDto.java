@@ -1,4 +1,4 @@
-package tech.becoming.medical.crm.patient.dto;
+package tech.becoming.medical.crm.common;
 
 import lombok.Getter;
 import lombok.Setter;
