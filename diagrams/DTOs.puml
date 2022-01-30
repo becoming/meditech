@@ -1,0 +1,92 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package common {
+    abstract class BasicDto {
+        UUID id
+        Instant created
+        Instant updated
+    }
+}
+
+package patient {
+    class NewIdentityDTO extends BasicDto {
+        String title
+        String firstName
+        String lastName
+    }
+
+    class PatientAddressDTO extends BasicDto {
+        String number
+        String street
+        String zipCode
+        String city
+        String region
+        String department
+        String country
+    }
+
+    class PatientDTO extends BasicDto {
+        PatientIdentityDTO identity
+        Set<PatientAddressDTO> addresses
+    }
+
+    class PatientIdentityDTO extends BasicDto {
+        String firstName
+        String lastName
+        String medicalId
+        String nationalId
+        Instant birthDate
+        Instant deathDate
+    }
+}
+
+package address {
+    class AddressDTO {
+        UUID id
+        String number
+        String street
+        String zipCode
+        String city
+        String region
+        String department
+        String country
+    }
+
+    class NewAddressDTO {
+        String number
+        String street
+        String zipCode
+        String city
+        String region
+        String department
+        String country
+    }
+}
+
+package doctor {
+    class AddressView
+
+    class DoctorView {
+        String id
+        MedicalLicenceView licence
+        IdentityView identity
+        Set<AddressView> addresses
+    }
+
+    class IdentityView
+    class MedicalLicenceView
+    class NewDoctorRequest
+}
+
+package procedure {
+    class ProcedureView
+}
+
+DoctorView "1" *-- "many" AddressView : contains
+DoctorView "1" *-- "1" IdentityView : contains
+
+PatientDTO "1" *-- "many" PatientAddressDTO : contains
+PatientDTO "1" *-- "1" PatientIdentityDTO : contains
+
+@enduml
