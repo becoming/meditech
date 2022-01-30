@@ -1,4 +1,4 @@
-package tech.becoming.medical.crm.common;
+package tech.becoming.medical.crm.address;
 
 import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;

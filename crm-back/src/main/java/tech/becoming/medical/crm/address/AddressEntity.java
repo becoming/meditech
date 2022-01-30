@@ -1,8 +1,9 @@
-package tech.becoming.medical.crm.common;
+package tech.becoming.medical.crm.address;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tech.becoming.medical.crm.common.BasicEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

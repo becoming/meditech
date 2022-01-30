@@ -1,4 +1,4 @@
-package tech.becoming.medical.crm.common;
+package tech.becoming.medical.crm.address;
 
 import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +35,7 @@ public class AddressService {
                 .onFailure(e -> log.error("Could not create a new address, e: {}", e.getMessage()));
     }
 
-    public Page<AddressEntity> findAllByCountry(String country, PageRequest p){
+    private Page<AddressEntity> findAllByCountry(String country, PageRequest p){
         if(country.equalsIgnoreCase("all")){
             return addressRepository.findAll(p);
         }

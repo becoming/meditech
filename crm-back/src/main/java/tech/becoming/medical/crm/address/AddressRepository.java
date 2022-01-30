@@ -1,4 +1,4 @@
-package tech.becoming.medical.crm.common;
+package tech.becoming.medical.crm.address;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
