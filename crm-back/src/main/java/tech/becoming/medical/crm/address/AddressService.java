@@ -19,12 +19,27 @@ public class AddressService {
     private final AddressRepository addressRepository;
     private final AddressMapper addressMapper;
 
+    public Try<AddressDTO> findById(UUID id) {
+        return Try.of(() -> id)
+                .map(addressRepository::findById)
+                .map(NotFoundException::throwIfEmpty)
+                .map(addressMapper::toDto)
+                .onFailure(e -> log.error("Could not find the address, e: {}", e.getMessage()));
+    }
+
+    public Try<List<AddressDTO>> findInRange(PageRequest p) {
+        return Try.of(() -> p)
+                .map(addressRepository::findAll)
+                .map(addressMapper::toDTO)
+                .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
+    }
+
     public Try<List<AddressDTO>> findByCountry(String country, PageRequest p) {
 
         return Try.of(() -> p)
                 .map(p1 -> this.findAllByCountry(country, p1))
                 .map(addressMapper::toDTO)
-                .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
+                .onFailure(e -> log.error("Could not perform the find by country, e: {}", e.getMessage()));
     }
 
     public Try<AddressDTO> createAddress(NewAddressDTO newAddressDTO) {
@@ -35,13 +50,6 @@ public class AddressService {
                 .onFailure(e -> log.error("Could not create a new address, e: {}", e.getMessage()));
     }
 
-    private Page<AddressEntity> findAllByCountry(String country, PageRequest p){
-        if(country.equalsIgnoreCase("all")){
-            return addressRepository.findAll(p);
-        }
-        return addressRepository.findAllByCountry(country, p);
-    }
-
     public Try<AddressDTO> updateAddress(UUID addressId, AddressDTO addressDTO) {
         return Try.of(() -> addressId)
                 .map(addressRepository::findById)
@@ -49,5 +57,20 @@ public class AddressService {
                 .map(it -> it.update(addressDTO))
                 .map(addressRepository::save)
                 .map(addressMapper::toDto);
+    }
+
+    private Page<AddressEntity> findAllByCountry(String country, PageRequest p){
+        if(country.equalsIgnoreCase("all")){
+            return addressRepository.findAll(p);
+        }
+        return addressRepository.findAllByCountry(country, p);
+    }
+
+
+    public void deleteAddress(UUID addressId) {
+        Try<AddressEntity> addressEntityTry = Try.of(() -> addressId)
+                .map(addressRepository::findById)
+                .map(NotFoundException::throwIfEmpty);
+        Try.run(() -> addressRepository.deleteById(addressId));
     }
 }

@@ -7,13 +7,19 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import tech.becoming.common.exceptions.BadRequestException;
 import tech.becoming.common.exceptions.NotFoundException;
+import tech.becoming.medical.crm.address.AddressDTO;
+import tech.becoming.medical.crm.address.AddressEntity;
+import tech.becoming.medical.crm.address.AddressMapper;
+import tech.becoming.medical.crm.address.AddressRepository;
 import tech.becoming.medical.crm.common.IdentityRepository;
 import tech.becoming.medical.crm.patient.dto.NewIdentityDTO;
+import tech.becoming.medical.crm.patient.dto.PatientAddressDTO;
 import tech.becoming.medical.crm.patient.dto.PatientDTO;
 import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
 import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -24,6 +30,8 @@ public class PatientService {
     private final PatientHelper helper;
     private final PatientRepository patientRepository;
     private final IdentityRepository identityRepository;
+    private final AddressRepository addressRepository;
+    private final AddressMapper addressMapper;
     private final PatientMapper mapper;
 
     public Try<PatientDTO> findById(UUID id) {
@@ -54,6 +62,30 @@ public class PatientService {
                 .onFailure(e -> log.error("Could not create a new patient, e: {}", e.getMessage()));
     }
 
+    private PatientEntity saveIdentity(PatientEntity patient) {
+        var i = identityRepository.save(patient.getIdentity());
+        patient.setIdentity(i);
+        return patient;
+    }
+
+    public Try<AddressDTO> createAddress(UUID patientId, PatientAddressDTO patientAddressDTO) {
+        return Try.of(() -> patientAddressDTO)
+                .map(addressMapper::toAEntity)
+                .map(addressRepository::save)
+                .map(addressEntity -> addAddressToPatient(patientId, addressEntity))
+                .map(addressRepository::save)
+                .map(addressMapper::toDto)
+                .onFailure(e -> log.error("Could not create patient address, e: {}", e.getMessage()));
+
+    }
+
+    private AddressEntity addAddressToPatient(UUID patientId ,AddressEntity addressEntity) {
+        Optional<PatientEntity> patient = patientRepository.findById(patientId);
+        patient.get().getAddresses().add(addressEntity);
+        patientRepository.save(patient.get());
+        return addressEntity;
+    }
+
     public Try<PatientIdentityDTO> getIdentity(UUID patientId, UUID identityId) {
         return Try.of(() -> patientId)
                 .map(patientRepository::findById)
@@ -78,10 +110,5 @@ public class PatientService {
                 .map(mapper::toDto);
     }
 
-    private PatientEntity saveIdentity(PatientEntity patient) {
-        var i = identityRepository.save(patient.getIdentity());
-        patient.setIdentity(i);
-        return patient;
-    }
 
 }

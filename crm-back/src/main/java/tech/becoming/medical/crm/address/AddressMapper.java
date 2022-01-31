@@ -2,6 +2,8 @@ package tech.becoming.medical.crm.address;
 
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
+import tech.becoming.medical.crm.doctor.dto.DoctorAddressDTO;
+import tech.becoming.medical.crm.patient.dto.PatientAddressDTO;
 
 import java.util.List;
 
@@ -18,4 +20,6 @@ public interface AddressMapper {
     AddressEntity toNewEntity(NewAddressDTO v);
 
     AddressEntity toEntity(AddressDTO v);
+    AddressEntity toAEntity(PatientAddressDTO v);
+    AddressEntity toDEntity(DoctorAddressDTO v);
 }

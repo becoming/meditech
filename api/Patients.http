@@ -19,3 +19,18 @@ Content-Type: application/json
 ### please provide PATIENT_UUID, e.g. 3bc9b545-08d8-495a-8cf4-a000ac11723d
 GET localhost:7373/api/v1/patients/{PATIENT_UUID}
 Content-Type: application/json
+
+###
+
+POST http://localhost:7373/api/v1/patients/1205acd8-896d-4335-aa2c-7e3b5ef41c20/addresses
+Content-Type: application/json
+
+{
+  "number": "2",
+  "street": "Dacia",
+  "zipCode": "0001",
+  "city": "Bucharest",
+  "region": "Ilfov",
+  "department": "Sud",
+  "country": "RO"
+}

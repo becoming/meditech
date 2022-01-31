@@ -15,6 +15,17 @@ public class AddressHttp {
 
     private final AddressService addressService;
 
+    @GetMapping("{id}")
+    public Try<AddressDTO> findById(@PathVariable UUID id){
+        return addressService.findById(id);
+    }
+
+    @GetMapping("all")
+    public Try<List<AddressDTO>> findInRange(@RequestParam(defaultValue = "0") int page,
+                                             @RequestParam(defaultValue = "50") int size){
+        return addressService.findInRange(PageRequest.of(page, size));
+    }
+
     @GetMapping
     public Try<List<AddressDTO>> findByCountry(@RequestParam(defaultValue = "all") String country,
                                                   @RequestParam(defaultValue = "0") int page,
@@ -31,5 +42,10 @@ public class AddressHttp {
     public Try<AddressDTO> updateAddress(@PathVariable UUID addressId,
                                          @RequestBody AddressDTO addressDTO){
         return addressService.updateAddress(addressId, addressDTO);
+    }
+
+    @DeleteMapping("{addressId}")
+    public void deleteAddress(@PathVariable UUID addressId){
+        addressService.deleteAddress(addressId);
     }
 }

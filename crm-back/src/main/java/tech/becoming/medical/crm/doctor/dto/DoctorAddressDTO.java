@@ -8,7 +8,7 @@ import tech.becoming.medical.crm.common.BasicDto;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AddressView extends BasicDto {
+public class DoctorAddressDTO extends BasicDto {
     private String number;
     private String street;
     private String zipCode;

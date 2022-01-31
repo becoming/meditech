@@ -10,6 +10,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import java.time.Instant;
+import java.util.UUID;
 
 @Table(name = "ADDRESS", schema = "TME")
 @Entity
