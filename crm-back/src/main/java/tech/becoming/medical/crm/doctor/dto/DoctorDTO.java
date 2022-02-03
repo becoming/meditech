@@ -3,19 +3,20 @@ package tech.becoming.medical.crm.doctor.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tech.becoming.medical.crm.address.AddressDTO;
 
 import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class DoctorView {
+public class DoctorDTO {
 
     private String id;
 
-    private MedicalLicenceView licence;
+    private MedicalLicenceDTO licence;
 
-    private IdentityView identity;
+    private IdentityDTO identity;
 
-    private Set<AddressView> addresses;
+    private Set<AddressDTO> addresses;
 }

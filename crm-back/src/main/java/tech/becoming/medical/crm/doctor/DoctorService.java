@@ -9,8 +9,7 @@ import tech.becoming.medical.crm.address.AddressDTO;
 import tech.becoming.medical.crm.address.AddressEntity;
 import tech.becoming.medical.crm.address.AddressMapper;
 import tech.becoming.medical.crm.address.AddressRepository;
-import tech.becoming.medical.crm.doctor.dto.DoctorAddressDTO;
-import tech.becoming.medical.crm.doctor.dto.DoctorView;
+import tech.becoming.medical.crm.doctor.dto.DoctorDTO;
 import tech.becoming.medical.crm.doctor.dto.NewDoctorRequest;
 import tech.becoming.medical.crm.doctor.entity.DoctorEntity;
 
@@ -28,14 +27,14 @@ public class DoctorService {
     private final AddressMapper addressMapper;
     private final DoctorMapper mapper;
 
-    public Try<List<DoctorView>> findInRange(PageRequest p) {
+    public Try<List<DoctorDTO>> findInRange(PageRequest p) {
         return Try.of(() -> p)
                 .map(repo::findAll)
                 .map(mapper::toDto)
                 .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
     }
 
-    public Try<DoctorView> create(NewDoctorRequest p) {
+    public Try<DoctorDTO> create(NewDoctorRequest p) {
         return Try.of(() -> p)
 //                .map(helper::validate)
                 .map(mapper::toEntity)
@@ -45,9 +44,9 @@ public class DoctorService {
                 .onFailure(e -> log.error("Could not create a new doctor, e: {}", e.getMessage()));
     }
 
-    public Try<AddressDTO> createAddress(UUID doctorId, DoctorAddressDTO doctorAddressDTO) {
-        return Try.of(() -> doctorAddressDTO)
-                .map(addressMapper::toDEntity)
+    public Try<AddressDTO> createAddress(UUID doctorId, AddressDTO addressDTO) {
+        return Try.of(() -> addressDTO)
+                .map(addressMapper::toEntity)
                 .map(addressRepository::save)
                 .map(addressEntity -> addAddressToDoctor(addressEntity, doctorId))
                 .map(addressRepository::save)

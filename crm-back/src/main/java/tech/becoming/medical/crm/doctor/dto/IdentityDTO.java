@@ -10,7 +10,7 @@ import java.time.Instant;
 @Getter
 @Setter
 @NoArgsConstructor
-public class IdentityView extends BasicDto {
+public class IdentityDTO extends BasicDto {
     private String firstName;
     private String lastName;
 

@@ -6,7 +6,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import tech.becoming.medical.crm.address.AddressDTO;
 import tech.becoming.medical.crm.patient.dto.NewIdentityDTO;
-import tech.becoming.medical.crm.patient.dto.PatientAddressDTO;
 import tech.becoming.medical.crm.patient.dto.PatientDTO;
 import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
 
@@ -38,8 +37,8 @@ public class PatientHttp {
 
     @PostMapping("{patientId}/addresses")
     public Try<AddressDTO> createAddress(@PathVariable UUID patientId,
-                                         @RequestBody PatientAddressDTO patientAddressDTO){
-        return service.createAddress(patientId, patientAddressDTO);
+                                         @RequestBody AddressDTO addressDTO){
+        return service.createAddress(patientId, addressDTO);
     }
 
     @PutMapping("{patientId}/identity/{identityId}")

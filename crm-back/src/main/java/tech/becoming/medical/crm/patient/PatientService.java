@@ -13,7 +13,6 @@ import tech.becoming.medical.crm.address.AddressMapper;
 import tech.becoming.medical.crm.address.AddressRepository;
 import tech.becoming.medical.crm.common.IdentityRepository;
 import tech.becoming.medical.crm.patient.dto.NewIdentityDTO;
-import tech.becoming.medical.crm.patient.dto.PatientAddressDTO;
 import tech.becoming.medical.crm.patient.dto.PatientDTO;
 import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
 import tech.becoming.medical.crm.patient.entity.PatientEntity;
@@ -68,9 +67,9 @@ public class PatientService {
         return patient;
     }
 
-    public Try<AddressDTO> createAddress(UUID patientId, PatientAddressDTO patientAddressDTO) {
-        return Try.of(() -> patientAddressDTO)
-                .map(addressMapper::toAEntity)
+    public Try<AddressDTO> createAddress(UUID patientId, AddressDTO addressDTO) {
+        return Try.of(() -> addressDTO)
+                .map(addressMapper::toEntity)
                 .map(addressRepository::save)
                 .map(addressEntity -> addAddressToPatient(patientId, addressEntity))
                 .map(addressRepository::save)

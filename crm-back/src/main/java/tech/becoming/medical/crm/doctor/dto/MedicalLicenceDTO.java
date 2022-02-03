@@ -12,7 +12,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MedicalLicenceView extends BasicDto {
+public class MedicalLicenceDTO extends BasicDto {
     private String value;
     private Instant expires;
     private Instant issued;

@@ -43,5 +43,5 @@ Content-Type: application/json
 DELETE http://localhost:7373/api/v1/addresses/a0d031dc-175e-4932-8089-bcaec042cce3
 
 ###
-DELETE http://localhost:7373/api/v1/addresses/1
+DELETE http://localhost:7373/api/v1/addresses/5561a0b7-70f1-4ec0-a62a-28195076cfdf
 

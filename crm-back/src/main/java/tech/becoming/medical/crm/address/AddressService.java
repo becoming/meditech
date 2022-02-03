@@ -27,36 +27,12 @@ public class AddressService {
                 .onFailure(e -> log.error("Could not find the address, e: {}", e.getMessage()));
     }
 
-    public Try<List<AddressDTO>> findInRange(PageRequest p) {
-        return Try.of(() -> p)
-                .map(addressRepository::findAll)
-                .map(addressMapper::toDTO)
-                .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
-    }
-
-    public Try<List<AddressDTO>> findByCountry(String country, PageRequest p) {
+    public Try<List<AddressDTO>> find(String country, PageRequest p) {
 
         return Try.of(() -> p)
                 .map(p1 -> this.findAllByCountry(country, p1))
                 .map(addressMapper::toDTO)
                 .onFailure(e -> log.error("Could not perform the find by country, e: {}", e.getMessage()));
-    }
-
-    public Try<AddressDTO> createAddress(NewAddressDTO newAddressDTO) {
-        return Try.of(() -> newAddressDTO)
-                .map(addressMapper::toNewEntity)
-                .map(addressRepository::save)
-                .map(addressMapper::toDto)
-                .onFailure(e -> log.error("Could not create a new address, e: {}", e.getMessage()));
-    }
-
-    public Try<AddressDTO> updateAddress(UUID addressId, AddressDTO addressDTO) {
-        return Try.of(() -> addressId)
-                .map(addressRepository::findById)
-                .map(NotFoundException::throwIfEmpty)
-                .map(it -> it.update(addressDTO))
-                .map(addressRepository::save)
-                .map(addressMapper::toDto);
     }
 
     private Page<AddressEntity> findAllByCountry(String country, PageRequest p){
@@ -66,11 +42,27 @@ public class AddressService {
         return addressRepository.findAllByCountry(country, p);
     }
 
+    public Try<AddressDTO> create(NewAddressDTO newAddressDTO) {
+        return Try.of(() -> newAddressDTO)
+                .map(addressMapper::toNewEntity)
+                .map(addressRepository::save)
+                .map(addressMapper::toDto)
+                .onFailure(e -> log.error("Could not create a new address, e: {}", e.getMessage()));
+    }
 
-    public void deleteAddress(UUID addressId) {
-        Try<AddressEntity> addressEntityTry = Try.of(() -> addressId)
+    public Try<AddressDTO> update(UUID addressId, AddressDTO addressDTO) {
+        return Try.of(() -> addressId)
                 .map(addressRepository::findById)
-                .map(NotFoundException::throwIfEmpty);
-        Try.run(() -> addressRepository.deleteById(addressId));
+                .map(NotFoundException::throwIfEmpty)
+                .map(it -> it.update(addressDTO))
+                .map(addressRepository::save)
+                .map(addressMapper::toDto);
+    }
+
+    public void delete(UUID addressId) {
+        Try.of(() -> addressId)
+                .map(addressRepository::findById)
+                .map(NotFoundException::throwIfEmpty)
+                .andThen(() -> addressRepository.deleteById(addressId));
     }
 }

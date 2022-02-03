@@ -20,32 +20,26 @@ public class AddressHttp {
         return addressService.findById(id);
     }
 
-    @GetMapping("all")
-    public Try<List<AddressDTO>> findInRange(@RequestParam(defaultValue = "0") int page,
-                                             @RequestParam(defaultValue = "50") int size){
-        return addressService.findInRange(PageRequest.of(page, size));
-    }
-
     @GetMapping
-    public Try<List<AddressDTO>> findByCountry(@RequestParam(defaultValue = "all") String country,
-                                                  @RequestParam(defaultValue = "0") int page,
-                                                  @RequestParam(defaultValue = "50") int size){
-        return addressService.findByCountry(country, PageRequest.of(page,size));
+    public Try<List<AddressDTO>> find(@RequestParam(defaultValue = "all") String country,
+                                      @RequestParam(defaultValue = "0") int page,
+                                      @RequestParam(defaultValue = "50") int size){
+        return addressService.find(country, PageRequest.of(page,size));
     }
 
     @PostMapping
-    public Try<AddressDTO> createAddress(@RequestBody NewAddressDTO newAddressDTO){
-        return addressService.createAddress(newAddressDTO);
+    public Try<AddressDTO> create(@RequestBody NewAddressDTO newAddressDTO){
+        return addressService.create(newAddressDTO);
     }
 
     @PutMapping("{addressId}")
-    public Try<AddressDTO> updateAddress(@PathVariable UUID addressId,
-                                         @RequestBody AddressDTO addressDTO){
-        return addressService.updateAddress(addressId, addressDTO);
+    public Try<AddressDTO> update(@PathVariable UUID addressId,
+                                  @RequestBody AddressDTO addressDTO){
+        return addressService.update(addressId, addressDTO);
     }
 
     @DeleteMapping("{addressId}")
-    public void deleteAddress(@PathVariable UUID addressId){
-        addressService.deleteAddress(addressId);
+    public void delete(@PathVariable UUID addressId){
+        addressService.delete(addressId);
     }
 }
