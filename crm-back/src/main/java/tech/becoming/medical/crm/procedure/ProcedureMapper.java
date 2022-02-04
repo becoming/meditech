@@ -2,6 +2,7 @@ package tech.becoming.medical.crm.procedure;
 
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
+import tech.becoming.medical.crm.procedure.dto.NewProcedureDTO;
 import tech.becoming.medical.crm.procedure.dto.ProcedureDTO;
 import tech.becoming.medical.crm.procedure.entity.MedicalProcedureEntity;
 
@@ -39,5 +40,5 @@ public interface ProcedureMapper {
         return result;
     }
 
-    MedicalProcedureEntity toEntity(ProcedureDTO v);
+    MedicalProcedureEntity toEntity(NewProcedureDTO v);
 }

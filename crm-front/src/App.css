@@ -98,6 +98,18 @@
     display: inline-block;
 }
 
+.App-listing-name {
+    width: 250px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.App-listing-description {
+    width: 450px;
+    overflow: hidden;
+    display: inline-block;
+}
+
 .App-listing-birthdate {
     width: 150px;
     overflow: hidden;

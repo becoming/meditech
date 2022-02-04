@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import tech.becoming.medical.crm.procedure.dto.NewProcedureDTO;
 import tech.becoming.medical.crm.procedure.dto.ProcedureDTO;
 import tech.becoming.medical.crm.procedure.entity.MedicalProcedureEntity;
 
@@ -25,10 +26,11 @@ public class ProcedureService {
                 .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
     }
 
-    public Try<MedicalProcedureEntity> create(ProcedureDTO p) {
-        return Try.of(() -> p)
+    public Try<ProcedureDTO> create(NewProcedureDTO dto) {
+        return Try.of(() -> dto)
                 .map(mapper::toEntity)
                 .map(MedicalProcedureEntity::setupNew)
-                .map(repo::save);
+                .map(repo::save)
+                .map(mapper::toDto);
     }
 }

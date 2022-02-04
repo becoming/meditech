@@ -5,7 +5,7 @@ interface Props {
 export function Name(props: Props) {
 
   let value = "[unknown]";
-  let extraClass = "App-listing-unknown-yellow";
+  let extraClass = "App-listing-unknown";
 
   if(props.value) {
     value = props.value

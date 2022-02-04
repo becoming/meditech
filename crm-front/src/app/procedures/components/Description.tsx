@@ -13,7 +13,7 @@ export function Description(props: Props) {
   }
 
   return <span className={extraClass + " App-listing-description"}
-               title={"Descriptions: " + value}>
+               title={"Description: " + value}>
     {value}
   </span>
 }

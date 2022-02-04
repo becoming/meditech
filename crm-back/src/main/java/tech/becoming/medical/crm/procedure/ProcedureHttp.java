@@ -4,8 +4,8 @@ import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
+import tech.becoming.medical.crm.procedure.dto.NewProcedureDTO;
 import tech.becoming.medical.crm.procedure.dto.ProcedureDTO;
-import tech.becoming.medical.crm.procedure.entity.MedicalProcedureEntity;
 
 import java.util.List;
 
@@ -24,8 +24,8 @@ public class ProcedureHttp {
     }
 
     @PostMapping
-    public Try<MedicalProcedureEntity> create(@RequestBody ProcedureDTO p) {
-        return service.create(p);
+    public Try<ProcedureDTO> create(@RequestBody NewProcedureDTO dto) {
+        return service.create(dto);
     }
 
 }
