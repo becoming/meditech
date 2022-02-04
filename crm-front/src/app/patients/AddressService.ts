@@ -1,13 +1,17 @@
 import {httpHelper, httpHelperNoAuth} from "../helpers/http/HttpHelper";
 import {ReplaySubject} from "rxjs";
 import {PatientAddressVO} from "./vo/PatientAddressVO";
-import {AddressCreateRequest} from "./vo/AddressCreateRequest";
 import {AddressUpdateRequest} from "./vo/AddressUpdateRequest";
+import {AddressRequest} from "./vo/AddressRequest";
 
 export class AddressService {
 
-  create(address: AddressCreateRequest): ReplaySubject<PatientAddressVO> {
-    return httpHelper.post(address, "/v1/addresses")
+  createForPatient(patientId: string, address: AddressRequest): ReplaySubject<PatientAddressVO> {
+    return httpHelper.post(address, `/v1/patients/${patientId}/addresses`)
+  }
+
+  createForDoctor(doctorId: string, address: AddressRequest): ReplaySubject<PatientAddressVO> {
+    return httpHelper.post(address, `/v1/doctors/${doctorId}/addresses`)
   }
 
   update(addressId: string, address: AddressUpdateRequest): ReplaySubject<PatientAddressVO> {

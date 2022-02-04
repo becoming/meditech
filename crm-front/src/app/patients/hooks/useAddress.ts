@@ -3,15 +3,15 @@ import {Subscription} from "rxjs";
 import {PatientAddressVO, toAddress} from "../vo/PatientAddressVO";
 import {addressService} from "../AddressService";
 
-export function useAddress(patientId?: string, addressId?: string): [PatientAddressVO|undefined, any|null] {
+export function useAddress(addressId?: string): [PatientAddressVO|undefined, any|null] {
   let [address, setAddress] = useState<PatientAddressVO>();
   let [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let sub:Subscription;
 
-    if(patientId && addressId) {
-      sub = addressService.getById(patientId).subscribe({
+    if(addressId) {
+      sub = addressService.getById(addressId).subscribe({
         next: value => {
           setAddress(toAddress(value))
           setError(null)
@@ -22,7 +22,7 @@ export function useAddress(patientId?: string, addressId?: string): [PatientAddr
         }
       });
     } else {
-      let str = `Patient ID or Address ID not provided, patientId: ${patientId}, addressId: ${addressId}`
+      let str = `Patient ID or Address ID not provided, addressId: ${addressId}`
       setError(str)
       console.error(str)
     }
@@ -30,7 +30,7 @@ export function useAddress(patientId?: string, addressId?: string): [PatientAddr
     return () => {
       if (sub) sub.unsubscribe()
     }
-  }, [patientId, addressId])
+  }, [addressId])
 
   return [address, error]
 }

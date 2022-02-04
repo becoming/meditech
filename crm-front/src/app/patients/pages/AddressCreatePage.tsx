@@ -3,8 +3,8 @@ import {PageTitle} from "../../PageTitle";
 import {usePatient} from "../hooks/usePatient";
 import {useState} from "react";
 import {addressService} from "../AddressService";
-import {AddressCreateRequest} from "../vo/AddressCreateRequest";
 import {AddressEditForm} from "../components/forms/AddressEditForm";
+import {AddressRequest} from "../vo/AddressRequest";
 
 export function AddressCreatePage() {
 
@@ -14,17 +14,17 @@ export function AddressCreatePage() {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState(false);
 
-  let [, patientName,] = usePatient(params.patientId);
+  const patientId = params.patientId;
 
-  const onSave = (address: AddressCreateRequest) => {
-    if (params.patientId) {
+  let [, patientName,] = usePatient(patientId);
+
+  const onSave = (address: AddressRequest) => {
+    if (patientId) {
       setDisabled(true);
 
-      address.patientId = params.patientId
-
-      addressService.create(address)
+      addressService.createForPatient(patientId, address)
         .subscribe({
-          next: (p) => navigate("/patients/" + p.id),
+          next: (p) => navigate("/patients/" + patientId),
           error: e => {
             setDisabled(false)
             setError(true)
@@ -35,7 +35,7 @@ export function AddressCreatePage() {
     }
 
   }
-
+  // 623820f5-612b-409b-925d-3eff8f362021
   return <div className={"App-page-container"}>
     <PageTitle value={"New address for " + patientName} backUrl={"/patients/" + params.patientId}/>
 

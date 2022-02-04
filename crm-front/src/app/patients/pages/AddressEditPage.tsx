@@ -16,18 +16,21 @@ export function AddressEditPage() {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState(false);
 
-  let [, patientName,] = usePatient(params.patientId);
-  let [address, addressError] = useAddress(params.patientId, params.addressId);
+  const patientId = params.patientId;
+  const addressId = params.addressId;
 
-  const onSave = (addressUpdate: AddressUpdateRequest) => {
-    if (params.patientId && params.addressId) {
+  let [, patientName,] = usePatient(patientId);
+  let [address, addressError] = useAddress(addressId);
+
+  const onSave = (updatedAddress: AddressUpdateRequest) => {
+    if (addressId) {
       setDisabled(true);
 
-      addressUpdate.addressId = params.addressId;
+      updatedAddress.addressId = addressId;
 
-      addressService.update(params.addressId, addressUpdate)
+      addressService.update(addressId, updatedAddress)
         .subscribe({
-          next: (p) => navigate("/patients/" + p.id),
+          next: (p) => navigate("/patients/" + patientId),
           error: e => {
             setDisabled(false)
             setError(true)

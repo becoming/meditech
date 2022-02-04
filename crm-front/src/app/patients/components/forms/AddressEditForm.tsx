@@ -3,12 +3,11 @@ import {FormActionButtons} from "../FormActionButtons";
 import {useState} from "react";
 import {AddressRequest} from "../../vo/AddressRequest";
 import {AddressUpdateRequest} from "../../vo/AddressUpdateRequest";
-import {AddressCreateRequest} from "../../vo/AddressCreateRequest";
 import {Card} from "@blueprintjs/core";
 
 interface Props {
   onUpdate?: (address: AddressUpdateRequest) => void;
-  onCreate?: (address: AddressCreateRequest) => void;
+  onCreate?: (address: AddressRequest) => void;
   address?: AddressRequest
   disabled: boolean
   patientId?: string // TODO, make this value non ?
@@ -46,7 +45,7 @@ export function AddressEditForm(props: Props) {
     }
 
     if (props.onCreate) {
-      let na: AddressCreateRequest = {patientId: ""}
+      let na: AddressRequest = {}
       props.onCreate(fillAddress(na))
     }
   }
