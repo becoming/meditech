@@ -20,7 +20,6 @@ public class ProcedureService {
 
     public Try<List<ProcedureView>> findInRange(PageRequest p) {
         return Try.of(() -> p)
-//                .map(helper::validate)
                 .map(repo::findAll)
                 .map(mapper::toDto)
                 .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));

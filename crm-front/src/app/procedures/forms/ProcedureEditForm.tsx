@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Card} from "@blueprintjs/core";
-import {basicProcedureReq, ProcedureRequest} from "../vo/ProcedureRequest";
-import {basicProcedureEditReq, ProcedureUpdateRequest} from "../vo/ProcedureUpdateRequest";
+import {ProcedureRequest} from "../vo/ProcedureRequest";
+import {ProcedureUpdateRequest} from "../vo/ProcedureUpdateRequest";
 import {FormInput} from "../../patients/components/FormInput";
 import {FormActionButtons} from "../../patients/components/FormActionButtons";
 import {ProcedureVO} from "../vo/ProcedureVO";
@@ -23,8 +23,8 @@ export function ProcedureEditForm(props: Props) {
   const [price, setPrice] = useState(procedure?.price);
   const [currency, setCurrency] = useState(procedure?.currency);
 
-  const fillAddress = function <T extends ProcedureRequest>(update: T): T {
-    // @ts-ignore
+  const fillAddress = (): ProcedureRequest => {
+    let update: ProcedureRequest = {}
     update.name = name
     update.description = description
     update.price = price
@@ -34,17 +34,14 @@ export function ProcedureEditForm(props: Props) {
   }
 
   const onSave = () => {
-
     if (props.onUpdate) {
       if(procedure) {
-        let na = basicProcedureEditReq(procedure.id)
-        props.onUpdate(fillAddress(na))
+        props.onUpdate(fillAddress())
       }
     }
 
     if (props.onCreate) {
-      let na = basicProcedureReq()
-      props.onCreate(fillAddress(na))
+      props.onCreate(fillAddress())
     }
   }
 
@@ -77,7 +74,7 @@ export function ProcedureEditForm(props: Props) {
       <FormActionButtons disabled={props.disabled}
                          cancelLink={props.cancelLink}
                          onSave={onSave}
-                         saveLabel={"Save address"}
+                         saveLabel={"Save procedure"}
                          error={props.error}/>
 
     </Card>

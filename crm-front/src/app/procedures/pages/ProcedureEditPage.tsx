@@ -15,25 +15,23 @@ export function ProcedureEditPage() {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState(false);
 
-  let [procedure, procedureError] = useProcedure(params.procedureId);
+  const procedureId = params.procedureId;
+
+  let [procedure, procedureError] = useProcedure(procedureId);
 
   const onSave = (update: ProcedureUpdateRequest) => {
-    if (params.procedureId) {
-      setDisabled(true);
+    setDisabled(true);
 
-      update.id = params.procedureId;
+    update.id = procedureId;
 
-      procedureService.update(update)
-        .subscribe({
-          next: (p) => navigate("/procedures/" + update.id),
-          error: e => {
-            setDisabled(false)
-            setError(true)
-          }
-        })
-    } else {
-      setDisabled(false)
-    }
+    procedureService.update(procedureId, update)
+      .subscribe({
+        next: (p) => navigate("/procedures/" + procedureId),
+        error: e => {
+          setDisabled(false)
+          setError(true)
+        }
+      })
   }
 
   let form

@@ -1,12 +1,6 @@
 export interface ProcedureRequest {
-  name: string
+  name?: string
   description?: string
   price?: string
   currency?: string
-}
-
-export const basicProcedureReq = (): ProcedureRequest => {
-  return {
-    name: ""
-  }
 }

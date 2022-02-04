@@ -6,15 +6,15 @@ import {ProcedureUpdateRequest} from "./vo/ProcedureUpdateRequest";
 
 export class ProcedureService {
 
-  create(address: ProcedureRequest): ReplaySubject<ProcedureVO> {
-    return httpHelper.post(address, "/v1/addresses")
+  create(procedure?: ProcedureRequest): ReplaySubject<ProcedureVO> {
+    return httpHelper.post(procedure, "/v1/procedures")
   }
 
-  update(update: ProcedureUpdateRequest): ReplaySubject<ProcedureVO> {
-    return httpHelper.put(update, `/v1/addresses/${update.id}`)
+  update(procedureId?: string, update?: ProcedureUpdateRequest): ReplaySubject<ProcedureVO> {
+    return httpHelper.put(update, `/v1/procedure/${procedureId}`)
   }
 
-  getById(id: string): ReplaySubject<ProcedureVO> {
+  getById(id?: string): ReplaySubject<ProcedureVO> {
     return httpHelperNoAuth.get<ProcedureVO>(`/v1/procedures/${id}`)
   }
 }
