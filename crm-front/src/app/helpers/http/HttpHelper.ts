@@ -47,7 +47,7 @@ class HttpHelper {
                                body: any = null,
                                contentType: string = APPLICATION_JSON): Request {
 
-    console.debug("Creating default request..")
+    console.debug("Initiating request >")
 
     let options: RequestInit = {
       method: method,
@@ -61,8 +61,6 @@ class HttpHelper {
     }
 
     let url = this.buildUrl(uriParts, method)
-
-    console.debug("Creating default request.. OK")
 
     return new Request(url, options);
   }
@@ -121,7 +119,6 @@ class HttpHelper {
           }
         })
         .catch((e) => {
-          // console.error(e.message, request.url);
           this.handleError(e, null, request, observer);
         });
     });
@@ -145,20 +142,20 @@ class HttpHelper {
   private handleOk<T>(observer: Subscriber<T>, value: any, response: Response, request: Request) {
     observer.next(value);
     observer.complete();
-    console.debug("Response OK");
     console.debug(value, response.status, request.url);
+    console.debug("Response OK");
   }
 
   // noinspection JSMethodCanBeStatic
   private handleError<T>(value: any, response: Response | null, request: Request, observer: Subscriber<T>) {
-    console.debug("Response NOK");
-
     if (response) {
       console.error(value, response.status, request.url);
     }
     else {
       console.error(value, request.url);
     }
+
+    console.debug("Response NOK");
 
     observer.error(value)
   }
