@@ -61,28 +61,16 @@ public class PatientService {
                 .onFailure(e -> log.error("Could not create a new patient, e: {}", e.getMessage()));
     }
 
-    private PatientEntity saveIdentity(PatientEntity patient) {
-        var i = identityRepository.save(patient.getIdentity());
-        patient.setIdentity(i);
-        return patient;
-    }
-
     public Try<AddressDTO> createAddress(UUID patientId, AddressDTO addressDTO) {
         return Try.of(() -> addressDTO)
                 .map(addressMapper::toEntity)
+                .map(AddressEntity::setupNew)
                 .map(addressRepository::save)
                 .map(addressEntity -> addAddressToPatient(patientId, addressEntity))
                 .map(addressRepository::save)
                 .map(addressMapper::toDto)
                 .onFailure(e -> log.error("Could not create patient address, e: {}", e.getMessage()));
 
-    }
-
-    private AddressEntity addAddressToPatient(UUID patientId ,AddressEntity addressEntity) {
-        Optional<PatientEntity> patient = patientRepository.findById(patientId);
-        patient.get().getAddresses().add(addressEntity);
-        patientRepository.save(patient.get());
-        return addressEntity;
     }
 
     public Try<PatientIdentityDTO> getIdentity(UUID patientId, UUID identityId) {
@@ -107,6 +95,21 @@ public class PatientService {
                 .map(it -> it.update(p))
                 .map(identityRepository::save)
                 .map(mapper::toDto);
+    }
+
+    private AddressEntity addAddressToPatient(UUID patientId, AddressEntity addressEntity) {
+        var patient = patientRepository.findById(patientId).orElseThrow(NotFoundException::new);
+        patient.getAddresses().add(addressEntity);
+        patientRepository.save(patient);
+
+        return addressEntity;
+    }
+
+    private PatientEntity saveIdentity(PatientEntity patient) {
+        var i = identityRepository.save(patient.getIdentity());
+        patient.setIdentity(i);
+
+        return patient;
     }
 
 

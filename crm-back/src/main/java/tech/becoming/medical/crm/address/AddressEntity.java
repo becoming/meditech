@@ -35,6 +35,13 @@ public class AddressEntity extends BasicEntity {
 
     private String details;
 
+    public AddressEntity setupNew() {
+        setCreated(Instant.now());
+        setUpdated(Instant.now());
+
+        return this;
+    }
+
     public AddressEntity update(AddressDTO addressDTO){
         number = addressDTO.getNumber();
         street = addressDTO.getStreet();
