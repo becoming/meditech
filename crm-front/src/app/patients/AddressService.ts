@@ -6,19 +6,19 @@ import {AddressRequest} from "./vo/AddressRequest";
 
 export class AddressService {
 
-  createForPatient(patientId: string, address: AddressRequest): ReplaySubject<PatientAddressVO> {
+  createForPatient(patientId?: string, address?: AddressRequest): ReplaySubject<PatientAddressVO> {
     return httpHelper.post(address, `/v1/patients/${patientId}/addresses`)
   }
 
-  createForDoctor(doctorId: string, address: AddressRequest): ReplaySubject<PatientAddressVO> {
+  createForDoctor(doctorId?: string, address?: AddressRequest): ReplaySubject<PatientAddressVO> {
     return httpHelper.post(address, `/v1/doctors/${doctorId}/addresses`)
   }
 
-  update(addressId: string, address: AddressUpdateRequest): ReplaySubject<PatientAddressVO> {
+  update(addressId?: string, address?: AddressUpdateRequest): ReplaySubject<PatientAddressVO> {
     return httpHelper.put(address, `/v1/addresses/${addressId}`)
   }
 
-  getById(id: string): ReplaySubject<PatientAddressVO> {
+  getById(id?: string): ReplaySubject<PatientAddressVO> {
     return httpHelperNoAuth.get<PatientAddressVO>(`/v1/addresses/${id}`)
   }
 }

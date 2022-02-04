@@ -19,21 +19,16 @@ export function AddressCreatePage() {
   let [, patientName,] = usePatient(patientId);
 
   const onSave = (address: AddressRequest) => {
-    if (patientId) {
-      setDisabled(true);
+    setDisabled(true);
 
-      addressService.createForPatient(patientId, address)
-        .subscribe({
-          next: (p) => navigate("/patients/" + patientId),
-          error: e => {
-            setDisabled(false)
-            setError(true)
-          }
-        })
-    } else {
-      setDisabled(false)
-    }
-
+    addressService.createForPatient(patientId, address)
+      .subscribe({
+        next: (p) => navigate("/patients/" + patientId),
+        error: e => {
+          setDisabled(false)
+          setError(true)
+        }
+      })
   }
   // 623820f5-612b-409b-925d-3eff8f362021
   return <div className={"App-page-container"}>

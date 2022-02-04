@@ -23,22 +23,18 @@ export function AddressEditPage() {
   let [address, addressError] = useAddress(addressId);
 
   const onSave = (updatedAddress: AddressUpdateRequest) => {
-    if (addressId) {
-      setDisabled(true);
+    setDisabled(true);
 
-      updatedAddress.addressId = addressId;
+    updatedAddress.addressId = addressId;
 
-      addressService.update(addressId, updatedAddress)
-        .subscribe({
-          next: (p) => navigate("/patients/" + patientId),
-          error: e => {
-            setDisabled(false)
-            setError(true)
-          }
-        })
-    } else {
-      setDisabled(false)
-    }
+    addressService.update(addressId, updatedAddress)
+      .subscribe({
+        next: (p) => navigate("/patients/" + patientId),
+        error: e => {
+          setDisabled(false)
+          setError(true)
+        }
+      })
   }
 
   let form
