@@ -1,4 +1,3 @@
-
 export const ACCEPT = "Accept";
 export const CONTENT_TYPE = "Content-Type";
 export const AUTHORIZATION = "Authorization";

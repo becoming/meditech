@@ -1,5 +1,3 @@
-// @flow
-
 import {Observable, ReplaySubject, Subscriber} from "rxjs";
 import {httpParams} from "./HttpParams";
 import {
