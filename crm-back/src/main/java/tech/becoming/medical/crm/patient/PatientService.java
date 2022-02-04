@@ -18,7 +18,6 @@ import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
 import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j

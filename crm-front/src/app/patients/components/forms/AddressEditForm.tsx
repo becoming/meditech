@@ -56,42 +56,49 @@ export function AddressEditForm(props: Props) {
                  label={"Number"}
                  placeholder={"69/A"}
                  disabled={props.disabled}
+                 value={number}
                  onChange={setNumber}/>
 
       <FormInput htmlId={"street"}
                  label={"Street"}
                  placeholder={"Pleasure street"}
                  disabled={props.disabled}
+                 value={street}
                  onChange={setStreet}/>
 
       <FormInput htmlId={"zipCode"}
                  label={"Zip Code"}
                  placeholder={"L-OV3"}
                  disabled={props.disabled}
+                 value={zipCode}
                  onChange={setZipCode}/>
 
       <FormInput htmlId={"city"}
                  label={"City"}
                  placeholder={"City of Love"}
                  disabled={props.disabled}
+                 value={city}
                  onChange={setCity}/>
 
       <FormInput htmlId={"region"}
                  label={"Region"}
                  placeholder={"Fellange"}
                  disabled={props.disabled}
+                 value={region}
                  onChange={setRegion}/>
 
       <FormInput htmlId={"department"}
                  label={"Department"}
                  placeholder={"BDSM"}
                  disabled={props.disabled}
+                 value={department}
                  onChange={setDepartment}/>
 
       <FormInput htmlId={"country"}
                  label={"Country"}
                  placeholder={"Sexembourg"}
                  disabled={props.disabled}
+                 value={country}
                  onChange={setCountry}/>
 
       <FormActionButtons disabled={props.disabled}
