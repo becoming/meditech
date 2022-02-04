@@ -10,7 +10,7 @@ export class PatientService {
     return httpHelper.post(toNewIdentity(title, firstname, lastname), "/v1/patients")
   }
 
-  getAll(): ReplaySubject<PatientVO[]> {
+  findAll(): ReplaySubject<PatientVO[]> {
     return httpHelperNoAuth.get<PatientVO[]>('/v1/patients')
   }
 

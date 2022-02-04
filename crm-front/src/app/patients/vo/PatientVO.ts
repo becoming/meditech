@@ -1,6 +1,6 @@
 import {PatientIdentityVO, toIdentity} from "./PatientIdentityVO";
 import {PatientAddressVO, toAddresses} from "./PatientAddressVO";
-import {BasicVO} from "../../common/BasicVO";
+import {BasicVO} from "../../common/vo/BasicVO";
 import {toDate2} from "../../helpers/DateHelper";
 
 export interface PatientVO extends BasicVO {

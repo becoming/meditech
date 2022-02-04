@@ -14,8 +14,12 @@ export class ProcedureService {
     return httpHelper.put(update, `/v1/procedure/${procedureId}`)
   }
 
-  getById(id?: string): ReplaySubject<ProcedureVO> {
+  findById(id?: string): ReplaySubject<ProcedureVO> {
     return httpHelperNoAuth.get<ProcedureVO>(`/v1/procedures/${id}`)
+  }
+
+  findAll(): ReplaySubject<ProcedureVO[]> {
+    return httpHelperNoAuth.get<ProcedureVO[]>(`/v1/procedures`)
   }
 }
 

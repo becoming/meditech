@@ -2,9 +2,9 @@ import {useNavigate} from "react-router-dom";
 import {PatientVO} from "../../vo/PatientVO";
 import {FullName} from "./FullName";
 import {Birthdate} from "./Birthdate";
-import {Created} from "./Created";
 import {toDateString, toDateString2} from "../../../helpers/DateHelper";
 import {AddressBasic} from "./AddressBasic";
+import {Created} from "../../../common/components/Created";
 
 interface Props {
   patient: PatientVO

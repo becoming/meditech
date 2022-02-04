@@ -2,7 +2,7 @@ package tech.becoming.medical.crm.procedure;
 
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
-import tech.becoming.medical.crm.procedure.dto.ProcedureView;
+import tech.becoming.medical.crm.procedure.dto.ProcedureDTO;
 import tech.becoming.medical.crm.procedure.entity.MedicalProcedureEntity;
 
 import java.util.HashSet;
@@ -17,12 +17,12 @@ import java.util.UUID;
 @Mapper
 public interface ProcedureMapper {
 
-    default List<ProcedureView> toDto(Page<MedicalProcedureEntity> v) {
+    default List<ProcedureDTO> toDto(Page<MedicalProcedureEntity> v) {
         return v.map(this::toDto)
                 .getContent();
     }
 
-    ProcedureView toDto(MedicalProcedureEntity v);
+    ProcedureDTO toDto(MedicalProcedureEntity v);
 
     default UUID toUUID(String v) {
         return v != null ? UUID.fromString(v) : null;
@@ -32,12 +32,12 @@ public interface ProcedureMapper {
         return v != null ? v.toString() : null;
     }
 
-    default Set<ProcedureView> toDto(Iterable<MedicalProcedureEntity> v) {
-        var result = new HashSet<ProcedureView>();
+    default Set<ProcedureDTO> toDto(Iterable<MedicalProcedureEntity> v) {
+        var result = new HashSet<ProcedureDTO>();
         v.forEach(item -> result.add(toDto(item)));
 
         return result;
     }
 
-    MedicalProcedureEntity toEntity(ProcedureView v);
+    MedicalProcedureEntity toEntity(ProcedureDTO v);
 }

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.Instant;
@@ -16,13 +17,22 @@ import java.time.Instant;
 @NoArgsConstructor
 public class IdentityEntity extends BasicEntity {
 
+    @Column(name = "FIRST_NAME")
     private String firstName;
+
+    @Column(name = "LAST_NAME")
     private String lastName;
 
+    @Column(name = "MEDICAL_ID")
     private String medicalId;
+
+    @Column(name = "NATIONAL_ID")
     private String nationalId;
 
+    @Column(name = "BIRTH_DATE")
     private Instant birthDate;
+
+    @Column(name = "DEATH_DATE")
     private Instant deathDate;
 
     public IdentityEntity update(PatientIdentityDTO p) {

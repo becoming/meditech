@@ -11,7 +11,7 @@ export function useProcedure(procedureId?: string): [ProcedureVO|undefined, any|
     let sub:Subscription;
 
     if(procedureId) {
-      sub = procedureService.getById(procedureId).subscribe({
+      sub = procedureService.findById(procedureId).subscribe({
         next: value => {
           setProcedure(toProcedure(value))
           setError(null)

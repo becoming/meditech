@@ -8,15 +8,12 @@ import {UL} from "@blueprintjs/core";
 export function PatientsListingPage() {
 
   let [patients, setPatients] = useState<PatientVO[]>([]);
-  let [title, setTitle] = useState<string>("Patients are loading...");
 
   useEffect(() => {
-    patientService.getAll().subscribe({
-      next: d => {
-        setPatients(toPatients(d))
-        setTitle("Patients")
-      }
-    });
+    patientService.findAll()
+      .subscribe({
+        next: d => setPatients(toPatients(d))
+      });
   }, [])
 
   let patientsLi: JSX.Element[] = []
@@ -27,7 +24,7 @@ export function PatientsListingPage() {
   return <div className={"App-page-container container"}>
     <div className={"row"}>
       <div className={"col-sm-12"}>
-        <PatientsListingToolbar title={title} />
+        <PatientsListingToolbar />
       </div>
     </div>
 

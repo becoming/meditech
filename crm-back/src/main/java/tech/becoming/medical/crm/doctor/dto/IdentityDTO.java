@@ -3,14 +3,14 @@ package tech.becoming.medical.crm.doctor.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tech.becoming.medical.crm.common.BasicDto;
+import tech.becoming.medical.crm.common.BasicDTO;
 
 import java.time.Instant;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class IdentityDTO extends BasicDto {
+public class IdentityDTO extends BasicDTO {
     private String firstName;
     private String lastName;
 

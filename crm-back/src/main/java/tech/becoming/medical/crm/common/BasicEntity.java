@@ -25,7 +25,9 @@ public abstract class BasicEntity {
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
 
+    @Column(name = "CREATED")
     private Instant created;
-    private Instant updated;
 
+    @Column(name = "UPDATED")
+    private Instant updated;
 }

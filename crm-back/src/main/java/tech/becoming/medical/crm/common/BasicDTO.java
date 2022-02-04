@@ -9,7 +9,7 @@ import java.time.Instant;
 // how to use it https://stackoverflow.com/a/45674593/1107450
 @Getter
 @Setter
-public abstract class BasicDto {
+public abstract class BasicDTO {
 
     private String id;
 

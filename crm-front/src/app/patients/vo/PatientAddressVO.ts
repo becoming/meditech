@@ -1,4 +1,4 @@
-import {BasicVO} from "../../common/BasicVO";
+import {BasicVO} from "../../common/vo/BasicVO";
 import {toDate2} from "../../helpers/DateHelper";
 
 export interface PatientAddressVO extends BasicVO {

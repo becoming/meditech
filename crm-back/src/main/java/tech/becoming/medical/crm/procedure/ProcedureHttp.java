@@ -4,9 +4,8 @@ import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
+import tech.becoming.medical.crm.procedure.dto.ProcedureDTO;
 import tech.becoming.medical.crm.procedure.entity.MedicalProcedureEntity;
-import tech.becoming.medical.crm.procedure.ProcedureService;
-import tech.becoming.medical.crm.procedure.dto.ProcedureView;
 
 import java.util.List;
 
@@ -19,13 +18,13 @@ public class ProcedureHttp {
     private final ProcedureService service;
 
     @GetMapping
-    public Try<List<ProcedureView>> findInRange(@RequestParam(defaultValue = "0") int page,
-                                              @RequestParam(defaultValue = "50") int size) {
+    public Try<List<ProcedureDTO>> findInRange(@RequestParam(defaultValue = "0") int page,
+                                               @RequestParam(defaultValue = "50") int size) {
         return service.findInRange(PageRequest.of(page, size));
     }
 
     @PostMapping
-    public Try<MedicalProcedureEntity> create(@RequestBody ProcedureView p) {
+    public Try<MedicalProcedureEntity> create(@RequestBody ProcedureDTO p) {
         return service.create(p);
     }
 

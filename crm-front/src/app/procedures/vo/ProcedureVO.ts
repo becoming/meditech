@@ -1,9 +1,10 @@
-import {BasicVO} from "../../common/BasicVO";
+import {BasicVO} from "../../common/vo/BasicVO";
 import {toDate2} from "../../helpers/DateHelper";
 
 export interface ProcedureVO extends BasicVO{
   id: string
   version: string
+  versionDate: Date
   name: string
 
   description?: string
@@ -28,8 +29,7 @@ export const toProcedure = (i: any): ProcedureVO => {
     description: i.description,
     name: i.name,
     price: i.price,
-    version: i.price
-
-
+    version: i.version,
+    versionDate: toDate2(i.versionDate),
   }
 }
