@@ -23,7 +23,6 @@ export function usePatient(patientId?: string): [PatientVO|undefined, string, st
         error: err => {
           setError("I cannot load this patient. What a bummer..")
           setPatientName("Oops")
-          console.error(err)
         }
       });
     } else {

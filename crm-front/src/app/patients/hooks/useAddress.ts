@@ -14,7 +14,6 @@ export function useAddress(addressId?: string): [PatientAddressVO|undefined, any
       },
       error: err => {
         setError("I cannot load this patient. What a bummer..")
-        console.error(err)
       }
     });
 

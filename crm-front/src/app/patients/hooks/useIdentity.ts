@@ -22,7 +22,6 @@ export function usePatientIdentity(patientId?: string, identityId?: string): [Pa
         error: err => {
           setError("I cannot load this patient's identity. What a bummer..")
           setIdentityName("Oops")
-          console.error(err)
         }
       });
     } else {

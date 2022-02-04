@@ -18,13 +18,10 @@ export function useProcedure(procedureId?: string): [ProcedureVO|undefined, any|
         },
         error: err => {
           setError("I cannot load this procedure. What a bummer..")
-          console.error(err)
         }
       });
     } else {
-      let str = `Procedure ID not provided, procedureId: ${procedureId}`
-      setError(str)
-      console.error(str)
+      setError(`Procedure ID not provided, procedureId: ${procedureId}`)
     }
 
     return () => {
