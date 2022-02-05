@@ -8,6 +8,7 @@ import tech.becoming.medical.crm.procedure.dto.NewProcedureDTO;
 import tech.becoming.medical.crm.procedure.dto.ProcedureDTO;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/procedures")
@@ -21,6 +22,11 @@ public class ProcedureHttp {
     public Try<List<ProcedureDTO>> findInRange(@RequestParam(defaultValue = "0") int page,
                                                @RequestParam(defaultValue = "50") int size) {
         return service.findInRange(PageRequest.of(page, size));
+    }
+
+    @GetMapping("{id}")
+    public Try<ProcedureDTO> find(@PathVariable UUID id) {
+        return service.find(id);
     }
 
     @PostMapping

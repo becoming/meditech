@@ -43,8 +43,6 @@ export function ProcedureEditPage() {
                               procedure={procedure}
                               cancelLink={"/procedures/" + procedure.id}
                               error={error}/>
-  } else {
-    form = <span>Loading procedure...</span>
   }
 
   return <div className={"App-page-container"}>

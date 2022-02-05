@@ -16,7 +16,7 @@ export function PatientListItem(props: Props) {
   let navigate = useNavigate();
 
   return <div className="App-patient-list-item" onClick={() => navigate("/patients/" + patient.id)}>
-    <Created dateTime={toDateString2(identity.created)} />
+    <Created dateTime={toDateString2(identity.created)} altPrefix={"Patient since"} />
     <FullName firstName={identity.firstName} lastName={identity.lastName} />
     <Birthdate date={toDateString(identity.birthDate)} />
     <AddressBasic value={patient.addresses} patientId={patient.id} />

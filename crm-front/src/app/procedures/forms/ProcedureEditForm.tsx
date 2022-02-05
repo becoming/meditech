@@ -51,24 +51,28 @@ export function ProcedureEditForm(props: Props) {
                  label={"Name"}
                  placeholder={"Longoscopie"}
                  disabled={props.disabled}
+                 value={name}
                  onChange={setName}/>
 
       <FormInput htmlId={"description"}
                  label={"Description"}
                  placeholder={"It helps to find the longest in the hood, for maximum pleasure."}
                  disabled={props.disabled}
+                 value={description}
                  onChange={setDescription}/>
 
       <FormInput htmlId={"price"}
                  label={"Price"}
                  placeholder={"69"}
                  disabled={props.disabled}
+                 value={price}
                  onChange={setPrice}/>
 
       <FormInput htmlId={"currency"}
                  label={"Currency"}
                  placeholder={"EUR"}
                  disabled={props.disabled}
+                 value={currency}
                  onChange={setCurrency}/>
 
       <FormActionButtons disabled={props.disabled}

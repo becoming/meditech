@@ -14,7 +14,7 @@ export function ProcedureListItem(props: Props) {
   let navigate = useNavigate();
 
   return <div className="App-patient-list-item" onClick={() => navigate("/procedures/" + procedure.id)}>
-    <Created dateTime={toDateString2(procedure.versionDate)} />
+    <Created altPrefix={"Procedure version date"} dateTime={toDateString2(procedure.versionDate)} />
     <Name value={procedure.name} />
     <Description value={procedure.description} />
   </div>

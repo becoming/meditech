@@ -6,7 +6,7 @@ import {PatientIdentityVO, toIdentity} from "../vo/PatientIdentityVO";
 
 export function usePatientIdentity(patientId?: string, identityId?: string): [PatientIdentityVO|undefined, string, string|null] {
   let [identity, setIdentity] = useState<PatientIdentityVO>();
-  let [identityName, setIdentityName] = useState<string>("Identity is loading...");
+  let [identityName, setIdentityName] = useState<string>("");
   let [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

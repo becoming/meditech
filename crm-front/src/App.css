@@ -64,6 +64,7 @@
 .App-toolbar-title {
     font-weight: bold;
     font-size: large;
+    padding-right: 10px;
 }
 
 .App-padding-left-0 {

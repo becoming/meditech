@@ -46,8 +46,6 @@ export function AddressEditPage() {
                             disabled={disabled}
                             address={address}
                             error={error} />
-  } else {
-    form = <span>Loading address...</span>
   }
 
   return <div className={"App-page-container"}>

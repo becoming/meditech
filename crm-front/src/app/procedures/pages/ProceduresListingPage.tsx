@@ -1,11 +1,11 @@
-import {ProceduresListingToolbar} from "../ProceduresListingToolbar";
+import {ProceduresListingToolbar} from "../components/ProceduresListingToolbar";
 import {useEffect, useState} from "react";
 import {ProcedureVO, toProcedures} from "../vo/ProcedureVO";
 import {procedureService} from "../ProcedureService";
 import {UL} from "@blueprintjs/core";
 import {ProcedureListItem} from "../components/ProcedureListItem";
 
-export function ProceduresPage() {
+export function ProceduresListingPage() {
   let [procedures, setProcedures] = useState<ProcedureVO[]>([]);
 
   useEffect(() => {

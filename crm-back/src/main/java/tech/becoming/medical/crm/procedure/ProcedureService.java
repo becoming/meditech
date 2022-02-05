@@ -5,11 +5,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import tech.becoming.common.exceptions.NotFoundException;
 import tech.becoming.medical.crm.procedure.dto.NewProcedureDTO;
 import tech.becoming.medical.crm.procedure.dto.ProcedureDTO;
 import tech.becoming.medical.crm.procedure.entity.MedicalProcedureEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -32,5 +34,13 @@ public class ProcedureService {
                 .map(MedicalProcedureEntity::setupNew)
                 .map(repo::save)
                 .map(mapper::toDto);
+    }
+
+    public Try<ProcedureDTO> find(UUID id) {
+        return Try.of(() -> id)
+                .map(repo::findById)
+                .map(NotFoundException::throwIfEmpty)
+                .map(mapper::toDto)
+                .onFailure(e -> log.debug("Could not find by id, id: {}", id));
     }
 }

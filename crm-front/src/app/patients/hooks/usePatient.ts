@@ -6,7 +6,7 @@ import {PatientVO, toPatient} from "../vo/PatientVO";
 
 export function usePatient(patientId?: string): [PatientVO|undefined, string, string|null] {
   let [patient, setPatient] = useState<PatientVO>();
-  let [patientName, setPatientName] = useState<string>("Patient is loading...");
+  let [patientName, setPatientName] = useState<string>("");
   let [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
