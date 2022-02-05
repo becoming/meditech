@@ -4,8 +4,8 @@ import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
 import tech.becoming.medical.crm.common.IdentityEntity;
 import tech.becoming.medical.crm.patient.dto.NewIdentityDTO;
-import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
 import tech.becoming.medical.crm.patient.dto.PatientDTO;
+import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
 import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
 import java.util.HashSet;

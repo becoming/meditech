@@ -1,4 +1,4 @@
-import {Button, ControlGroup, InputGroup} from "@blueprintjs/core";
+import {Button, ControlGroup} from "@blueprintjs/core";
 import {Link} from "react-router-dom";
 import {PageTitle} from "../../../PageTitle";
 

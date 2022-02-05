@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import tech.becoming.medical.crm.common.BasicEntity;
 import tech.becoming.medical.crm.address.AddressEntity;
+import tech.becoming.medical.crm.common.BasicEntity;
 import tech.becoming.medical.crm.common.IdentityEntity;
 
 import javax.persistence.*;

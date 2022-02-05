@@ -7,7 +7,6 @@ import tech.becoming.medical.crm.common.BasicEntity;
 
 import javax.persistence.*;
 import java.time.Instant;
-import java.util.UUID;
 
 @Table(name = "ADDRESS", schema = "TME")
 @Entity
