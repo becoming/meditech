@@ -1,10 +1,10 @@
 import {ControlGroup} from "@blueprintjs/core";
-import {PatientIdentityVO} from "../../vo/PatientIdentityVO";
+import {PatientIdentityVO} from "../vo/PatientIdentityVO";
 import {useState} from "react";
-import {patientService} from "../../PatientService";
-import {FormInput} from "../FormInput";
-import {FormDate} from "../FormDate";
-import {FormActionButtons} from "../FormActionButtons";
+import {patientService} from "../PatientService";
+import {FormInput} from "../../common/components/FormInput";
+import {FormDate} from "../components/profile/FormDate";
+import {FormActionButtons} from "../../common/components/FormActionButtons";
 
 interface Props {
   patientId: string

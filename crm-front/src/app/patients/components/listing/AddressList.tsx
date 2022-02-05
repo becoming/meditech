@@ -1,5 +1,5 @@
 import {PatientAddressVO} from "../../vo/PatientAddressVO";
-import {AddressCard} from "../AddressCard";
+import {AddressCard} from "../profile/AddressCard";
 
 
 interface Props {

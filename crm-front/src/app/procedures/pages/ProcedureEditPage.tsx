@@ -4,7 +4,7 @@ import {useState} from "react";
 import {ProcedureUpdateRequest} from "../vo/ProcedureUpdateRequest";
 import {procedureService} from "../ProcedureService";
 import {useProcedure} from "../hooks/useProcedure";
-import {WarningMessage} from "../../patients/components/WarningMessage";
+import {WarningMessage} from "../../common/components/WarningMessage";
 import {ProcedureEditForm} from "../forms/ProcedureEditForm";
 
 export function ProcedureEditPage() {

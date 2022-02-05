@@ -1,7 +1,7 @@
-import {PatientIdentityVO} from "../vo/PatientIdentityVO";
+import {PatientIdentityVO} from "../../vo/PatientIdentityVO";
 import {Card} from "@blueprintjs/core";
-import {identityFullName} from "../../helpers/PatientHelper";
-import {toDateString, toDateTimeString} from "../../helpers/DateHelper";
+import {identityFullName} from "../../../helpers/PatientHelper";
+import {toDateString, toDateTimeString} from "../../../helpers/DateHelper";
 import {EditLink} from "./EditLink";
 
 const addTr = (key: string, value?: string, title?: string) => {

@@ -4,7 +4,7 @@ import {Select} from "@blueprintjs/select";
 import {TitleVO} from "../vo/TitleVO";
 import {useCallback, useState} from "react";
 
-const TitleSelect = Select.ofType<TitleVO>();
+const TitleSelectTag = Select.ofType<TitleVO>();
 
 interface Props {
   disabled: boolean
@@ -12,7 +12,7 @@ interface Props {
   title?: TitleVO
 }
 
-export function FormTitleSelect(props: Props) {
+export function TitleSelect(props: Props) {
   const [title, setTitle] = useState(props.title || titles[0]);
 
   const onItemSelect = useCallback((title: TitleVO) => {
@@ -21,7 +21,7 @@ export function FormTitleSelect(props: Props) {
   }, []);
 
   return <FormGroup label="Title">
-    <TitleSelect
+    <TitleSelectTag
       disabled={props.disabled}
       key={title.name}
       items={titles}
@@ -31,6 +31,6 @@ export function FormTitleSelect(props: Props) {
 
       <Button icon="caret-down" intent="none" text={title.name} disabled={props.disabled}/>
 
-    </TitleSelect>
+    </TitleSelectTag>
   </FormGroup>
 }

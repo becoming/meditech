@@ -3,9 +3,9 @@ import {useState} from "react";
 import {titles} from "../components/Titles";
 import {patientService} from "../PatientService";
 import {useNavigate} from "react-router-dom";
-import {FormTitleSelect} from "../components/FormTitleSelect";
-import {FormInput} from "../components/FormInput";
-import {FormActionButtons} from "../components/FormActionButtons";
+import {TitleSelect} from "../components/TitleSelect";
+import {FormInput} from "../../common/components/FormInput";
+import {FormActionButtons} from "../../common/components/FormActionButtons";
 
 export function PatientCreatePage() {
   const [error, setError] = useState(false);
@@ -35,7 +35,7 @@ export function PatientCreatePage() {
 
     <div className={"App-form"}>
 
-      <FormTitleSelect disabled={disabled} onItemSelect={setTitle} />
+      <TitleSelect disabled={disabled} onItemSelect={setTitle} />
 
       <FormInput htmlId={"firstName"}
                  label={"First name"}

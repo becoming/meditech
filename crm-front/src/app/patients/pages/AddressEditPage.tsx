@@ -5,8 +5,8 @@ import {useState} from "react";
 import {addressService} from "../AddressService";
 import {useAddress} from "../hooks/useAddress";
 import {AddressUpdateRequest} from "../vo/AddressUpdateRequest";
-import {AddressEditForm} from "../components/forms/AddressEditForm";
-import {WarningMessage} from "../components/WarningMessage";
+import {AddressEditForm} from "../forms/AddressEditForm";
+import {WarningMessage} from "../../common/components/WarningMessage";
 
 export function AddressEditPage() {
 
