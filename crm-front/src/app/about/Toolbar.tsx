@@ -1,5 +1,5 @@
 import {ControlGroup} from "@blueprintjs/core";
-import {PageTitle} from "../PageTitle";
+import {PageTitle} from "../common/components/PageTitle";
 
 export function Toolbar() {
 

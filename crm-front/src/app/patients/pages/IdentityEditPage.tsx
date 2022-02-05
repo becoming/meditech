@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {PageTitle} from "../../PageTitle";
+import {PageTitle} from "../../common/components/PageTitle";
 import {usePatientIdentity} from "../hooks/useIdentity";
 import {PatientIdentityVO} from "../vo/PatientIdentityVO";
 import {WarningMessage} from "../../common/components/WarningMessage";

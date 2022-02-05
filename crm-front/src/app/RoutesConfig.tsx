@@ -13,7 +13,7 @@ import {ProcedureCreatePage} from "./procedures/pages/ProcedureCreatePage";
 import {ProcedureEditPage} from "./procedures/pages/ProcedureEditPage";
 import {ProceduresProfilePage} from "./procedures/pages/ProcedureProfilePage";
 
-export function AllRoutes() {
+export function RoutesConfig() {
   return <Routes>
     <Route path="/" element={<PatientsListingPage/>} />
     <Route path="/patients" element={<PatientsListingPage/>} />

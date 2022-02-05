@@ -2,14 +2,14 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter} from "react-router-dom";
 import {Menu} from "./app/menu/Menu";
-import {AllRoutes} from "./app/AllRoutes";
+import {RoutesConfig} from "./app/RoutesConfig";
 
 export function App() {
   return (
     <div className="bp4-dark">
       <BrowserRouter>
         <Menu/>
-        <AllRoutes />
+        <RoutesConfig />
       </BrowserRouter>
     </div>
   );

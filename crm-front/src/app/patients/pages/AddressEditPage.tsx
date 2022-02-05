@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {PageTitle} from "../../PageTitle";
+import {PageTitle} from "../../common/components/PageTitle";
 import {usePatient} from "../hooks/usePatient";
 import {useState} from "react";
 import {addressService} from "../AddressService";

@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {PageTitle} from "../../PageTitle";
+import {PageTitle} from "../../common/components/PageTitle";
 import {useState} from "react";
 import {ProcedureUpdateRequest} from "../vo/ProcedureUpdateRequest";
 import {procedureService} from "../ProcedureService";
