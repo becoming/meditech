@@ -41,13 +41,6 @@ public class PatientHttp {
         return service.createAddress(patientId, addressDTO);
     }
 
-    @PutMapping("{patientId}/identity/{identityId}")
-    public Try<IdentityDTO> update(@PathVariable UUID patientId,
-                                   @PathVariable UUID identityId,
-                                   @RequestBody IdentityDTO p) {
-        return service.updateIdentity(patientId, identityId, p);
-    }
-
     @GetMapping("{patientId}/identity/{identityId}")
     public Try<IdentityDTO> update(@PathVariable UUID patientId,
                                    @PathVariable UUID identityId) {
