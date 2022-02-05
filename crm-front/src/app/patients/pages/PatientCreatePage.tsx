@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {TitleSelect} from "../components/TitleSelect";
 import {FormInput} from "../../common/components/FormInput";
 import {FormActionButtons} from "../../common/components/FormActionButtons";
+import {NewIdentityRequest} from "../../common/vo/identity/NewIdentityRequest";
 
 export function PatientCreatePage() {
   const [error, setError] = useState(false);
@@ -20,7 +21,13 @@ export function PatientCreatePage() {
   const onSave = () => {
     setDisabled(true);
 
-    patientService.create(title.name, firstName, lastName)
+    const identity : NewIdentityRequest  = {
+      firstName: firstName,
+      lastName: lastName,
+      title: title
+    }
+
+    patientService.create(identity)
       .subscribe({
         next: (p) => navigate("/patients/" + p.id),
         error: e => {

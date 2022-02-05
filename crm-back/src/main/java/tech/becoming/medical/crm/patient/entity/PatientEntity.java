@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import tech.becoming.medical.crm.address.AddressEntity;
 import tech.becoming.medical.crm.common.BasicEntity;
-import tech.becoming.medical.crm.common.IdentityEntity;
+import tech.becoming.medical.crm.identity.IdentityEntity;
 
 import javax.persistence.*;
 import java.time.Instant;

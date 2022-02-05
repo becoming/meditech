@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
 import {Subscription} from "rxjs";
 import {patientService} from "../PatientService";
-import {identityFullName} from "../../helpers/PatientHelper";
-import {PatientIdentityVO, toIdentity} from "../vo/PatientIdentityVO";
+import {identityFullName} from "../../common/helpers/PatientHelper";
+import {IdentityVO, toIdentity} from "../../common/vo/identity/IdentityVO";
 
-export function usePatientIdentity(patientId?: string, identityId?: string): [PatientIdentityVO|undefined, string, string|null] {
-  let [identity, setIdentity] = useState<PatientIdentityVO>();
+export function usePatientIdentity(patientId?: string, identityId?: string): [IdentityVO|undefined, string, string|null] {
+  let [identity, setIdentity] = useState<IdentityVO>();
   let [identityName, setIdentityName] = useState<string>("");
   let [error, setError] = useState<string | null>(null);
 
@@ -19,7 +19,7 @@ export function usePatientIdentity(patientId?: string, identityId?: string): [Pa
           setIdentityName(identityFullName(p))
           setError(null)
         },
-        error: err => {
+        error: () => {
           setError("I cannot load this patient's identity. What a bummer..")
           setIdentityName("Oops")
         }

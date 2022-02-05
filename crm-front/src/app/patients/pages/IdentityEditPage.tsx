@@ -1,7 +1,6 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {PageTitle} from "../../common/components/PageTitle";
 import {usePatientIdentity} from "../hooks/useIdentity";
-import {PatientIdentityVO} from "../vo/PatientIdentityVO";
 import {WarningMessage} from "../../common/components/WarningMessage";
 import {IdentityEditForm} from "../forms/IdentityEditForm";
 
@@ -12,7 +11,7 @@ export function IdentityEditPage() {
 
   let [identity, identityName, error] = usePatientIdentity(params.patientId, params.identityId)
 
-  const onSave = (ignored: PatientIdentityVO) => {
+  const onSave = () => {
     navigate("/patients/" + params.patientId)
   }
 

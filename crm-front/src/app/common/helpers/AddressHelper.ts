@@ -1,6 +1,6 @@
-import {PatientAddressVO} from "../patients/vo/PatientAddressVO";
+import {AddressVO} from "../vo/address/AddressVO";
 
-export const toLuxFormat = (a: PatientAddressVO): string => {
+export const toLuxFormat = (a: AddressVO): string => {
   if(!a) {
     return "[no address]";
   }

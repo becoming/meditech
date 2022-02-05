@@ -10,28 +10,15 @@ package common {
 }
 
 package patient {
-    class NewIdentityDTO extends BasicDto {
-        String title
-        String firstName
-        String lastName
-    }
-
-    class PatientAddressDTO extends BasicDto {
-        String number
-        String street
-        String zipCode
-        String city
-        String region
-        String department
-        String country
-    }
-
     class PatientDTO extends BasicDto {
-        PatientIdentityDTO identity
-        Set<PatientAddressDTO> addresses
+        IdentityDTO identity
+        Set<AddressDTO> addresses
     }
+}
 
-    class PatientIdentityDTO extends BasicDto {
+package identity {
+
+    class IdentityDTO extends BasicDto {
         String firstName
         String lastName
         String medicalId
@@ -39,11 +26,16 @@ package patient {
         Instant birthDate
         Instant deathDate
     }
+
+    class NewIdentityDTO {
+        String title
+        String firstName
+        String lastName
+    }
 }
 
 package address {
-    class AddressDTO {
-        UUID id
+    class AddressDTO extends BasicDto {
         String number
         String street
         String zipCode
@@ -65,28 +57,48 @@ package address {
 }
 
 package doctor {
-    class AddressView
-
-    class DoctorView {
-        String id
-        MedicalLicenceView licence
-        IdentityView identity
-        Set<AddressView> addresses
+    class DoctorDTO extends BasicDto {
+        MedicalLicenceDTO licence
+        IdentityDTO identity
+        Set<AddressDTO> addresses
     }
 
-    class IdentityView
-    class MedicalLicenceView
-    class NewDoctorRequest
+    class MedicalLicenceDTO extends BasicDto {
+        String value
+        Instant expires
+        Instant issued
+        String issuer
+        AddressDTO address
+    }
 }
 
 package procedure {
-    class ProcedureView
+    class ProcedureDTO extends BasicDto {
+        MedicalProcedureEntity.Type type
+        Long price
+        String name
+        String description
+        String currency
+        Integer version
+        Instant versionDate
+    }
+
+    class NewProcedureDTO {
+        MedicalProcedureEntity.Type type
+        Long price
+        String name
+        String description
+        String currency
+    }
 }
 
-DoctorView "1" *-- "many" AddressView : contains
-DoctorView "1" *-- "1" IdentityView : contains
+DoctorDTO "1" *-- "many" AddressDTO : contains
+DoctorDTO "1" *-- "1" IdentityDTO : contains
+DoctorDTO "1" *-- "1" MedicalLicenceDTO : contains
 
-PatientDTO "1" *-- "many" PatientAddressDTO : contains
-PatientDTO "1" *-- "1" PatientIdentityDTO : contains
+MedicalLicenceDTO "1" *-- "1" AddressDTO : contains
+
+PatientDTO "1" *-- "many" AddressDTO : contains
+PatientDTO "1" *-- "1" IdentityDTO : contains
 
 @enduml

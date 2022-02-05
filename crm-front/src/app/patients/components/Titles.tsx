@@ -1,7 +1,7 @@
-import {TitleVO} from "../vo/TitleVO";
+import {TitleVO} from "../../common/vo/identity/TitleVO";
 import {ItemRenderer} from "@blueprintjs/select";
 import {MenuItem} from "@blueprintjs/core";
-import {highlightText} from "../../helpers/StringHelper";
+import {highlightText} from "../../common/helpers/StringHelper";
 
 export const titles: TitleVO[] = [{name: "Mister"}, {name: "Miss"}, {name: "Madame"}, {name: "Doctor"}, {name: ""}]
 

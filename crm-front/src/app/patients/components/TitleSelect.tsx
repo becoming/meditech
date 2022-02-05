@@ -1,7 +1,7 @@
 import {renderTitle, titles} from "./Titles";
 import {Button, FormGroup} from "@blueprintjs/core";
 import {Select} from "@blueprintjs/select";
-import {TitleVO} from "../vo/TitleVO";
+import {TitleVO} from "../../common/vo/identity/TitleVO";
 import {useCallback, useState} from "react";
 
 const TitleSelectTag = Select.ofType<TitleVO>();

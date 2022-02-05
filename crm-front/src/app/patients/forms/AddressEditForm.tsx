@@ -1,8 +1,8 @@
 import {FormInput} from "../../common/components/FormInput";
 import {FormActionButtons} from "../../common/components/FormActionButtons";
 import {useState} from "react";
-import {AddressRequest} from "../vo/AddressRequest";
-import {AddressUpdateRequest} from "../vo/AddressUpdateRequest";
+import {AddressRequest} from "../../common/vo/address/AddressRequest";
+import {AddressUpdateRequest} from "../../common/vo/address/AddressUpdateRequest";
 import {Card} from "@blueprintjs/core";
 
 interface Props {

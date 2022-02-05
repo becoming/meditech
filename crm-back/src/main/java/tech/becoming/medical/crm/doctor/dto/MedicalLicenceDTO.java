@@ -17,6 +17,5 @@ public class MedicalLicenceDTO extends BasicDTO {
     private Instant expires;
     private Instant issued;
     private String issuer;
-    private UUID businessId;
     private AddressDTO address;
 }

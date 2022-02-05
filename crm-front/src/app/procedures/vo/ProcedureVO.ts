@@ -1,5 +1,5 @@
 import {BasicVO} from "../../common/vo/BasicVO";
-import {toDate2} from "../../helpers/DateHelper";
+import {toDate2} from "../../common/helpers/DateHelper";
 
 export interface ProcedureVO extends BasicVO{
   id: string

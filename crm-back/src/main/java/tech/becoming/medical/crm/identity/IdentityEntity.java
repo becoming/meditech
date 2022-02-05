@@ -1,9 +1,9 @@
-package tech.becoming.medical.crm.common;
+package tech.becoming.medical.crm.identity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
+import tech.becoming.medical.crm.common.BasicEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,7 +35,7 @@ public class IdentityEntity extends BasicEntity {
     @Column(name = "DEATH_DATE")
     private Instant deathDate;
 
-    public IdentityEntity update(PatientIdentityDTO p) {
+    public IdentityEntity update(IdentityDTO p) {
         firstName = p.getFirstName();
         lastName = p.getLastName();
         medicalId = p.getMedicalId();

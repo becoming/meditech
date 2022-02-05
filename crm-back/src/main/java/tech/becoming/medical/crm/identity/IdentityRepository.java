@@ -1,4 +1,4 @@
-package tech.becoming.medical.crm.common;
+package tech.becoming.medical.crm.identity;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

@@ -2,9 +2,9 @@ import {useNavigate, useParams} from "react-router-dom";
 import {PageTitle} from "../../common/components/PageTitle";
 import {usePatient} from "../hooks/usePatient";
 import {useState} from "react";
-import {addressService} from "../AddressService";
+import {addressService} from "../../common/AddressService";
 import {AddressEditForm} from "../forms/AddressEditForm";
-import {AddressRequest} from "../vo/AddressRequest";
+import {AddressRequest} from "../../common/vo/address/AddressRequest";
 
 export function AddressCreatePage() {
 

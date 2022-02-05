@@ -5,7 +5,7 @@ import {PatientProfilePage} from "./patients/pages/PatientProfilePage";
 import {IdentityEditPage} from "./patients/pages/IdentityEditPage";
 import {AddressCreatePage} from "./patients/pages/AddressCreatePage";
 import {ProceduresListingPage} from "./procedures/pages/ProceduresListingPage";
-import {DoctorsPage} from "./doctors/DoctorsPage";
+import {DoctorsListingPage} from "./doctors/page/DoctorsListingPage";
 import {AboutPage} from "./about/AboutPage";
 import React from "react";
 import {AddressEditPage} from "./patients/pages/AddressEditPage";
@@ -28,7 +28,7 @@ export function RoutesConfig() {
     <Route path="/procedures/:procedureId/edit" element={<ProcedureEditPage/>} />
     <Route path="/procedures/:procedureId" element={<ProceduresProfilePage/>} />
 
-    <Route path="/doctors" element={<DoctorsPage/>} />
+    <Route path="/doctors" element={<DoctorsListingPage/>} />
 
     <Route path="/about" element={<AboutPage/>} />
   </Routes>

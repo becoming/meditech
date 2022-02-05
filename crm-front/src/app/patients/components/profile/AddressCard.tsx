@@ -1,6 +1,6 @@
-import {toLuxFormat} from "../../../helpers/AddressHelper";
-import {PatientAddressVO} from "../../vo/PatientAddressVO";
-import {toDateTimeString} from "../../../helpers/DateHelper";
+import {toLuxFormat} from "../../../common/helpers/AddressHelper";
+import {AddressVO} from "../../../common/vo/address/AddressVO";
+import {toDateTimeString} from "../../../common/helpers/DateHelper";
 import {Card} from "@blueprintjs/core";
 import {EditLink} from "./EditLink";
 
@@ -15,7 +15,7 @@ const addTr = (value?: string, title?: string) => {
 }
 
 interface Props {
-  address: PatientAddressVO
+  address: AddressVO
   patientId: string
 }
 

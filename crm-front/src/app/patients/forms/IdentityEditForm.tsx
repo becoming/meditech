@@ -1,32 +1,43 @@
 import {ControlGroup} from "@blueprintjs/core";
-import {PatientIdentityVO} from "../vo/PatientIdentityVO";
 import {useState} from "react";
-import {patientService} from "../PatientService";
 import {FormInput} from "../../common/components/FormInput";
 import {FormDate} from "../components/profile/FormDate";
 import {FormActionButtons} from "../../common/components/FormActionButtons";
+import {IdentityUpdateRequest} from "../../common/vo/identity/IdentityUpdateRequest";
+import {IdentityVO} from "../../common/vo/identity/IdentityVO";
+import {identityService} from "../../common/IdentityService";
 
 interface Props {
   patientId: string
-  identity: PatientIdentityVO
-  onSave: (v: PatientIdentityVO) => void
+  identity: IdentityVO
+  onSave: (v: IdentityVO) => void
 }
 
 export function IdentityEditForm(props: Props) {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState(false);
 
-  const onFirstName = (value: string) => props.identity.firstName = value
-  const onLastName = (value: string) => props.identity.lastName = value
-  const onBirthDate = (date: Date) => props.identity.birthDate = date
-  const onDeathDate = (date: Date) => props.identity.deathDate = date
+  const [firstName, setFirstName] = useState(props.identity.firstName)
+  const [lastName, setLastName] = useState(props.identity.lastName)
+  const [birthDate, setBirthDate] = useState(props.identity.birthDate)
+  const [deathDate, setDeathDate] = useState(props.identity.deathDate)
+  const [medicalId, setMedicalId] = useState(props.identity.medicalId)
+  const [nationalId, setNationalId] = useState(props.identity.nationalId)
 
   const onSave = () => {
-    if (!props.identity) return
-
     setDisabled(true);
 
-    patientService.updateIdentity(props.identity, props.patientId)
+    const update: IdentityUpdateRequest = {
+      id: props.identity.id,
+      birthDate: birthDate,
+      deathDate: deathDate,
+      firstName: firstName,
+      lastName: lastName,
+      medicalId: medicalId,
+      nationalId: nationalId
+    }
+
+    identityService.update(update)
       .subscribe({
         next: (p) => props.onSave(p),
         error: err => {
@@ -46,26 +57,42 @@ export function IdentityEditForm(props: Props) {
                  placeholder={"John"}
                  required={true}
                  disabled={disabled}
-                 value={props.identity.firstName}
-                 onChange={onFirstName} />
+                 value={firstName}
+                 onChange={setFirstName} />
 
       <FormInput htmlId={"lastName"}
                  label={"Last name"}
                  placeholder={"Doe"}
                  required={true}
                  disabled={disabled}
-                 value={props.identity.lastName}
-                 onChange={onLastName} />
+                 value={lastName}
+                 onChange={setLastName} />
+
+      <FormInput htmlId={"medicalId"}
+                 label={"Medical Id"}
+                 placeholder={"19691231000696"}
+                 required={false}
+                 disabled={disabled}
+                 value={medicalId}
+                 onChange={setMedicalId} />
+
+      <FormInput htmlId={"nationalId"}
+                 label={"National Id"}
+                 placeholder={"A2021123"}
+                 required={false}
+                 disabled={disabled}
+                 value={nationalId}
+                 onChange={setNationalId} />
 
       <ControlGroup>
         <FormDate title={"Birth date"}
-                  onChange={onBirthDate}
-                  date={props.identity.birthDate}
+                  onChange={setBirthDate}
+                  date={birthDate}
                   disabled={disabled} />
 
-        <FormDate title={"Death date"}
-                  onChange={onDeathDate}
-                  date={props.identity.deathDate}
+        <FormDate title={"Deceased"}
+                  onChange={setDeathDate}
+                  date={deathDate}
                   disabled={disabled} />
       </ControlGroup>
 

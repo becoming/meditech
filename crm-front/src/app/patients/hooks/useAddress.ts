@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
-import {PatientAddressVO, toAddress} from "../vo/PatientAddressVO";
-import {addressService} from "../AddressService";
+import {AddressVO, toAddress} from "../../common/vo/address/AddressVO";
+import {addressService} from "../../common/AddressService";
 
-export function useAddress(addressId?: string): [PatientAddressVO|undefined, any|null] {
-  let [address, setAddress] = useState<PatientAddressVO>();
+export function useAddress(addressId?: string): [AddressVO|undefined, any|null] {
+  let [address, setAddress] = useState<AddressVO>();
   let [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

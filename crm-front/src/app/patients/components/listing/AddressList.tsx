@@ -1,9 +1,9 @@
-import {PatientAddressVO} from "../../vo/PatientAddressVO";
+import {AddressVO} from "../../../common/vo/address/AddressVO";
 import {AddressCard} from "../profile/AddressCard";
 
 
 interface Props {
-  value: PatientAddressVO[]
+  value: AddressVO[]
   patientId: string
 }
 

@@ -1,4 +1,4 @@
-package tech.becoming.medical.crm.patient.dto;
+package tech.becoming.medical.crm.identity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,7 @@ import java.time.Instant;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PatientIdentityDTO extends BasicDTO {
+public class IdentityDTO extends BasicDTO {
 
     private String firstName;
     private String lastName;

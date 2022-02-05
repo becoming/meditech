@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {Subscription} from "rxjs";
 import {patientService} from "../PatientService";
-import {patientFullName} from "../../helpers/PatientHelper";
+import {patientFullName} from "../../common/helpers/PatientHelper";
 import {PatientVO, toPatient} from "../vo/PatientVO";
 
 export function usePatient(patientId?: string): [PatientVO|undefined, string, string|null] {

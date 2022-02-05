@@ -1,4 +1,4 @@
-import {httpHelper, httpHelperNoAuth} from "../helpers/http/HttpHelper";
+import {httpHelper, httpHelperNoAuth} from "../common/helpers/http/HttpHelper";
 import {ReplaySubject} from "rxjs";
 import {ProcedureRequest} from "./vo/ProcedureRequest";
 import {ProcedureVO} from "./vo/ProcedureVO";

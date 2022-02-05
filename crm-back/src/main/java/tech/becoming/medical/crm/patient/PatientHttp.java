@@ -5,9 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import tech.becoming.medical.crm.address.AddressDTO;
+import tech.becoming.medical.crm.identity.IdentityDTO;
 import tech.becoming.medical.crm.patient.dto.NewIdentityDTO;
 import tech.becoming.medical.crm.patient.dto.PatientDTO;
-import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
 
 import java.util.List;
 import java.util.UUID;
@@ -42,15 +42,15 @@ public class PatientHttp {
     }
 
     @PutMapping("{patientId}/identity/{identityId}")
-    public Try<PatientIdentityDTO> update(@PathVariable UUID patientId,
-                                          @PathVariable UUID identityId,
-                                          @RequestBody PatientIdentityDTO p) {
+    public Try<IdentityDTO> update(@PathVariable UUID patientId,
+                                   @PathVariable UUID identityId,
+                                   @RequestBody IdentityDTO p) {
         return service.updateIdentity(patientId, identityId, p);
     }
 
     @GetMapping("{patientId}/identity/{identityId}")
-    public Try<PatientIdentityDTO> update(@PathVariable UUID patientId,
-                                          @PathVariable UUID identityId) {
+    public Try<IdentityDTO> update(@PathVariable UUID patientId,
+                                   @PathVariable UUID identityId) {
         return service.getIdentity(patientId, identityId);
     }
 

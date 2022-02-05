@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {ProcedureVO} from "../vo/ProcedureVO";
 import {Name} from "./Name";
 import {Created} from "../../common/components/Created";
-import {toDateString2} from "../../helpers/DateHelper";
+import {toDateString2} from "../../common/helpers/DateHelper";
 import {Description} from "./Description";
 
 interface Props {

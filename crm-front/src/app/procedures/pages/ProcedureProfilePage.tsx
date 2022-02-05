@@ -3,7 +3,7 @@ import {ProcedureVO, toProcedure} from "../vo/ProcedureVO";
 import {procedureService} from "../ProcedureService";
 import {ProcedureProfileToolbar} from "../components/ProcedureProfileToolbar";
 import {useParams} from "react-router-dom";
-import {toDateString2} from "../../helpers/DateHelper";
+import {toDateString2} from "../../common/helpers/DateHelper";
 
 export function ProceduresProfilePage() {
   let [procedure, setProcedure] = useState<ProcedureVO>();

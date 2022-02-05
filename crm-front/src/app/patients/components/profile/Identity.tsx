@@ -1,8 +1,8 @@
-import {PatientIdentityVO} from "../../vo/PatientIdentityVO";
 import {Card} from "@blueprintjs/core";
-import {identityFullName} from "../../../helpers/PatientHelper";
-import {toDateString, toDateTimeString} from "../../../helpers/DateHelper";
+import {identityFullName} from "../../../common/helpers/PatientHelper";
+import {toDateString, toDateTimeString} from "../../../common/helpers/DateHelper";
 import {EditLink} from "./EditLink";
+import {IdentityVO} from "../../../common/vo/identity/IdentityVO";
 
 const addTr = (key: string, value?: string, title?: string) => {
   if(!title) {
@@ -16,7 +16,7 @@ const addTr = (key: string, value?: string, title?: string) => {
 }
 
 interface Props {
-  identity: PatientIdentityVO
+  identity: IdentityVO
   patientId: string
 }
 export function Identity(props: Props) {
@@ -29,7 +29,7 @@ export function Identity(props: Props) {
   }
 
   if(props.identity.deathDate) {
-    trs.push(addTr("Death date", toDateString(props.identity.deathDate)))
+    trs.push(addTr("Deceased", toDateString(props.identity.deathDate)))
   }
 
   trs.push(addTr("Patient since", toDateTimeString(props.identity.created), `Patient since ${props.identity.created}`))

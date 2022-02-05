@@ -2,9 +2,9 @@ import {useNavigate, useParams} from "react-router-dom";
 import {PageTitle} from "../../common/components/PageTitle";
 import {usePatient} from "../hooks/usePatient";
 import {useState} from "react";
-import {addressService} from "../AddressService";
+import {addressService} from "../../common/AddressService";
 import {useAddress} from "../hooks/useAddress";
-import {AddressUpdateRequest} from "../vo/AddressUpdateRequest";
+import {AddressUpdateRequest} from "../../common/vo/address/AddressUpdateRequest";
 import {AddressEditForm} from "../forms/AddressEditForm";
 import {WarningMessage} from "../../common/components/WarningMessage";
 

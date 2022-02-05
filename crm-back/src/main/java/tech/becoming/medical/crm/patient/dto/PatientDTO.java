@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tech.becoming.medical.crm.address.AddressDTO;
 import tech.becoming.medical.crm.common.BasicDTO;
+import tech.becoming.medical.crm.identity.IdentityDTO;
 
 import java.util.Set;
 
@@ -13,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class PatientDTO extends BasicDTO {
 
-    private PatientIdentityDTO identity;
+    private IdentityDTO identity;
     private Set<AddressDTO> addresses;
 
 }

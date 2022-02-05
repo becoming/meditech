@@ -1,28 +1,28 @@
-import {AddressVO, toAddresses} from "../../common/vo/address/AddressVO";
+import {IdentityVO, toIdentity} from "../../common/vo/identity/IdentityVO";
 import {BasicVO} from "../../common/vo/BasicVO";
 import {toDate2} from "../../common/helpers/DateHelper";
-import {IdentityVO, toIdentity} from "../../common/vo/identity/IdentityVO";
+import {AddressVO, toAddresses} from "../../common/vo/address/AddressVO";
 
-export interface PatientVO extends BasicVO {
+export interface DoctorVO extends BasicVO {
   identity: IdentityVO
   addresses: AddressVO[]
 }
 
-export const hasAddress = (patient: PatientVO): boolean => {
+export const hasAddress = (patient: DoctorVO): boolean => {
   return patient.addresses && patient.addresses.length > 0
 }
 
-export const toPatients = (is: any): PatientVO[] => {
-  let result: PatientVO[] = []
+export const toDoctors = (is: any): DoctorVO[] => {
+  let result: DoctorVO[] = []
 
   if (is && is.length && is.length > 0) {
-    is.forEach((v: any) => result.push(toPatient(v)))
+    is.forEach((v: any) => result.push(toDoctor(v)))
   }
 
   return result;
 }
 
-export const toPatient = (i: any): PatientVO => {
+export const toDoctor = (i: any): DoctorVO => {
   return {
     id: i.id,
     created: toDate2(i.created),

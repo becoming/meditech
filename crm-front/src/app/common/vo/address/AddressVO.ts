@@ -1,7 +1,7 @@
-import {BasicVO} from "../../common/vo/BasicVO";
+import {BasicVO} from "../BasicVO";
 import {toDate2} from "../../helpers/DateHelper";
 
-export interface PatientAddressVO extends BasicVO {
+export interface AddressVO extends BasicVO {
   number: string
   street: string
   zipCode: string
@@ -12,13 +12,13 @@ export interface PatientAddressVO extends BasicVO {
 }
 
 export const toAddresses = (is: any[]) => {
-  let result : PatientAddressVO[] = []
+  let result : AddressVO[] = []
   is.forEach(v => result.push(toAddress(v)))
 
   return result;
 }
 
-export const toAddress = (i: any): PatientAddressVO => {
+export const toAddress = (i: any): AddressVO => {
   return {
     id: i.id,
     created: toDate2(i.created),

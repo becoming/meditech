@@ -11,10 +11,10 @@ import tech.becoming.medical.crm.address.AddressDTO;
 import tech.becoming.medical.crm.address.AddressEntity;
 import tech.becoming.medical.crm.address.AddressMapper;
 import tech.becoming.medical.crm.address.AddressRepository;
-import tech.becoming.medical.crm.common.IdentityRepository;
+import tech.becoming.medical.crm.identity.IdentityDTO;
+import tech.becoming.medical.crm.identity.IdentityRepository;
 import tech.becoming.medical.crm.patient.dto.NewIdentityDTO;
 import tech.becoming.medical.crm.patient.dto.PatientDTO;
-import tech.becoming.medical.crm.patient.dto.PatientIdentityDTO;
 import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
 import java.util.List;
@@ -72,7 +72,7 @@ public class PatientService {
 
     }
 
-    public Try<PatientIdentityDTO> getIdentity(UUID patientId, UUID identityId) {
+    public Try<IdentityDTO> getIdentity(UUID patientId, UUID identityId) {
         return Try.of(() -> patientId)
                 .map(patientRepository::findById)
                 .map(NotFoundException::throwIfEmpty)
@@ -80,19 +80,6 @@ public class PatientService {
                 .map(BadRequestException::throwIfFalse)
                 .map($ -> identityRepository.findById(identityId))
                 .map(NotFoundException::throwIfEmpty)
-                .map(mapper::toDto);
-    }
-
-    public Try<PatientIdentityDTO> updateIdentity(UUID patientId, UUID identityId, PatientIdentityDTO p) {
-        return Try.of(() -> patientId)
-                .map(patientRepository::findById)
-                .map(NotFoundException::throwIfEmpty)
-                .map(it -> it.hasIdentityId(identityId))
-                .map(BadRequestException::throwIfFalse)
-                .map($ -> identityRepository.findById(identityId))
-                .map(NotFoundException::throwIfEmpty)
-                .map(it -> it.update(p))
-                .map(identityRepository::save)
                 .map(mapper::toDto);
     }
 

@@ -43,11 +43,11 @@ Interface with a field that's a lambda has to declare the return type after `=>`
 
 ```typescript
 interface Props {
-  onSave: (v: PatientIdentityVO) => void // void is the return type
+  onSave: (v: IdentityVO) => void // void is the return type
 }
 ```
 
-a compatible lambda will be `const onSave = (ignored: PatientIdentityVO) => {}`
+a compatible lambda will be `const onSave = (ignored: IdentityVO) => {}`
 - where `{}` is the body of the lambda, not the return type.
 
 ---

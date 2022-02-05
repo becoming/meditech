@@ -1,5 +1,5 @@
 import {Button, Card, Label} from "@blueprintjs/core";
-import {httpHelper} from "../helpers/http/HttpHelper";
+import {httpHelper} from "../common/helpers/http/HttpHelper";
 import {useEffect, useState} from "react";
 import {Subscription} from "rxjs";
 
