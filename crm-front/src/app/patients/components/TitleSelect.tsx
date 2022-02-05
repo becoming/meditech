@@ -15,9 +15,9 @@ interface Props {
 export function TitleSelect(props: Props) {
   const [title, setTitle] = useState(props.title || titles[0]);
 
-  const onItemSelect = useCallback((title: TitleVO) => {
-    setTitle(title);
-    props.onItemSelect(title)
+  const onItemSelect = useCallback((t: TitleVO) => {
+    setTitle(t);
+    props.onItemSelect(t)
   }, []);
 
   return <FormGroup label="Title">
