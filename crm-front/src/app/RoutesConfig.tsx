@@ -14,6 +14,7 @@ import {ProcedureEditPage} from "./procedures/pages/ProcedureEditPage";
 import {ProceduresProfilePage} from "./procedures/pages/ProcedureProfilePage";
 import {DoctorCreatePage} from "./doctors/page/DoctorCreatePage";
 import {DoctorProfilePage} from "./doctors/page/DoctorProfilePage";
+import {DoctorEditPage} from "./doctors/page/DoctorEditPage";
 
 export function RoutesConfig() {
   return <Routes>
@@ -33,6 +34,7 @@ export function RoutesConfig() {
     <Route path="/doctors" element={<DoctorsListingPage/>}/>
     <Route path="/doctors/create" element={<DoctorCreatePage/>}/>
     <Route path="/doctors/:doctorId" element={<DoctorProfilePage/>}/>
+    <Route path="/doctors/:doctorId/identity/:identityId/edit" element={<DoctorEditPage/>}/>
 
     <Route path="/about" element={<AboutPage/>}/>
   </Routes>

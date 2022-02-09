@@ -13,7 +13,7 @@ export function DoctorProfileToolbar(props: Props) {
     <PageTitle value={props.title} backUrl={"/doctors"} />
     <Link to={`/doctor/${props.doctorId}/address/create`}>
       <Button icon="add-location">New Address</Button>
-      <Button icon="add-location">New License</Button>
+      <Button icon="document">New License</Button>
     </Link>
   </ControlGroup>
 
