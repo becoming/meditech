@@ -1,10 +1,10 @@
 import {useNavigate} from "react-router-dom";
 import {PatientVO} from "../../vo/PatientVO";
-import {FullName} from "./FullName";
+import {FullName} from "../../../common/components/listing/FullName";
 import {Birthdate} from "./Birthdate";
 import {toDateString, toDateString2} from "../../../common/helpers/DateHelper";
-import {AddressBasic} from "./AddressBasic";
-import {Created} from "../../../common/components/Created";
+import {AddressBasic} from "../../../common/components/listing/AddressBasic";
+import {Created} from "../../../common/components/listing/Created";
 
 interface Props {
   patient: PatientVO

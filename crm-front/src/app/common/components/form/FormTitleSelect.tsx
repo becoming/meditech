@@ -1,7 +1,7 @@
-import {renderTitle, titles} from "./Titles";
+import {renderTitle, titlesHelper} from "../../helpers/TitlesHelper";
 import {Button, FormGroup} from "@blueprintjs/core";
 import {Select} from "@blueprintjs/select";
-import {TitleVO} from "../../common/vo/identity/TitleVO";
+import {TitleVO} from "../../vo/identity/TitleVO";
 import {useCallback, useState} from "react";
 
 const TitleSelectTag = Select.ofType<TitleVO>();
@@ -12,8 +12,8 @@ interface Props {
   title?: TitleVO
 }
 
-export function TitleSelect(props: Props) {
-  const [title, setTitle] = useState(props.title || titles[0]);
+export function FormTitleSelect(props: Props) {
+  const [title, setTitle] = useState(props.title || titlesHelper[0]);
 
   const onItemSelect = useCallback((t: TitleVO) => {
     setTitle(t);
@@ -24,7 +24,7 @@ export function TitleSelect(props: Props) {
     <TitleSelectTag
       disabled={props.disabled}
       key={title.name}
-      items={titles}
+      items={titlesHelper}
       activeItem={props.title}
       onItemSelect={onItemSelect}
       itemRenderer={renderTitle}>

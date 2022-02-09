@@ -1,8 +1,8 @@
-import {toLuxFormat} from "../../../common/helpers/AddressHelper";
-import {AddressVO} from "../../../common/vo/address/AddressVO";
-import {toDateTimeString} from "../../../common/helpers/DateHelper";
+import {toLuxFormat} from "../../helpers/AddressHelper";
+import {AddressVO} from "../../vo/address/AddressVO";
+import {toDateTimeString} from "../../helpers/DateHelper";
 import {Card} from "@blueprintjs/core";
-import {EditLink} from "./EditLink";
+import {EditLink} from "../EditLink";
 
 const addTr = (value?: string, title?: string) => {
   if(!title) {
@@ -16,7 +16,8 @@ const addTr = (value?: string, title?: string) => {
 
 interface Props {
   address: AddressVO
-  patientId: string
+  patientId?: string
+  doctorId?: string
 }
 
 export function AddressCard(props: Props) {
@@ -26,12 +27,17 @@ export function AddressCard(props: Props) {
   trs.push(addTr(toLuxFormat(address)))
   trs.push(addTr(toDateTimeString(address.updated), "Created " + toDateTimeString(address.updated)))
 
+  let id = props.patientId || props.doctorId
+  let resource = props.patientId ? "patients" : "doctors"
+
+  let editUrl = `/${resource}/${id}/address/${address.id}/edit`
+
   return <Card className={"App-patient-identity"}>
     <table className="bp4-html-table bp4-html-table-striped">
       <tbody>
       {trs}
       </tbody>
     </table>
-    <EditLink link={`/patients/${props.patientId}/address/${address.id}/edit`} />
+    <EditLink link={editUrl} />
   </Card>
 }

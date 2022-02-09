@@ -6,7 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import tech.becoming.medical.crm.address.AddressDTO;
 import tech.becoming.medical.crm.doctor.dto.DoctorDTO;
-import tech.becoming.medical.crm.doctor.dto.NewDoctorRequest;
+import tech.becoming.medical.crm.patient.dto.NewIdentityDTO;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,6 +18,11 @@ public class DoctorHttp {
 
     private final DoctorService service;
 
+    @GetMapping("{doctorId}")
+    public Try<DoctorDTO> findOne(@PathVariable UUID doctorId) {
+        return service.findById(doctorId);
+    }
+
     @GetMapping
     public Try<List<DoctorDTO>> findInRange(@RequestParam(defaultValue = "0") int page,
                                             @RequestParam(defaultValue = "50") int size) {
@@ -25,7 +30,7 @@ public class DoctorHttp {
     }
 
     @PostMapping
-    public Try<DoctorDTO> create(@RequestBody NewDoctorRequest p) {
+    public Try<DoctorDTO> create(@RequestBody NewIdentityDTO p) {
         return service.create(p);
     }
 

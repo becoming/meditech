@@ -2,8 +2,8 @@ import {useState} from "react";
 import {Card} from "@blueprintjs/core";
 import {ProcedureRequest} from "../vo/ProcedureRequest";
 import {ProcedureUpdateRequest} from "../vo/ProcedureUpdateRequest";
-import {FormInput} from "../../common/components/FormInput";
-import {FormActionButtons} from "../../common/components/FormActionButtons";
+import {FormInput} from "../../common/components/form/FormInput";
+import {FormActionButtons} from "../../common/components/form/FormActionButtons";
 import {ProcedureVO} from "../vo/ProcedureVO";
 
 interface Props {

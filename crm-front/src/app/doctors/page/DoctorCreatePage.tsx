@@ -1,14 +1,14 @@
 import {PageTitle} from "../../common/components/PageTitle";
 import {useState} from "react";
-import {titlesHelper} from "../../common/helpers/TitlesHelper";
-import {patientService} from "../PatientService";
 import {useNavigate} from "react-router-dom";
-import {FormTitleSelect} from "../../common/components/form/FormTitleSelect";
 import {FormInput} from "../../common/components/form/FormInput";
 import {FormActionButtons} from "../../common/components/form/FormActionButtons";
 import {NewIdentityRequest} from "../../common/vo/identity/NewIdentityRequest";
+import {doctorService} from "../DoctorsService";
+import {titlesHelper} from "../../common/helpers/TitlesHelper";
+import {FormTitleSelect} from "../../common/components/form/FormTitleSelect";
 
-export function PatientCreatePage() {
+export function DoctorCreatePage() {
   const [error, setError] = useState(false);
 
   const [title, setTitle] = useState(titlesHelper[0]);
@@ -27,9 +27,9 @@ export function PatientCreatePage() {
       title: title
     }
 
-    patientService.create(identity)
+    doctorService.create(identity)
       .subscribe({
-        next: (p) => navigate("/patients/" + p.id),
+        next: (p) => navigate("/doctors/" + p.id),
         error: e => {
           setDisabled(false)
           setError(e)
@@ -38,7 +38,7 @@ export function PatientCreatePage() {
   }
 
   return <div className={"App-page-container"}>
-    <PageTitle value={"New patient"} backUrl={"/patients"}/>
+    <PageTitle value={"New doctor"} backUrl={"/doctors"}/>
 
     <div className={"App-form"}>
 
@@ -59,7 +59,8 @@ export function PatientCreatePage() {
                  onChange={setLast} />
 
       <FormActionButtons disabled={disabled}
-                         cancelLink="/patients"
+                         saveLabel={"Create doctor"}
+                         cancelLink="/doctors"
                          onSave={onSave}
                          error={error} />
 

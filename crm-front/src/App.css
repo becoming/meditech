@@ -23,6 +23,11 @@
     padding-left: 0;
 }
 
+.App-doctors-ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
 /*FIXME, find a better way to size text areas*/
 .App-json-text-337px {
     height: 337px;
@@ -86,6 +91,16 @@
     background-color: #30353d;
 }
 
+.App-doctor-list-item {
+    padding: 10px;
+    border-bottom: solid thin #3f4753;
+    cursor: pointer;
+}
+
+.App-doctor-list-item:hover {
+    background-color: #36303d;
+}
+
 .App-listing-created {
     width: 80px;
     overflow: hidden;
@@ -137,6 +152,10 @@
 }
 
 .App-patient-identity {
+    width: 100%;
+}
+
+.App-doctor-identity {
     width: 100%;
 }
 

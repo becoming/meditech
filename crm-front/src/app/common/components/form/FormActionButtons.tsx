@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import {Button, Classes, FormGroup} from "@blueprintjs/core";
-import {WarningMessage} from "./WarningMessage";
+import {WarningMessage} from "../WarningMessage";
 
 interface Props {
   disabled: boolean

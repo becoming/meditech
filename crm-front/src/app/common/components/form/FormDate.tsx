@@ -1,7 +1,7 @@
 import {DatePicker} from "@blueprintjs/datetime";
 import {Classes, FormGroup} from "@blueprintjs/core";
 import {useState} from "react";
-import {toDateString} from "../../../common/helpers/DateHelper";
+import {toDateString} from "../../helpers/DateHelper";
 
 interface Props {
   disabled: boolean

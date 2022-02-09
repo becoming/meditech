@@ -1,5 +1,5 @@
-import {toLuxFormat} from "../../../common/helpers/AddressHelper";
-import {AddressVO} from "../../../common/vo/address/AddressVO";
+import {toLuxFormat} from "../../helpers/AddressHelper";
+import {AddressVO} from "../../vo/address/AddressVO";
 
 interface Props {
   value: AddressVO[]

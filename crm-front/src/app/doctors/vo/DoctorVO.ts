@@ -8,8 +8,8 @@ export interface DoctorVO extends BasicVO {
   addresses: AddressVO[]
 }
 
-export const hasAddress = (patient: DoctorVO): boolean => {
-  return patient.addresses && patient.addresses.length > 0
+export const hasAddress = (vo: DoctorVO): boolean => {
+  return vo.addresses && vo.addresses.length > 0
 }
 
 export const toDoctors = (is: any): DoctorVO[] => {

@@ -8,7 +8,7 @@ export function WarningMessage(props: { message: string, backUrl?: string }) {
 
   if(props.backUrl) {
     link = <Link to={props.backUrl}>
-      <Button className={Classes2.POPOVER2_DISMISS} text={"Go to " + props.backUrl} />
+      <Button className={Classes2.POPOVER2_DISMISS} text={"Continue to " + props.backUrl} />
     </Link>
   }
 

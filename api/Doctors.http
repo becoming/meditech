@@ -1,15 +1,10 @@
-POST  localhost:7373/api/v1/doctors
-Content-Type: application/json
-
-{
-  "date": "31-12-1969 23:59:00"
-}
-
-###
-
 GET localhost:7373/api/v1/doctors
 Content-Type: application/json
 
+###
+
+GET http://localhost:7373/api/v1/doctors/47fea602-25ae-46ff-9d5c-2396cb394cae
+Content-Type: application/json
 
 ###
 POST http://localhost:7373/api/v1/doctors
@@ -18,20 +13,5 @@ Content-Type: application/json
 {
   "title": "Mr",
   "firstName": "Alex",
-  "LastName": "Doyle"
-}
-
-###
-
-POST http://localhost:7373/api/v1/doctors/ee08a969-5d80-470c-a766-4a3aab3cda7f/addresses
-Content-Type: application/json
-
-{
-  "number": "4",
-  "street": "Dacia",
-  "zipCode": "0001",
-  "city": "Bucharest",
-  "region": "Ilfov",
-  "department": "Sud",
-  "country": "RO"
+  "lastName": "Doyle"
 }

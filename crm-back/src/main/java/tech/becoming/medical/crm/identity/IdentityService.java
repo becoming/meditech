@@ -16,7 +16,7 @@ public class IdentityService {
     private final IdentityRepository identityRepository;
     private final IdentityMapper mapper;
 
-    public Try<IdentityDTO> getIdentity(UUID identityId) {
+    public Try<IdentityDTO> findById(UUID identityId) {
         return Try.of(() -> identityId)
                 .map($ -> identityRepository.findById(identityId))
                 .map(NotFoundException::throwIfEmpty)

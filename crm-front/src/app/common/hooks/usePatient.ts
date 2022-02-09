@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import {Subscription} from "rxjs";
-import {patientService} from "../PatientService";
-import {patientFullName} from "../../common/helpers/IdentityHelper";
-import {PatientVO, toPatient} from "../vo/PatientVO";
+import {patientFullName} from "../helpers/IdentityHelper";
+import {PatientVO, toPatient} from "../../patients/vo/PatientVO";
+import {patientService} from "../../patients/PatientService";
 
 export function usePatient(patientId?: string): [PatientVO|undefined, string, string|null] {
   let [patient, setPatient] = useState<PatientVO>();
@@ -20,7 +20,7 @@ export function usePatient(patientId?: string): [PatientVO|undefined, string, st
           setPatientName(patientFullName(p))
           setError(null)
         },
-        error: err => {
+        error: () => {
           setError("I cannot load this patient. What a bummer..")
           setPatientName("Oops")
         }

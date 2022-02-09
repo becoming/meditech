@@ -20,4 +20,9 @@ public class IdentityHttp {
         return service.updateIdentity(identityId, p);
     }
 
+    @GetMapping("{identityId}")
+    public Try<IdentityDTO> findById(@PathVariable UUID identityId) {
+        return service.findById(identityId);
+    }
+
 }

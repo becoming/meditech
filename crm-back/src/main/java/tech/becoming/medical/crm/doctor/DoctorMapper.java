@@ -6,10 +6,7 @@ import tech.becoming.medical.crm.doctor.dto.DoctorDTO;
 import tech.becoming.medical.crm.doctor.dto.NewDoctorRequest;
 import tech.becoming.medical.crm.doctor.entity.DoctorEntity;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 //https://www.baeldung.com/mapstruct#1-modify-the-mapper
 //https://www.baeldung.com/mapstruct-custom-mapper#custom-mapper-annotation

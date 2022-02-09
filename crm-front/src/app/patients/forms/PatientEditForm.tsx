@@ -1,8 +1,8 @@
 import {ControlGroup} from "@blueprintjs/core";
 import {useState} from "react";
-import {FormInput} from "../../common/components/FormInput";
-import {FormDate} from "../components/profile/FormDate";
-import {FormActionButtons} from "../../common/components/FormActionButtons";
+import {FormInput} from "../../common/components/form/FormInput";
+import {FormDate} from "../../common/components/form/FormDate";
+import {FormActionButtons} from "../../common/components/form/FormActionButtons";
 import {IdentityUpdateRequest} from "../../common/vo/identity/IdentityUpdateRequest";
 import {IdentityVO} from "../../common/vo/identity/IdentityVO";
 import {identityService} from "../../common/IdentityService";
@@ -13,7 +13,7 @@ interface Props {
   onSave: (v: IdentityVO) => void
 }
 
-export function IdentityEditForm(props: Props) {
+export function PatientEditForm(props: Props) {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState(false);
 

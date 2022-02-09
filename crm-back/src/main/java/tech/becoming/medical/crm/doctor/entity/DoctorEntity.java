@@ -7,8 +7,10 @@ import org.hibernate.annotations.GenericGenerator;
 import tech.becoming.medical.crm.address.AddressEntity;
 import tech.becoming.medical.crm.common.BasicEntity;
 import tech.becoming.medical.crm.identity.IdentityEntity;
+import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.Set;
 import java.util.UUID;
 
@@ -42,4 +44,19 @@ public class DoctorEntity extends BasicEntity {
             inverseJoinColumns = @JoinColumn(name = "ADDRESS_ID")
     )
     private Set<AddressEntity> addresses;
+
+    public static DoctorEntity setupNew(IdentityEntity identity) {
+        var now = Instant.now();
+
+        identity.setCreated(now);
+        identity.setUpdated(now);
+
+        var p = new DoctorEntity();
+        p.setBusinessId(UUID.randomUUID());
+        p.setIdentity(identity);
+        p.setCreated(now);
+        p.setUpdated(now);
+
+        return p;
+    }
 }

@@ -2,7 +2,6 @@ import {httpHelper, httpHelperNoAuth} from "../common/helpers/http/HttpHelper";
 import {NewIdentityRequest} from "../common/vo/identity/NewIdentityRequest";
 import {ReplaySubject} from "rxjs";
 import {PatientVO} from "./vo/PatientVO";
-import {IdentityVO} from "../common/vo/identity/IdentityVO";
 
 export class PatientService {
 
@@ -14,12 +13,8 @@ export class PatientService {
     return httpHelperNoAuth.get<PatientVO[]>('/v1/patients')
   }
 
-  getById(id: string): ReplaySubject<PatientVO> {
+  findById(id: string): ReplaySubject<PatientVO> {
     return httpHelperNoAuth.get<PatientVO>(`/v1/patients/${id}`)
-  }
-
-  getIdentityById(patientId: string, identityId: string): ReplaySubject<IdentityVO> {
-    return httpHelperNoAuth.get<IdentityVO>(`/v1/patients/${patientId}/identity/${identityId}`)
   }
 
 }

@@ -5,13 +5,17 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import tech.becoming.common.exceptions.NotFoundException;
 import tech.becoming.medical.crm.address.AddressDTO;
 import tech.becoming.medical.crm.address.AddressEntity;
 import tech.becoming.medical.crm.address.AddressMapper;
 import tech.becoming.medical.crm.address.AddressRepository;
 import tech.becoming.medical.crm.doctor.dto.DoctorDTO;
-import tech.becoming.medical.crm.doctor.dto.NewDoctorRequest;
 import tech.becoming.medical.crm.doctor.entity.DoctorEntity;
+import tech.becoming.medical.crm.identity.IdentityMapper;
+import tech.becoming.medical.crm.identity.IdentityRepository;
+import tech.becoming.medical.crm.patient.dto.NewIdentityDTO;
+import tech.becoming.medical.crm.patient.entity.PatientEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,23 +29,41 @@ public class DoctorService {
     private final DoctorRepository repo;
     private final AddressRepository addressRepository;
     private final AddressMapper addressMapper;
-    private final DoctorMapper mapper;
+    private final DoctorMapper doctorMapper;
+    private final IdentityMapper identityMapper;
+    private final IdentityRepository identityRepository;
 
     public Try<List<DoctorDTO>> findInRange(PageRequest p) {
         return Try.of(() -> p)
                 .map(repo::findAll)
-                .map(mapper::toDto)
+                .map(doctorMapper::toDto)
                 .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
     }
 
-    public Try<DoctorDTO> create(NewDoctorRequest p) {
+    public Try<DoctorDTO> findById(UUID id) {
+        return Try.of(() -> id)
+                .map(repo::findById)
+                .map(NotFoundException::throwIfEmpty)
+                .map(doctorMapper::toDto)
+                .onFailure(e -> log.error("Could not perform the find in range, e: {}", e.getMessage()));
+    }
+
+    public Try<DoctorDTO> create(NewIdentityDTO p) {
         return Try.of(() -> p)
-//                .map(helper::validate)
-                .map(mapper::toEntity)
-//                .map(this::setupNew)
-                .map(repo::save)
-                .map(mapper::toDto)
-                .onFailure(e -> log.error("Could not create a new doctor, e: {}", e.getMessage()));
+                .map(identityMapper::toEntity)
+                .map(DoctorEntity::setupNew)
+                .map(repo::save) // FIXME start, solve this double save
+                .map(this::saveIdentity)
+                .map(repo::save) // FIXME end
+                .map(doctorMapper::toDto)
+                .onFailure(e -> log.error("Could not create a new patient, e: {}", e.getMessage()));
+    }
+
+    private DoctorEntity saveIdentity(DoctorEntity entity) {
+        var i = identityRepository.save(entity.getIdentity());
+        entity.setIdentity(i);
+
+        return entity;
     }
 
     public Try<AddressDTO> createAddress(UUID doctorId, AddressDTO addressDTO) {

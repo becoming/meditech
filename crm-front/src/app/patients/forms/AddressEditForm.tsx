@@ -1,5 +1,5 @@
-import {FormInput} from "../../common/components/FormInput";
-import {FormActionButtons} from "../../common/components/FormActionButtons";
+import {FormInput} from "../../common/components/form/FormInput";
+import {FormActionButtons} from "../../common/components/form/FormActionButtons";
 import {useState} from "react";
 import {AddressRequest} from "../../common/vo/address/AddressRequest";
 import {AddressUpdateRequest} from "../../common/vo/address/AddressUpdateRequest";

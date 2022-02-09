@@ -1,8 +1,8 @@
 import {hasAddress, PatientVO} from "../../vo/PatientVO";
-import {Identity} from "./Identity";
-import {AddressList} from "../listing/AddressList";
+import {PatientIdentity} from "./PatientIdentity";
+import {AddressList} from "../../../common/components/profile/AddressList";
 import {Card} from "@blueprintjs/core";
-import {EditLink} from "./EditLink";
+import {EditLink} from "../../../common/components/EditLink";
 
 interface Props {
   patient: PatientVO
@@ -27,8 +27,8 @@ export function PatientWidgets(props: Props) {
   return <div className={"App-page-content"}>
     <div className={"row"}>
       <div className={"col-sm-12 col-md-4"}>
-        <Identity identity={patient.identity}
-                  patientId={patient.id}/>
+        <PatientIdentity identity={patient.identity}
+                         patientId={patient.id}/>
 
         {addresses}
       </div>
