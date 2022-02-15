@@ -1,4 +1,6 @@
 import {VisitsToolbar} from "./VisitsToolbar";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
 export function VisitsPage() {
 
@@ -12,7 +14,10 @@ export function VisitsPage() {
     <div className={"App-page-content"}>
       <div className={"row"}>
         <div className={"col-sm-12"}>
-
+          <FullCalendar
+            plugins={[ dayGridPlugin ]}
+            initialView="dayGridMonth"
+          />
         </div>
       </div>
     </div>

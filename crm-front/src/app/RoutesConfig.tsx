@@ -43,7 +43,6 @@ export function RoutesConfig() {
 
     <Route path="/visits" element={<VisitsPage/>}/>
 
-
     <Route path="/about" element={<AboutPage/>}/>
   </Routes>
 }

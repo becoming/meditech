@@ -1063,13 +1063,13 @@
   resolved "https://registry.npmjs.org/@blueprintjs/colors/-/colors-4.0.0-beta.3.tgz"
   integrity sha512-42i7qeyFZT/qJFj8iagVECB91HmqxiCY7rw+EaOHSKCwbasbJF0BmAMViZCrOhvw++ZQ2WXmu+CxH6jkvSeDtg==
 
-"@blueprintjs/core@4.0.0-beta.12", "@blueprintjs/core@^4.0.0-beta.12":
-  version "4.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@blueprintjs/core/-/core-4.0.0-beta.12.tgz"
-  integrity sha512-d2Cy2V58IBGcy3V3/4EbNoXGIoJ7zbbPHYsflEZBum7t1vjbFfjTNFJw9BDRJM5mKlcBYOn8/DRtqld4aB6JHg==
+"@blueprintjs/core@4.0.0-beta.14", "@blueprintjs/core@^4.0.0-beta.14":
+  version "4.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@blueprintjs/core/-/core-4.0.0-beta.14.tgz#85785c5c5af3f5cd1fb5b26374c4d4d882297f65"
+  integrity sha512-RAbFhdH3U8DAh6iz0IYmilWq91V4iriTXOhceX7Dwa+Ot6sM68JzkDvuDqJD7Ej93F7PFcrqBTCqNJPaRwrvGQ==
   dependencies:
     "@blueprintjs/colors" "^4.0.0-beta.3"
-    "@blueprintjs/icons" "^4.0.0-beta.6"
+    "@blueprintjs/icons" "^4.0.0-beta.8"
     "@types/dom4" "^2.0.1"
     classnames "^2.2"
     dom4 "^2.1.5"
@@ -1080,31 +1080,31 @@
     resize-observer-polyfill "^1.5.1"
     tslib "~1.13.0"
 
-"@blueprintjs/datetime@4.0.0-beta.12":
-  version "4.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@blueprintjs/datetime/-/datetime-4.0.0-beta.12.tgz"
-  integrity sha512-qwJe998Cot5KrApEeav6kM7QAfHKUIJZXfxhnQe9RDFuCQ3UesoH7IiPbQFzVANk5A2kgUfovP+pAsIzfIOglw==
+"@blueprintjs/datetime@4.0.0-beta.14":
+  version "4.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@blueprintjs/datetime/-/datetime-4.0.0-beta.14.tgz#98595be35d36143f0c2fad43b082e3de78743c83"
+  integrity sha512-jwOU7b9/EpF01wtjDRct6RjJwBs7ZJ1nbDeweykSiRzISHCHc2rgE2GKVRhfv65HhDmDqHnNNuhBgJusFsfovg==
   dependencies:
-    "@blueprintjs/core" "^4.0.0-beta.12"
+    "@blueprintjs/core" "^4.0.0-beta.14"
     classnames "^2.2"
     react-day-picker "7.4.9"
     tslib "~1.13.0"
 
-"@blueprintjs/icons@^4.0.0-beta.6":
-  version "4.0.0-beta.6"
-  resolved "https://registry.npmjs.org/@blueprintjs/icons/-/icons-4.0.0-beta.6.tgz"
-  integrity sha512-HiIvjrfG+hRMvlwBvDPpEaAkaYUGNNWT6wNTrx9iQK40jIAyrIlt3CksTAKCgiZD/hhipHJUeTuMRzdp8G//EA==
+"@blueprintjs/icons@^4.0.0-beta.8":
+  version "4.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@blueprintjs/icons/-/icons-4.0.0-beta.8.tgz#8e3ca09bae1d851a9f1d9715f8140fc4d0a7617d"
+  integrity sha512-xBM1YDsnJi11Q7lgpiTNTJ3psULFXetZEgpGg7UTy9lfP3N2IXcJpwqpnAN9rH5nBDj6ZMMoTE1uZLLlTqFm0g==
   dependencies:
     change-case "^4.1.2"
     classnames "^2.2"
     tslib "~1.13.0"
 
-"@blueprintjs/popover2@1.0.0-beta.12":
-  version "1.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@blueprintjs/popover2/-/popover2-1.0.0-beta.12.tgz"
-  integrity sha512-JqYaN5LWGY0Bpi7r0bYEFR12NwdzixRSc0glZpavZRiyOQNEo+8kakUUbfNgD/pnYeB5UBArQeE4eyCKzfNIng==
+"@blueprintjs/popover2@1.0.0-beta.14":
+  version "1.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@blueprintjs/popover2/-/popover2-1.0.0-beta.14.tgz#8b7f973fb3f7e5e833b81755638f132df53c5c6b"
+  integrity sha512-HueMCVExpvSG0vk2AocX0F02FV1nipvZPbj/c1Rh9eR9zqZHWL7q1kBouADQ3KeKraXrjDDTbTwUk61ZYHQt+A==
   dependencies:
-    "@blueprintjs/core" "^4.0.0-beta.12"
+    "@blueprintjs/core" "^4.0.0-beta.14"
     "@popperjs/core" "^2.5.4"
     classnames "^2.2"
     dom4 "^2.1.5"
@@ -1112,12 +1112,12 @@
     resize-observer-polyfill "^1.5.1"
     tslib "~1.13.0"
 
-"@blueprintjs/select@4.0.0-beta.12":
-  version "4.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@blueprintjs/select/-/select-4.0.0-beta.12.tgz"
-  integrity sha512-inB9iMO9MhjusSCzJxClv52QUENW2gWoIAnmUCTZ0sAnhS5tQi2KYMwZiiKZIx8XHzWURCBrubNRmDAI99zVhA==
+"@blueprintjs/select@4.0.0-beta.14":
+  version "4.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@blueprintjs/select/-/select-4.0.0-beta.14.tgz#c5afeec430d9059bf07c0bc309436ca77f1ef911"
+  integrity sha512-TrlNLC36IuxuQ4CNHkaqQhaaIegVvxcXx4cEsB9iBU1VZp9a6ATVkv+fj9CGDbwK9v3LJJZUlnZrcbgXewe6NA==
   dependencies:
-    "@blueprintjs/core" "^4.0.0-beta.12"
+    "@blueprintjs/core" "^4.0.0-beta.14"
     classnames "^2.2"
     tslib "~1.13.0"
 
@@ -1140,6 +1140,29 @@
     js-yaml "^4.1.0"
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
+
+"@fullcalendar/common@~5.10.1":
+  version "5.10.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/common/-/common-5.10.1.tgz#a019951743852277a4095e536fd7716f6f85b9aa"
+  integrity sha512-EumKIJcQTvQdTs75/9dmeREFgjcRVWzqHJS1Xvlz5mNsmB+w9EINCHETRjChtAQg1WD/lTQyVj4sHsKO7vCMSw==
+  dependencies:
+    tslib "^2.1.0"
+
+"@fullcalendar/daygrid@^5.10.1":
+  version "5.10.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-5.10.1.tgz#bdee4f58364fdab631b2abf8b56094ab5776f203"
+  integrity sha512-sfUMP+rew0krsBffgNcWWKhBCiyytGfRKZJoc64E8ohX7VWjPcPZuB1xgO5U4wPLmNkT0rZiHoGeQGTXw1+ZKg==
+  dependencies:
+    "@fullcalendar/common" "~5.10.1"
+    tslib "^2.1.0"
+
+"@fullcalendar/react@^5.10.1":
+  version "5.10.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/react/-/react-5.10.1.tgz#bb1652357f98b7dc01894a41e7204f1391999791"
+  integrity sha512-+kV5+o9qGjkoO5j0r3oawhig+hP3inE68bHKBl6dtGQ8mi3GkEGsTL12MY2n5N0hXon6+2psIQLnAjMyRYZbmg==
+  dependencies:
+    "@fullcalendar/common" "~5.10.1"
+    tslib "^2.1.0"
 
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.2"
@@ -1572,10 +1595,10 @@
     lz-string "^1.4.4"
     pretty-format "^27.0.2"
 
-"@testing-library/jest-dom@5.16.1":
-  version "5.16.1"
-  resolved "https://registry.npmjs.org/@testing-library/jest-dom/-/jest-dom-5.16.1.tgz"
-  integrity sha512-ajUJdfDIuTCadB79ukO+0l8O+QwN0LiSxDaYUTI4LndbbUsGi6rWU1SCexXzBA2NSjlVB9/vbkasQIL3tmPBjw==
+"@testing-library/jest-dom@5.16.2":
+  version "5.16.2"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.16.2.tgz#f329b36b44aa6149cd6ced9adf567f8b6aa1c959"
+  integrity sha512-6ewxs1MXWwsBFZXIk4nKKskWANelkdUehchEOokHsN8X7c2eKXGw+77aRV63UU8f/DTSVUPLaGxdrj4lN7D/ug==
   dependencies:
     "@babel/runtime" "^7.9.2"
     "@types/testing-library__jest-dom" "^5.9.1"
@@ -1757,10 +1780,10 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-17.0.5.tgz"
   integrity sha512-w3mrvNXLeDYV1GKTZorGJQivK6XLCoGwpnyJFbJVK/aTBQUxOCaa/GlFAAN3OTDFcb7h5tiFG+YXCO2By+riZw==
 
-"@types/node@17.0.13":
-  version "17.0.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.13.tgz#5ed7ed7c662948335fcad6c412bb42d99ea754e3"
-  integrity sha512-Y86MAxASe25hNzlDbsviXl8jQHb0RDvKt4c40ZJQ1Don0AAL0STLZSs4N+6gLEO55pedy7r2cLwS+ZDxPm/2Bw==
+"@types/node@17.0.18":
+  version "17.0.18"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.18.tgz#3b4fed5cfb58010e3a2be4b6e74615e4847f1074"
+  integrity sha512-eKj4f/BsN/qcculZiRSujogjvp5O/k4lOW5m35NopjZM/QwLOR075a8pJW5hD+Rtdm2DaCVPENS6KtSQnUD6BA==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -1789,10 +1812,19 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@17.0.38":
+"@types/react@*":
   version "17.0.38"
   resolved "https://registry.npmjs.org/@types/react/-/react-17.0.38.tgz"
   integrity sha512-SI92X1IA+FMnP3qM5m4QReluXzhcmovhZnLNm3pyeQlooi02qI7sLiepEYqT678uNiyc25XfCqxREFpy3W7YhQ==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@17.0.39":
+  version "17.0.39"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.39.tgz#d0f4cde092502a6db00a1cded6e6bf2abb7633ce"
+  integrity sha512-UVavlfAxDd/AgAacMa60Azl7ygyQNRwC/DsHZmKgNvPmRR5p70AJ5Q9EAmL2NWOJmeV+vVUI4IAP7GZrN8h8Ug==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -7458,10 +7490,10 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-rxjs@7.5.2:
-  version "7.5.2"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.2.tgz#11e4a3a1dfad85dbf7fb6e33cbba17668497490b"
-  integrity sha512-PwDt186XaL3QN5qXj/H9DGyHhP3/RYYgZZwqBv9Tv8rsAaiwFH1IsJJlcgD37J7UW5a6O67qX0KWKS3/pu0m4w==
+rxjs@7.5.4:
+  version "7.5.4"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.4.tgz#3d6bd407e6b7ce9a123e76b1e770dc5761aa368d"
+  integrity sha512-h5M3Hk78r6wAheJF0a5YahB1yRQKCsZ4MsGdZ5O9ETbVtjPcScGfrMmoOq7EBsCRzd4BDkvDJ7ogP8Sz5tTFiQ==
   dependencies:
     tslib "^2.1.0"
 
