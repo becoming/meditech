@@ -12,6 +12,9 @@ export function Menu() {
 
         <NavbarDivider />
 
+        <Link to="/visits">
+          <Button className={Classes.MINIMAL} icon="calendar" text="Visits" />
+        </Link>
         <Link to="/patients">
           <Button className={Classes.MINIMAL} icon="people" text="Patients" />
         </Link>
