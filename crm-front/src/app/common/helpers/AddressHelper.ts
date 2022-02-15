@@ -6,6 +6,7 @@ export const toLuxFormat = (a: AddressVO): string => {
   }
 
   return a.number.concat(" ").concat(a.street).concat(", ")
-    .concat(a.zipCode).concat(", ").concat(a.city).concat(", ")
+    .concat(a.zipCode).concat(" ")
+    .concat(a.city).concat(", ")
     .concat(a.country);
 }

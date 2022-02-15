@@ -1,3 +1,4 @@
+import React from "react";
 import {Route, Routes} from "react-router-dom";
 import {PatientsListingPage} from "./patients/pages/PatientsListingPage";
 import {PatientCreatePage} from "./patients/pages/PatientCreatePage";
@@ -7,7 +8,6 @@ import {AddressCreatePage} from "./patients/pages/AddressCreatePage";
 import {ProceduresListingPage} from "./procedures/pages/ProceduresListingPage";
 import {DoctorsListingPage} from "./doctors/page/DoctorsListingPage";
 import {AboutPage} from "./about/AboutPage";
-import React from "react";
 import {AddressEditPage} from "./patients/pages/AddressEditPage";
 import {ProcedureCreatePage} from "./procedures/pages/ProcedureCreatePage";
 import {ProcedureEditPage} from "./procedures/pages/ProcedureEditPage";
@@ -16,6 +16,7 @@ import {DoctorCreatePage} from "./doctors/page/DoctorCreatePage";
 import {DoctorProfilePage} from "./doctors/page/DoctorProfilePage";
 import {DoctorEditPage} from "./doctors/page/DoctorEditPage";
 import {DoctorAddressCreatePage} from "./doctors/page/DoctorAddressCreatePage";
+import {DoctorAddressEditPage} from "./doctors/page/DoctorAddressEditPage";
 
 export function RoutesConfig() {
   return <Routes>
@@ -37,6 +38,8 @@ export function RoutesConfig() {
     <Route path="/doctors/:doctorId" element={<DoctorProfilePage/>}/>
     <Route path="/doctors/:doctorId/address/create" element={<DoctorAddressCreatePage/>}/>
     <Route path="/doctors/:doctorId/identity/:identityId/edit" element={<DoctorEditPage/>}/>
+    <Route path="/doctors/:doctorId/address/:addressId/edit" element={<DoctorAddressEditPage/>}/>
+
 
     <Route path="/about" element={<AboutPage/>}/>
   </Routes>

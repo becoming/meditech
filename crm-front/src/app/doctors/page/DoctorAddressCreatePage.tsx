@@ -32,7 +32,7 @@ export function DoctorAddressCreatePage() {
   }
   // 623820f5-612b-409b-925d-3eff8f362021
   return <div className={"App-page-container"}>
-    <PageTitle value={"New address for " + doctorName} backUrl={"/doctors/" + params.doctorId}/>
+    <PageTitle value={"New address for doctor " + doctorName} backUrl={"/doctors/" + params.doctorId}/>
 
     <AddressEditForm onCreate={onSave}
                        doctorId={params.doctorId}

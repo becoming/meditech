@@ -32,7 +32,7 @@ export function AddressCard(props: Props) {
 
   let editUrl = `/${resource}/${id}/address/${address.id}/edit`
 
-  return <Card className={"App-patient-identity"}>
+  return <Card className={"App-address-card"}>
     <table className="bp4-html-table bp4-html-table-striped">
       <tbody>
       {trs}

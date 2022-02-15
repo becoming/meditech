@@ -19,7 +19,7 @@ export function DoctorWidgets(props: Props) {
     addresses =
       <Card>
         <span>We have no addresses for this doctor</span>
-        <EditLink link={`/doctors/${props.doctor.id}/address/create`}
+        <EditLink link={`/doctors/${doctor.id}/address/create`}
                   value={"New Address"}/>
       </Card>
   }

@@ -1,14 +1,14 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {PageTitle} from "../../common/components/PageTitle";
-import {usePatient} from "../hooks/usePatient";
 import {useState} from "react";
 import {addressService} from "../../common/AddressService";
 import {AddressUpdateRequest} from "../../common/vo/address/AddressUpdateRequest";
-import {AddressEditForm} from "../forms/AddressEditForm";
 import {WarningMessage} from "../../common/components/WarningMessage";
 import {useAddress} from "../../common/hooks/useAddress";
+import {useDoctor} from "../hooks/useDoctor";
+import {AddressEditForm} from "../form/AddressEditForm";
 
-export function AddressEditPage() {
+export function DoctorAddressEditPage() {
 
   let params = useParams();
   let navigate = useNavigate();
@@ -16,10 +16,10 @@ export function AddressEditPage() {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState(false);
 
-  const patientId = params.patientId;
+  const doctorId = params.doctorId;
   const addressId = params.addressId;
 
-  let [, patientName,] = usePatient(patientId);
+  let [, patientName,] = useDoctor(doctorId);
   let [address, addressError] = useAddress(addressId);
 
   const onSave = (updatedAddress: AddressUpdateRequest) => {
@@ -29,7 +29,7 @@ export function AddressEditPage() {
 
     addressService.update(addressId, updatedAddress)
       .subscribe({
-        next: (p) => navigate("/patients/" + patientId),
+        next: (p) => navigate("/doctors/" + doctorId),
         error: e => {
           setDisabled(false)
           setError(true)
@@ -42,14 +42,14 @@ export function AddressEditPage() {
     form = <WarningMessage message={"Oh no, cannot find this address"}/>
   } else if(address) {
     form = <AddressEditForm onUpdate={onSave}
-                            patientId={params.patientId}
+                            doctorId={params.doctorId}
                             disabled={disabled}
                             address={address}
                             error={error} />
   }
 
   return <div className={"App-page-container"}>
-    <PageTitle value={"Edit address for patient " + patientName} backUrl={"/patients/" + params.patientId}/>
+    <PageTitle value={"Edit address for doctor " + patientName} backUrl={"/doctors/" + doctorId}/>
 
     {form}
   </div>;

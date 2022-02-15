@@ -14,7 +14,7 @@ export function AddressList(props: Props) {
   props.value.forEach(address => trs.push(
     <AddressCard address={address}
                  patientId={props.patientId}
-                 doctorId={props.patientId}/>
+                 doctorId={props.doctorId}/>
   ))
 
   return <div>
