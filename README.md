@@ -1,4 +1,4 @@
-# this-medical-experiment
+# meditech
 
 >[MIT License](LICENSE)
 
