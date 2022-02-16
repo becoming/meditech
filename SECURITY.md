@@ -13,4 +13,4 @@ The Quality of code and security hotspot are identified at the code level by Son
 
 Dependabot was disabled for now. We are not sure about the policy of changing the `.lock` files outside of the package manager.
 
-- https://sonarcloud.io/summary/overall?id=rodislav_this-medical-experiment
+- https://sonarcloud.io/summary/overall?id=meditech
