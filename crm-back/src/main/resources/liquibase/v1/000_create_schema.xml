@@ -7,7 +7,7 @@
 
     <changeSet id="1" author="rodi" dbms="h2">
         <sql>
-            CREATE SCHEMA IF NOT EXISTS TME;
+            CREATE SCHEMA IF NOT EXISTS MEDITECH;
         </sql>
     </changeSet>
 
