@@ -6,11 +6,11 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
     <changeSet id="0" author="rodi">
-        <dropColumn tableName="MEDICAL_PROCEDURE" schemaName="TME" columnName="DESCRIPTION" />
+        <dropColumn tableName="MEDICAL_PROCEDURE" schemaName="MEDITECH" columnName="DESCRIPTION" />
     </changeSet>
 
     <changeSet id="1" author="rodi">
-        <addColumn tableName="MEDICAL_PROCEDURE" schemaName="TME">
+        <addColumn tableName="MEDICAL_PROCEDURE" schemaName="MEDITECH">
             <column name="DESCRIPTION" type="varchar(999)"/>
         </addColumn>
     </changeSet>

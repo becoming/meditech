@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.Instant;
 
-@Table(name = "IDENTITY", schema = "TME")
+@Table(name = "IDENTITY", schema = "MEDITECH")
 @Entity
 @Getter
 @Setter

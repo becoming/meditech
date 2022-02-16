@@ -8,7 +8,7 @@ import tech.becoming.meditech.crm.common.BasicEntity;
 import javax.persistence.*;
 import java.time.Instant;
 
-@Table(name = "ADDRESS", schema = "TME")
+@Table(name = "ADDRESS", schema = "MEDITECH")
 @Entity
 @Getter
 @Setter

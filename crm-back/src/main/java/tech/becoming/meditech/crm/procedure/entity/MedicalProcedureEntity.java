@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
 
-@Table(name = "MEDICAL_PROCEDURE", schema = "TME")
+@Table(name = "MEDICAL_PROCEDURE", schema = "MEDITECH")
 @Entity
 @Getter
 @Setter

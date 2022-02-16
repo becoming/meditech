@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
 
-@Table(name = "MEDICAL_LICENCE", schema = "TME")
+@Table(name = "MEDICAL_LICENCE", schema = "MEDITECH")
 @Entity
 @Getter
 @Setter

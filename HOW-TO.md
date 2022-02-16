@@ -111,8 +111,8 @@ Method springSecurityFilterChain in org.springframework.security.config.annotati
 ```
 
 ```properties
-spring.security.oauth2.resourceserver.jwt.issuer-uri=${OAUTH_ISSUER_URI:http://keycloak.localhost/auth/realms/tme}
-spring.security.oauth2.resourceserver.jwt.jwk-set-uri=${OAUTH_JWK_URI:http://keycloak.localhost/auth/realms/tme/protocol/openid-connect/certs}
+spring.security.oauth2.resourceserver.jwt.issuer-uri=${OAUTH_ISSUER_URI:http://keycloak.localhost/auth/realms/meditech}
+spring.security.oauth2.resourceserver.jwt.jwk-set-uri=${OAUTH_JWK_URI:http://keycloak.localhost/auth/realms/meditech/protocol/openid-connect/certs}
 ```
 ---
 

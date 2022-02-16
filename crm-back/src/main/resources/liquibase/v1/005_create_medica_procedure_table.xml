@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
     <changeSet id="0" author="rodi">
-        <createTable tableName="MEDICAL_PROCEDURE" schemaName="TME">
+        <createTable tableName="MEDICAL_PROCEDURE" schemaName="MEDITECH">
             <column name="ID" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>

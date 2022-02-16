@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
     <changeSet id="1" author="rodi">
-        <addColumn tableName="MEDICAL_PROCEDURE" schemaName="TME">
+        <addColumn tableName="MEDICAL_PROCEDURE" schemaName="MEDITECH">
             <column name="VERSION" type="int"/>
             <column name="VERSION_DATE" type="datetime"/>
         </addColumn>

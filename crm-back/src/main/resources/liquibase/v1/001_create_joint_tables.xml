@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
     <changeSet id="3" author="rodi">
-        <createTable tableName="J_PATIENT_ADDRESS" schemaName="TME">
+        <createTable tableName="J_PATIENT_ADDRESS" schemaName="MEDITECH">
             <column name="ID" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -16,7 +16,7 @@
     </changeSet>
 
     <changeSet id="4" author="rodi">
-        <createTable tableName="J_DOCTOR_ADDRESS" schemaName="TME">
+        <createTable tableName="J_DOCTOR_ADDRESS" schemaName="MEDITECH">
             <column name="ID" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>

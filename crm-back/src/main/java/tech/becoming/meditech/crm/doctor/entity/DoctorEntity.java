@@ -13,7 +13,7 @@ import java.time.Instant;
 import java.util.Set;
 import java.util.UUID;
 
-@Table(name = "DOCTOR", schema = "TME")
+@Table(name = "DOCTOR", schema = "MEDITECH")
 @Entity
 @Getter
 @Setter
@@ -38,7 +38,7 @@ public class DoctorEntity extends BasicEntity {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "J_DOCTOR_ADDRESS", schema = "TME",
+            name = "J_DOCTOR_ADDRESS", schema = "MEDITECH",
             joinColumns = @JoinColumn(name = "DOCTOR_ID"),
             inverseJoinColumns = @JoinColumn(name = "ADDRESS_ID")
     )
