@@ -8,7 +8,7 @@
         <version>2.6.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>tech.becoming.medical</groupId>
+    <groupId>tech.becoming.meditech</groupId>
     <artifactId>crm-back</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
