@@ -22,7 +22,7 @@ public abstract class BasicEntity {
             name = "uuid",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "ID", updatable = false, nullable = false)
     private UUID id;
 
     @Column(name = "CREATED")
