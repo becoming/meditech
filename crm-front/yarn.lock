@@ -1150,6 +1150,14 @@
     "@fullcalendar/premium-common" "~5.10.1"
     tslib "^2.1.0"
 
+"@fullcalendar/bootstrap5@5.10.2":
+  version "5.10.2"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/bootstrap5/-/bootstrap5-5.10.2.tgz#545929a3cfb86ad38254561108f3faea50f3e910"
+  integrity sha512-0wrpvHjwdp5+Wx5SNpEH9B3BDBLZ/6PylKMWph5tiBAvIxhoWFH3GhyTdbz77ImjjqOsIRT1Y6zofSLxqcwvIg==
+  dependencies:
+    "@fullcalendar/common" "~5.10.1"
+    tslib "^2.1.0"
+
 "@fullcalendar/common@~5.10.1":
   version "5.10.1"
   resolved "https://registry.yarnpkg.com/@fullcalendar/common/-/common-5.10.1.tgz#a019951743852277a4095e536fd7716f6f85b9aa"

@@ -1,10 +1,12 @@
 import {VisitsToolbar} from "./VisitsToolbar";
 import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
-// import adaptivePlugin from '@fullcalendar/adaptive'
-import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
+import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'
+
+// noinspection ES6UnusedImports
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid'; // TODO FIXME for some reason, removing this plugin - disables the schedulerLicenseKey
 
 export function VisitsPage() {
   let onEventClick = (arg: any) => { // bind with an arrow function
@@ -29,6 +31,7 @@ export function VisitsPage() {
         <div className={"col-sm-12"}>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+
             headerToolbar={{
               left: 'prev,next today',
               center: 'title',
