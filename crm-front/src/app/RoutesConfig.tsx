@@ -21,7 +21,9 @@ import {VisitsPage} from "./visits/VisitsPage";
 
 export function RoutesConfig() {
   return <Routes>
-    <Route path="/" element={<PatientsListingPage/>}/>
+    <Route path="/" element={<VisitsPage/>}/>
+    <Route path="/visits" element={<VisitsPage/>}/>
+
     <Route path="/patients" element={<PatientsListingPage/>}/>
     <Route path="/patients/create" element={<PatientCreatePage/>}/>
     <Route path="/patients/:patientId" element={<PatientProfilePage/>}/>
@@ -40,8 +42,6 @@ export function RoutesConfig() {
     <Route path="/doctors/:doctorId/address/create" element={<DoctorAddressCreatePage/>}/>
     <Route path="/doctors/:doctorId/identity/:identityId/edit" element={<DoctorEditPage/>}/>
     <Route path="/doctors/:doctorId/address/:addressId/edit" element={<DoctorAddressEditPage/>}/>
-
-    <Route path="/visits" element={<VisitsPage/>}/>
 
     <Route path="/about" element={<AboutPage/>}/>
   </Routes>
