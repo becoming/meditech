@@ -1,7 +1,7 @@
 import {VisitsToolbar} from "./VisitsToolbar";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
-import adaptivePlugin from '@fullcalendar/adaptive'
+// import adaptivePlugin from '@fullcalendar/adaptive'
 import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'

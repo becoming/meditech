@@ -18,7 +18,7 @@ export function FormTitleSelect(props: Props) {
   const onItemSelect = useCallback((t: TitleVO) => {
     setTitle(t);
     props.onItemSelect(t)
-  }, []);
+  }, [props]);
 
   return <FormGroup label="Title">
     <TitleSelectTag

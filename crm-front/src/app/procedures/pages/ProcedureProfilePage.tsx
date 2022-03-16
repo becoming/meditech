@@ -14,7 +14,7 @@ export function ProceduresProfilePage() {
       .subscribe({
         next: d => setProcedure(toProcedure(d))
       });
-  }, [])
+  }, [params.procedureId])
 
   if(procedure) {
     return <div className={"App-page-container container"}>

@@ -22,7 +22,7 @@ export function HealthInfo() {
 
 
   return <Card>
-    <Label>Info actuator, <a target={"_blank"} href={url}>{url}</a></Label>
+    <Label>Info actuator, <a target={"_blank"} href={url} rel="noreferrer">{url}</a></Label>
     <Button intent={"primary"} text={"Reload"}
             icon={"refresh"}
             onClick={() => setRetry(!retry)}/>
