@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:experimental
-FROM maven:3.6.1-jdk-11 AS build
+FROM maven:3.8.4-openjdk-17-slim AS build
 
 WORKDIR /tmp
 
@@ -9,7 +9,7 @@ RUN mvn  dependency:resolve-plugins  dependency:go-offline
 COPY . /tmp/
 RUN mvn package
 
-FROM openjdk:11
+FROM openjdk:17-slim
 COPY --from=build /tmp/target/app.jar app.jar
 
 ENV JAVA_OPTS="-Xms512m -Xmx1024m"
