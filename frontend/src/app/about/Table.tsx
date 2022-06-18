@@ -16,7 +16,6 @@ export function Table(props: Props) {
           <td>{i.value}</td>
         </tr>)
       })
-  }
 
   return <table className="bp4-html-table">
     <thead>
