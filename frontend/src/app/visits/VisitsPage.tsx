@@ -41,7 +41,7 @@ export function VisitsPage() {
               {title: 'event 1', date: '2022-03-16 15:30:00'},
               {title: 'event 2', date: '2022-03-14'}
             ]}
-            schedulerLicenseKey={'CC-Attribution-NonCommercial-NoDerivatives'}
+            // schedulerLicenseKey={'CC-Attribution-NonCommercial-NoDerivatives'}
             height={"auto"}
             firstDay={1}
             locale={"RO"}
