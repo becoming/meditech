@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>tech.becoming.meditech</groupId>
-    <artifactId>crm-back</artifactId>
+    <artifactId>crm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
