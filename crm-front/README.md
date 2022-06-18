@@ -21,3 +21,5 @@ yarn start
 SVG in CRA
 - https://blog.logrocket.com/how-to-use-svgs-in-react/
 
+https://upmostly.com/tutorials/setinterval-in-react-components-using-hooks
+
