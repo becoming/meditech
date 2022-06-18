@@ -11,7 +11,7 @@ export class ProcedureService {
   }
 
   update(procedureId?: string, update?: ProcedureUpdateRequest): ReplaySubject<ProcedureVO> {
-    return httpHelper.put(update, `/v1/procedure/${procedureId}`)
+    return httpHelper.put(update, `/v1/procedures/${procedureId}`)
   }
 
   findById(id?: string): ReplaySubject<ProcedureVO> {

@@ -21,7 +21,7 @@ public class ProcedureHttp {
     @GetMapping
     public Try<List<ProcedureDTO>> findInRange(@RequestParam(defaultValue = "0") int page,
                                                @RequestParam(defaultValue = "50") int size) {
-        return service.findInRange(PageRequest.of(page, size));
+        return service.find(PageRequest.of(page, size));
     }
 
     @GetMapping("{id}")
@@ -32,6 +32,11 @@ public class ProcedureHttp {
     @PostMapping
     public Try<ProcedureDTO> create(@RequestBody NewProcedureDTO dto) {
         return service.create(dto);
+    }
+
+    @PutMapping("{id}")
+    public Try<ProcedureDTO> update(@PathVariable UUID id, @RequestBody ProcedureDTO dto) {
+        return service.update(id, dto);
     }
 
 }

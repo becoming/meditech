@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tech.becoming.meditech.crm.common.BasicEntity;
+import tech.becoming.meditech.crm.procedure.dto.ProcedureDTO;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -52,6 +53,20 @@ public class MedicalProcedureEntity extends BasicEntity {
         versionDate = now;
         businessId = UUID.randomUUID();
         version = 1;
+
+        return this;
+    }
+
+    public MedicalProcedureEntity update(ProcedureDTO dto) {
+        var now = Instant.now();
+        setUpdated(now);
+        versionDate = now;
+        version = version + 1;
+
+        name = dto.getName();
+        description = dto.getDescription();
+        price = dto.getPrice();
+        currency = dto.getCurrency();
 
         return this;
     }

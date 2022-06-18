@@ -42,7 +42,7 @@ public class PatientHttp {
     }
 
     @GetMapping("{patientId}/identity/{identityId}")
-    public Try<IdentityDTO> update(@PathVariable UUID patientId,
+    public Try<IdentityDTO> findIdentityForPatient(@PathVariable UUID patientId,
                                    @PathVariable UUID identityId) {
         return service.getIdentity(patientId, identityId);
     }
